@@ -40,48 +40,34 @@ function LoginForm (){
             
     }
     
-    // var signin={
+    var signin={
         
-    //     marginTop: 4,
-    //     display: 'flex',
-    //     flexDirection: 'column',
-    //     alignItems: 'center',
+        marginTop: 4,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingTop :4,
     
-    // }
+    }
         return (
             <>
-            <form  style  onSubmit = {handleSubmit}>
+            <form  style   ={ signin}  onSubmit = {handleSubmit}>
     
-                <label> First Name: </label>
-                <input type =" text" name ="first_name"
-                value = {inputs.first_name || ""}
-                onChange={handleChange}/> 
-      
-                 <label> Last Name: </label>
-                <input type =" text" name ="last_name"
-                value = {inputs.last_name || ""}
-                onChange={handleChange}
-                required/> 
-    
+           
                 
-                <label> Mobile No: </label>
-                <input type = "number" name ="mobile_no"
-                 value = {inputs.mobile_no|| ""}
-                 onChange={handleChange}
-                 required/>  
-    
+            
               <label> Email:  </label> 
                 <input type = "email" name ="email"
                  value = {inputs.email|| ""}
                  onChange={handleChange}
-                 required/>  
+                 required/>   <br/>
     
                       <label> Password: </label>
                 <input type = "password" name ="password"
                  value = {inputs.password|| ""}
                  onChange={handleChange}
                   required/>  
-    
+                  <br/>
                <input type = "submit"/> 
             </form>
             </>

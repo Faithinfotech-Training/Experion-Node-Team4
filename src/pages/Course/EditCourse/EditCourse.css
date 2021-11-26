@@ -1,0 +1,10 @@
+.courseAddBox{
+    display: flex;
+
+
+}
+
+.formCheckBox{
+    display: inline-block;
+    margin-right: 5px;
+}

@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import { NavDropdown } from 'react-bootstrap';
 
 import "./Admin.css";
 
@@ -11,7 +12,12 @@ function Admin(){
         <div className="dashboard">
             <div className="dashboarditem">Dashboard</div>
             <div classname="dashboarditem">
-            <div className="item"><Link to="/admin/course">Course</Link></div>
+            <div className="item">
+                        <NavDropdown title="Course" id="basic-nav-dropdown">
+                            <NavDropdown.Item ><Link to="/admin/course">Course Management</Link></NavDropdown.Item>
+                            <NavDropdown.Item >Course Enquiry Management</NavDropdown.Item>
+                        </NavDropdown>
+                    </div>
             <div className="item"><Link to="/admin/resourseview">Resource</Link></div>
 
             
