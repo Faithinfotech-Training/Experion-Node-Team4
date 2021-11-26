@@ -1,0 +1,17 @@
+.navbarnfkt{
+    width: 100%;
+}
+
+.headerTitle{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: lightgray;
+    height: 10vh;
+
+}
+
+.headerContent{
+    font-size: 2rem;
+    text-align: center;
+}

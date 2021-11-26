@@ -1,10 +1,16 @@
-
-import './App.css';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import {Navbar,  Nav, NavDropdown} from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Header from './Header/Header';
+import Admin from './pages/Admin';
+import Routers from './Routers/Routers';
 
 function App() {
   return (
     <>
-    <h1>CRM App</h1>
+    <Header />
+    <Routers />
     </>
   );
 }
