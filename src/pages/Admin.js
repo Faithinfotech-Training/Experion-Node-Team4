@@ -18,7 +18,12 @@ function Admin(){
                             <NavDropdown.Item >Course Enquiry Management</NavDropdown.Item>
                         </NavDropdown>
                     </div>
-            <div className="item"><Link to="/admin/resourseview">Resource</Link></div>
+            <div className="item">
+            <NavDropdown title="Resource" id="basic-nav-dropdown"> 
+            <NavDropdown.Item >  < Link to="/admin/resource">Resource Management</Link></NavDropdown.Item>
+                            <NavDropdown.Item >Resource Enquiry Management</NavDropdown.Item>
+                            </NavDropdown>
+            </div> 
 
             
             </div>

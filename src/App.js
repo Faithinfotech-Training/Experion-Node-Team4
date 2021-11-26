@@ -7,6 +7,7 @@ import Admin from './pages/Admin';
 import Routers from './Routers/Routers';
 import LoginForm from './pages/LoginForm';
 
+
 export default function App() {
 return (
 	<>
@@ -14,7 +15,7 @@ return (
 
   <Routers />
 
-  <LoginForm/>
+  {/* <LoginForm/> */}
   </>
 );
 }
