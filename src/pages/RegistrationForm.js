@@ -40,17 +40,18 @@ function handleSubmit( event){
         
 }
 
-// var signin={
+var signin={
     
-//     marginTop: 4,
-//     display: 'flex',
-//     flexDirection: 'column',
-//     alignItems: 'center',
+    marginTop: 4,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    paddingTop: 4
 
-// }
+}
     return (
         <>
-        <form   onSubmit = {handleSubmit}>
+        <form  style = {signin} onSubmit = {handleSubmit}>
 
             <label> First Name: </label>
             <input type =" text" name ="first_name"
