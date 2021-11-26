@@ -6,13 +6,12 @@ import Header from './Header/Header';
 import Admin from './pages/Admin';
 import Routers from './Routers/Routers';
 
-function App() {
-  return (
-    <>
-    <Header />
-    <Routers />
-    </>
-  );
+export default function App() {
+return (
+	<>
+  <Header />
+  <Routers />
+  
+  </>
+);
 }
-
-export default App;
