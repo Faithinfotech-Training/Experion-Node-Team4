@@ -41,7 +41,9 @@ function AddCourse(){
   </Form.Group>
   <Button variant="success" type="submit">
     Add Course
-  </Button>&nbsp;&nbsp;&nbsp;
+  </Button>
+  &nbsp;&nbsp;&nbsp;
+
   <Button variant="primary" type="submit" onClick = {()=> goBack()}>
     Go Back
   </Button>
