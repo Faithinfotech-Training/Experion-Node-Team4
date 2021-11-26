@@ -1,13 +1,8 @@
 import { Form, Button } from "react-bootstrap";
-import {useNavigate}  from 'react-router-dom';
 
 
-function AddCourse(){
 
-  let navigate = useNavigate();
-    const goBack = ()=>{
-      navigate('/admin/course')
-    }
+function AddResource(){
 
     return(
         <>
@@ -27,17 +22,12 @@ function AddCourse(){
   <Form.Group className="mb-3" controlId="formBasicCheckbox">
     <Form.Check type="checkbox" label="Check me out" />
   </Form.Group>
-  <Button variant="success" type="submit">
-    Add Course
-  </Button>
-  &nbsp;&nbsp;&nbsp;
-
-  <Button variant="primary" type="submit" onClick = {()=> goBack()}>
-    Go Back
+  <Button variant="primary" type="submit">
+    Submit
   </Button>
 </Form>
 </>
     )
 }
 
-export default AddCourse;
+export default AddResource;
