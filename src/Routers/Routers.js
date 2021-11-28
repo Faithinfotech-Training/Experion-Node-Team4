@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Admin from "../pages/Admin";
 
 import CourseMng from "../pages/Course/CourseMng";
-import AddCourse from "../pages/Course/AddCourse";
+import AddCourse from "../pages/Course/AddCourse/AddCourse";
 import EditCourse from "../pages/Course/EditCourse/EditCourse";
 import ViewCourse from "../pages/Course/ViewCourse/ViewCourse";
 
