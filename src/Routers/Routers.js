@@ -36,6 +36,9 @@ function Routers() {
         {/* Routes for Course Enqiuiry Form */}
         <Route path="/home/course-enquiry" element={<CourseEnquiryForm />} />
 
+        {/* Admin Page */}
+        <Route path="/admin/" element={<Admin />}/>
+
         {/* Routes for Course Management */}
         <Route path="/admin/course" element={<CourseMng />}/>
         <Route path="/admin/course/add-course" element={<AddCourse />} />

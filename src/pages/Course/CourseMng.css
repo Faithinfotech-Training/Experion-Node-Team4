@@ -3,28 +3,3 @@ a{
     margin: 10px;
 }
 
-.dashboard{
-    display: flex;
-    justify-content: space-evenly;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    background-color: lightsteelblue;
-    height: 15vh;
-    font-size: 2rem;
-
-}
-
-.dashboarditem{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 30%
-    
-    
-
-}
-
-.item{
-    display: inline-block;
-    
-}
