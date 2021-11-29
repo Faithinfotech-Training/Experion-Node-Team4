@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import Manager from "../pages/Manager/Manager";
 import Admin from "../pages/Admin";
+import Header from "../Header/Header";
 
 //Course Enquiry Form Component
 import CourseEnquiryForm from "../pages/CourseEnquiryForm/CourseEnquiryForm";
@@ -34,12 +35,14 @@ import ViewResourseEnquiry from "../pages/Manager/ViewResourceEnquiry";
 import SalesPipeline from "../pages/Manager/VIewSalesPipeline";
 import SitesVisits from "../pages/Manager/SiteVIsitsVIew";
 
-function Routers() {
+function Routers(props) {
   return (
     <Router>
-
+      <Header />
 
       <Routes>
+
+
         {/* Routes for Course Enqiuiry Form */}
         <Route path="/home/course-enquiry" element={<CourseEnquiryForm />} />
 
