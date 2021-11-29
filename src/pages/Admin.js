@@ -10,7 +10,7 @@ function Admin() {
     return (
         <div>
             <div className="dashboard">
-                <div className="dashboarditem">Dashboard</div>
+                <div className="dashboarditem">Dashboard (Admin)</div>
                 <div classname="dashboarditem">
                     <div className="item">
                         <NavDropdown title="Course" id="basic-nav-dropdown">
