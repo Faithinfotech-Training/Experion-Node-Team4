@@ -13,7 +13,8 @@ export default function App() {
     <>
       <Header />
       <Routers />
-      {/* <ManagerRouters /> */}
+
+      <ManagerRouters />
 
       {/* <LoginForm/> */}
     </>

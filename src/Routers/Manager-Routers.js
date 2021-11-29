@@ -5,7 +5,7 @@ import Manager from "../pages/Manager/Manager";
 import ViewCourseEnquiry from "../pages/Manager/VIewCourseEnquiry";
 import ViewResourseEnquiry from "../pages/Manager/ViewResourceEnquiry";
 import SalesPipeline from "../pages/Manager/VIewSalesPipeline";
-import SitesVisits from "../pages/Manager/VIewSiteVIsits";
+import SitesVisits from "../pages/Manager/SiteVIsitsVIew";
 
 function ManagerRouters() {
   return (
