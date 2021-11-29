@@ -7,7 +7,7 @@ function Manager() {
   return (
     <div>
       <div className="dashboard">
-        <div className="dashboarditem">Dashboard</div>
+        <div className="dashboarditem">MANAGER</div>
         <div classname="dashboarditem">
           <div className="item">
             <NavDropdown title="View" id="basic-nav-dropdown">
