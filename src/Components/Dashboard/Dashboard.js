@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
+import './Dashboard.css'
+
 import { NavDropdown } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
-import './ResourceMng.css';
 
-function ResourceMng(){
+function Dashboard(){
+
 
     return(
-        <>
         <div className="dashboard">
             <div className="dashboarditem">Dashboard</div>
             <div classname="dashboarditem">
@@ -26,15 +27,8 @@ function ResourceMng(){
             
             </div>
         </div>
-        <Link to="/admin/resource/add-resource">Add Resource</Link>
-        <Link to="/admin/resource/delete-resource">Delete Resources</Link>
-        <Link to="/admin/resource/view-resources">View Resources</Link>
-        <Link to="/admin/resource/edit-resource">Edit Resources</Link>
-        </>
+
     )
 }
 
-
-
-
-export default ResourceMng;
+export default Dashboard;
