@@ -32,7 +32,7 @@ function Routers() {
         <Route path="/home/course-enquiry" element={<CourseEnquiryForm />} />
 
         {/* Routes for Course Management */}
-        <Route path="/admin/course" element={<CourseMng />} />
+        <Route path="/admin/course" element={<CourseMng />}/>
         <Route path="/admin/course/add-course" element={<AddCourse />} />
         <Route path="/admin/course/edit-course" element={<EditCourse />}/>
         <Route path="/admin/course/view-courses" element={<ViewCourse />}/>
