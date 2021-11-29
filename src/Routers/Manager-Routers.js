@@ -20,17 +20,13 @@ function ManagerRouters() {
           path="/manager/view-resource-enquiry"
           element={<ViewResourseEnquiry />}
         />
-        {/* Routes for view course and resource enquiry update status */}
-        <Route
-          path="/manager/course-enquiry-update-status"
-          element={<ViewResourseEnquiry />}
-        />
-        <Route
-          path="/manager/resourse-enquiry-update-status"
-          element={<ViewResourseEnquiry />}
-        />
+        {/* Routes for sales pipeline and site visits */}
         <Route
           path="/manager/view-sales-pipeline"
+          element={<ViewResourseEnquiry />}
+        />
+        <Route
+          path="/manager/view-site-visits"
           element={<ViewResourseEnquiry />}
         />
       </Routes>

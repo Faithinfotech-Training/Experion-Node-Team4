@@ -24,21 +24,7 @@ function Manager() {
               </NavDropdown.Item>
             </NavDropdown>
           </div>
-          <div className="item">
-            <NavDropdown title="Update Status" id="basic-nav-dropdown">
-              <NavDropdown.Item>
-                <Link to="/manager/course-enquiry-update-status">
-                  Course Enquiry Update Status
-                </Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item>
-                {" "}
-                <Link to="/manager/resource-enquiry-update-status">
-                  Resourse Enquiry Update Status
-                </Link>
-              </NavDropdown.Item>
-            </NavDropdown>
-          </div>
+
           <div className="item">
             <NavDropdown title="Sales Pipeline" id="basic-nav-dropdown">
               <NavDropdown.Item>
@@ -47,7 +33,12 @@ function Manager() {
                   View Sales Pipeline
                 </Link>
               </NavDropdown.Item>
-              <NavDropdown.Item>Dropdown </NavDropdown.Item>
+              <NavDropdown.Item>
+                {" "}
+                <Link to="/manager/view-site-visits">
+                  View Table And Chart
+                </Link>
+              </NavDropdown.Item>
             </NavDropdown>
           </div>
         </div>
