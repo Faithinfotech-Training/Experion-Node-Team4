@@ -42,7 +42,7 @@ function ViewCourse() {
                         <div>
                             <div>{course.coursecode}</div>
                             <div>{course.coursename}</div>
-                            <div>View Course Details</div>
+                            <div><Link to='admin/view-courses/course-details/:id'>View Course Details</Link></div>
                         </div>
                     )}
                 </div>

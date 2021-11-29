@@ -1,0 +1,14 @@
+
+
+
+
+function CourseDetails(props){
+
+
+
+    return(
+        <>
+
+        </>
+    )
+}
