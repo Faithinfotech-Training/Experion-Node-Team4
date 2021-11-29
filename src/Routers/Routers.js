@@ -15,11 +15,16 @@ import CeqMng from "../pages/CourseEnquiryManagement/CeqMng";
 import ViewCeq from "../pages/CourseEnquiryManagement/ViewCeq/ViewCeq";
 import EditCeq from "../pages/CourseEnquiryManagement/EditCeq/EditCeq";
 
-//imprting the resource management components.
+//imp0rting the resource management components.
 import ResourceMng from "../pages/ResourceManagement/ResourceMng";
 import AddResource from "../pages/ResourceManagement/AddResource/AddResource";
 import ViewResource from "../pages/ResourceManagement/ViewResource/ViewResource";
 import EditResource from "../pages/ResourceManagement/EditResource/EditResource";
+
+//Components for resource enquiry Management
+import ReqMng from "../pages/resource enquiry management/ReqMng";
+import ViewReq from "../pages/resource enquiry management/ViewReq/ViewReq";
+import EditReq from "../pages/resource enquiry management/EditReq/EditReq";
 
 function Routers() {
   return (
@@ -34,8 +39,8 @@ function Routers() {
         {/* Routes for Course Management */}
         <Route path="/admin/course" element={<CourseMng />}/>
         <Route path="/admin/course/add-course" element={<AddCourse />} />
-        <Route path="/admin/course/edit-course" element={<EditCourse />}/>
-        <Route path="/admin/course/view-courses" element={<ViewCourse />}/>
+        <Route path="/admin/course/edit-course" element={<EditCourse />} />
+        <Route path="/admin/course/view-courses" element={<ViewCourse />} />
 
         {/* Routes for Course Enquiry Management */}
         <Route path="/admin/course-enquiry" element={<CeqMng />} />
@@ -45,13 +50,17 @@ function Routers() {
 
         {/* Routes for Resource Management      */}
 
-         <Route path="/admin/resource" element={<ResourceMng />} />
+        <Route path="/admin/resource" element={<ResourceMng />} />
         <Route path="/admin/resource/add-resource" element={<AddResource />} />
-        <Route path="/admin/resource/edit-resource" element={<EditResource /> }/> 
-          <Route path="/admin/resource/view-resources" element={<ViewResource/> }/>
+        <Route path="/admin/resource/edit-resource" element={<EditResource />} />
+        <Route path="/admin/resource/view-resources" element={<ViewResource />} />
 
-        
-        </Routes>
+        {/* Routes for Resource Enquiry Management */}
+        <Route path="/admin/resource-enquiry" element={<ReqMng />} />
+        <Route path="/admin/resource-enquiry/view-resource-enquiry" element={<ViewReq />} />
+        <Route path="/admin/resource-enquiry/edit-resource-enquiry" element={<EditReq />} />
+
+      </Routes>
     </Router>
   );
 }
