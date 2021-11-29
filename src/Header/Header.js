@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import {Navbar,  Nav, NavDropdown} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 
@@ -16,13 +17,12 @@ function Header(){
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
         <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#link">Link</Nav.Link>
-        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-          <NavDropdown.Item >Action</NavDropdown.Item>
-          <NavDropdown.Item >Another action</NavDropdown.Item>
-          <NavDropdown.Item>Something</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+        <Nav.Link href="#link">Login</Nav.Link>
+        <NavDropdown title="Enquiry" id="basic-nav-dropdown">
+          <NavDropdown.Item ><Link to="/home/course-enquiry">Course Enquiry</Link></NavDropdown.Item>
+          <NavDropdown.Item>Resource Enquiry</NavDropdown.Item>
+          {/* <NavDropdown.Divider />
+          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
         </NavDropdown>
       </Nav>
     </Navbar.Collapse>
