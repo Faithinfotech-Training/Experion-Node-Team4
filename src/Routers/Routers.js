@@ -7,6 +7,9 @@ import Header from "../Header/Header";
 //Course Enquiry Form Component
 import CourseEnquiryForm from "../pages/CourseEnquiryForm/CourseEnquiryForm";
 
+//Resource Enquiry Form Component
+import ResourceEnquiryForm from "../pages/ResourceEnquiryForm/ResourceEnquiryForm";
+
 //Components for course Management
 import CourseMng from "../pages/Course/CourseMng";
 import AddCourse from "../pages/Course/AddCourse/AddCourse";
@@ -42,9 +45,11 @@ function Routers(props) {
 
       <Routes>
 
-
         {/* Routes for Course Enqiuiry Form */}
         <Route path="/home/course-enquiry" element={<CourseEnquiryForm />} />
+
+        {/* Routes for Resource Enqiuiry Form */}
+        <Route path="/home/resource-enquiry" element={<ResourceEnquiryForm />} />
 
         {/* Admin Page */}
         <Route path="/admin/" element={<Admin />} />
@@ -58,32 +63,32 @@ function Routers(props) {
         {/* Routes for Course Enquiry Management */}
         <Route path="/admin/course-enquiry" element={<CeqMng />} />
         <Route path="/admin/course-enquiry/view-course-enquiry" element={<ViewCeq />} />
-        <Route path="/admin/course-enquiry/edit-course-enquiry" element={<EditCeq />}/>
+        <Route path="/admin/course-enquiry/edit-course-enquiry" element={<EditCeq />} />
 
         {/* Routes for Resource Management      */}
 
         <Route path="/admin/resource" element={<ResourceMng />} />
         <Route path="/admin/resource/add-resource" element={<AddResource />} />
-        <Route path="/admin/resource/edit-resource" element={<EditResource />}/>
-        <Route path="/admin/resource/view-resources" element={<ViewResource />}/>
+        <Route path="/admin/resource/edit-resource" element={<EditResource />} />
+        <Route path="/admin/resource/view-resources" element={<ViewResource />} />
 
         {/* Routes for Resource Enquiry Management */}
         <Route path="/admin/resource-enquiry" element={<ReqMng />} />
-        <Route path="/admin/resource-enquiry/view-resource-enquiry" element={<ViewReq />}/>
-        <Route path="/admin/resource-enquiry/edit-resource-enquiry" element={<EditReq />}/>
+        <Route path="/admin/resource-enquiry/view-resource-enquiry" element={<ViewReq />} />
+        <Route path="/admin/resource-enquiry/edit-resource-enquiry" element={<EditReq />} />
 
         {/* Manager HomePage */}
         <Route path="/manager" element={<Manager />} />
 
         {/* Routes for managers to view course enquiry */}
-        <Route path="/manager/view-course-enquiry" element={<ViewCourseEnquiry />}/>
-        <Route path="/manager/view-resourse-enquiry" element={<ViewResourseEnquiry />}/>
+        <Route path="/manager/view-course-enquiry" element={<ViewCourseEnquiry />} />
+        <Route path="/manager/view-resourse-enquiry" element={<ViewResourseEnquiry />} />
         {/* Routes for sales pipeline and site visits */}
-        <Route path="/manager/view-sales-pipeline" element={<SalesPipeline />}/>
+        <Route path="/manager/view-sales-pipeline" element={<SalesPipeline />} />
         <Route path="/manager/view-site-visits" element={<SitesVisits />} />
       </Routes>
 
-      
+
     </Router>
   );
 }

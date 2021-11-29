@@ -20,7 +20,7 @@ function Header(){
         <Nav.Link href="#link">Login</Nav.Link>
         <NavDropdown title="Enquiry" id="basic-nav-dropdown">
           <NavDropdown.Item ><Link to="/home/course-enquiry">Course Enquiry</Link></NavDropdown.Item>
-          <NavDropdown.Item>Resource Enquiry</NavDropdown.Item>
+          <NavDropdown.Item ><Link to="/home/resource-enquiry">Resource Enquiry</Link></NavDropdown.Item>
           {/* <NavDropdown.Divider />
           <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
         </NavDropdown>
