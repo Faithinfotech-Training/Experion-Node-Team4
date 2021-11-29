@@ -4,6 +4,8 @@ import Manager from "../pages/Manager/Manager";
 // components for view course enquiry
 import ViewCourseEnquiry from "../pages/Manager/VIewCourseEnquiry";
 import ViewResourseEnquiry from "../pages/Manager/ViewResourceEnquiry";
+import SalesPipeline from "../pages/Manager/VIewSalesPipeline";
+import SitesVisits from "../pages/Manager/VIewSiteVIsits";
 
 function ManagerRouters() {
   return (
@@ -17,18 +19,15 @@ function ManagerRouters() {
           element={<ViewCourseEnquiry />}
         />
         <Route
-          path="/manager/view-resource-enquiry"
+          path="/manager/view-resourse-enquiry"
           element={<ViewResourseEnquiry />}
         />
         {/* Routes for sales pipeline and site visits */}
         <Route
           path="/manager/view-sales-pipeline"
-          element={<ViewResourseEnquiry />}
+          element={<SalesPipeline />}
         />
-        <Route
-          path="/manager/view-site-visits"
-          element={<ViewResourseEnquiry />}
-        />
+        <Route path="/manager/view-site-visits" element={<SitesVisits />} />
       </Routes>
     </Router>
   );
