@@ -39,6 +39,7 @@ function LoginForm() {
                 let id = response.data.user.id;
                 localStorage.setItem('mytoken', response.data.accessToken);
                 localStorage.setItem('role', response.data.user.role);
+                localStorage.setItem('username', response.data.user.name)
 
                 if (role === "Admin") {
 

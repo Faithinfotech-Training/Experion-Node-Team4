@@ -3,6 +3,8 @@ import {useNavigate}  from 'react-router-dom';
 import {useState} from "react";
 import axios from "axios";
 
+import Dashboard from "../../../Components/Dashboard/Dashboard";
+
 import './EditCourse.css'
 
 
@@ -44,6 +46,7 @@ function EditCourse(){
 
     return(
       <div>
+        <Dashboard />
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Course Name</Form.Label>
