@@ -17,8 +17,8 @@ function Home(){
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-        <Nav.Link href="/regform">SignUp</Nav.Link>
-        <Nav.Link href="/loginform">Login</Nav.Link>
+        <Nav.Link href="/home/register">SignUp</Nav.Link>
+        <Nav.Link href="/home/login">Login</Nav.Link>
         
       </Nav>
     </Navbar.Collapse>
