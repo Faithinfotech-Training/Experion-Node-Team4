@@ -23,6 +23,9 @@ const CourseEnquiry = db.define('CourseEnquiry', {
             isIn: ["Purchased", "Interested"]
         }
     }
+},
+{
+    initialAutoIncrement: 2000
 });
 
 Course.hasMany(CourseEnquiry);

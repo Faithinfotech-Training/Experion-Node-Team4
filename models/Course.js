@@ -5,7 +5,7 @@ const Course = db.define('Course', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
     },
     coursecode: {
         type: Sequelize.INTEGER,
@@ -25,7 +25,11 @@ const Course = db.define('Course', {
         validate:{
             isIn: [["Web Dev", "ML", "IOT"]],
         }
-    }
+    },
+    
+},
+{
+    initialAutoIncrement: 1000
 });
 
 module.exports = Course;
