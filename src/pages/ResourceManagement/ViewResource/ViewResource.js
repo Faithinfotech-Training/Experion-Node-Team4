@@ -36,19 +36,21 @@ function ViewResource (){
         <>
         <Dashboard />
         <div className="resource-list">
-            <h1>
-              Resource List
-            </h1>
+           <center> <h1>
+              Resource List 
+            </h1> </center>
             <div>
                 {resources.map(resource =>
                     // <div key={staff.id} className="staffListLI">
                     //     {/* <Staff details = {staff} /> */}
                     // </div>
+                    <center>
                     <div>
                     <div> Resource Code :{resource.resourcecode}</div>
                     <div> Resource Name:{resource.resourcename}</div>
                     <div>Resource Fee: {resource.resourcefee}</div>
                     <div> Category: {resource.category}</div>
+                    
                     {/* <button type ="button"
 onClick={()=> DeleteResources(resource.id)}> Delete</button> */}
 <br/>
@@ -64,8 +66,10 @@ onClick={()=>navigate(`/admin/resource/edit-resource/${resource.id}`) }> Edit</b
         <br/>
 
                     </div>
+                    </center>
                     )}
             </div>
+            
 
         </div>
         </>
