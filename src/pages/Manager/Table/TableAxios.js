@@ -26,8 +26,8 @@
 //         <tr>
 //           <th>Id</th>
 //           <th>User Id</th>
-//           <th>Title</th>
-//           <th>Status</th>
+//           <th>Page</th>
+//           <th>Duration</th>
 
 //         </tr>
 //       </thead>
