@@ -22,9 +22,9 @@ function ReqDetails(){
     return(
         <>
         <Dashboard />
-        <h1>Course Details</h1>
+        <h1>Resource enquiry Details</h1>
         <h2>Enquirer name: {inputs.name}</h2>
-        <h2>Enquirer emai : { inputs.email}</h2>
+        <h2>Enquirer email : { inputs.email}</h2>
         <h2>Enquired resource: {inputs.resourceName}</h2>
 
         </>
