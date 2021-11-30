@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 import { Form, Button } from "react-bootstrap";
 
@@ -8,6 +9,7 @@ import './CourseEnquiryForm.css'
 function CourseEnquiryForm(props) {
 
     const [inputs, setInputs] = useState({});
+    const navigate = useNavigate();
 
 
     function handleChange(event) {
@@ -25,7 +27,8 @@ function CourseEnquiryForm(props) {
             .then(response => {
                 console.log('promise fulfilled')
                 console.log(response)
-                alert("enquiry submitted")
+                alert("enquiry submitted");
+                navigate("/home/");
             }).catch(error => {
                 console.log(error);
             })
