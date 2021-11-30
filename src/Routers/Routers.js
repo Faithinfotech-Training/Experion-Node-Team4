@@ -48,8 +48,8 @@ import EditReq from "../pages/resource enquiry management/EditReq/EditReq";
 // components for view course enquiry
 import ViewCourseEnquiry from "../pages/Manager/VIewCourseEnquiry";
 import ViewResourseEnquiry from "../pages/Manager/ViewResourceEnquiry";
-import SalesPipeline from "../pages/Manager/VIewSalesPipeline";
-import SitesVisits from "../pages/Manager/SiteVIsitsVIew";
+import SitesVisitsTableView from "../pages/Manager/SiteVIsitsTableVIew";
+import SitesVisitsChartView from "../pages/Manager/SiteVIsitsChartVIew";
 
 function Routers(props) {
 
@@ -125,8 +125,8 @@ function Routers(props) {
         <Route path="/manager/view-course-enquiry" element={<ViewCourseEnquiry />} />
         <Route path="/manager/view-resourse-enquiry" element={<ViewResourseEnquiry />} />
         {/* Routes for sales pipeline and site visits */}
-        <Route path="/manager/view-sales-pipeline" element={<SalesPipeline />} />
-        <Route path="/manager/view-site-visits" element={<SitesVisits />} />
+        <Route path="/manager/view-chart" element={<SitesVisitsChartView />} />
+        <Route path="/manager/view-table" element={<SitesVisitsTableView />} />
       </Routes>
 
 
