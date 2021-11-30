@@ -43,7 +43,7 @@ function Header() {
 
   return (
     <div className="navbarnfkt">
-      <div className="headerTitle"><div className="headerContent">CRM System</div></div>
+      <div className="headerTitle"><div className="headerContent">Training Academy Management System</div></div>
       <Navbar bg="primary" expand="lg" >
         <Container>
           <Navbar.Brand href="#home">{User()}</Navbar.Brand>
