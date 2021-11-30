@@ -49,7 +49,8 @@ import EditReq from "../pages/resource enquiry management/EditReq/EditReq";
 import ReqDetails from "../pages/resource enquiry management/ReqDetails/ReqDetails";
 
 // components for view course enquiry
-import ViewCourseEnquiry from "../pages/Manager/VIewCourseEnquiry";
+import ManagerViewCourseEnquiry from "../pages/Manager/VIewCourseEnquiry";
+import ManagerViewCourseEnquiryDetails from "../pages/Manager/ViewCourseEnquiryDetails";
 import ViewResourseEnquiry from "../pages/Manager/ViewResourceEnquiry";
 import ManagerViewResourceEnquiryDetails from "../pages/Manager/ViewResourceEnquiryDetails";
 import SitesVisitsTableView from "../pages/Manager/SiteVIsitsTableVIew";
@@ -157,10 +158,22 @@ function Routers(props) {
         />
 
         {/* Routes for Resource Enquiry Management */}
-        <Route path="/admin/resource-enquiry" element={role && localStorage.getItem('mytoken') && <ReqMng />} />
-        <Route path="/admin/resource-enquiry/view-resource-enquiry" element={role && localStorage.getItem('mytoken') && <ViewReq />} />
-        <Route path="/admin/resource-enquiry/view-resource-enquiry/:id" element={role && localStorage.getItem('mytoken') && <ReqDetails />} />
-        <Route path="/admin/resource-enquiry/edit-resource-enquiry/:id" element={role && localStorage.getItem('mytoken') && <EditReq />} />
+        <Route
+          path="/admin/resource-enquiry"
+          element={role && localStorage.getItem("mytoken") && <ReqMng />}
+        />
+        <Route
+          path="/admin/resource-enquiry/view-resource-enquiry"
+          element={role && localStorage.getItem("mytoken") && <ViewReq />}
+        />
+        <Route
+          path="/admin/resource-enquiry/view-resource-enquiry/:id"
+          element={role && localStorage.getItem("mytoken") && <ReqDetails />}
+        />
+        <Route
+          path="/admin/resource-enquiry/edit-resource-enquiry/:id"
+          element={role && localStorage.getItem("mytoken") && <EditReq />}
+        />
 
         {/* Manager HomePage */}
         <Route path="/manager" element={<Manager />} />
@@ -168,17 +181,30 @@ function Routers(props) {
           path="/admin/register-manager"
           element={<ManagerRegistrationForm />}
         />
-        {/* Routes for managers to view course enquiry */}
-        <Route path="/manager/view-course-enquiry" element={<ViewCourseEnquiry />} />
-        <Route path="/manager/view-resourse-enquiry" element={<ViewResourseEnquiry />} />
-        <Route path="manager/view-resourse-enquiry/:id" element={<ManagerViewResourceEnquiryDetails />} />
+        {/* Routes for managers to view course and Resourse enquiry */}
+        <Route
+          path="/manager/view-course-enquiry"
+          element={<ManagerViewCourseEnquiry />}
+        />
+        <Route
+          path="/manager/view-resourse-enquiry"
+          element={<ViewResourseEnquiry />}
+        />
+        <Route
+          path="manager/view-resourse-enquiry/:id"
+          element={<ManagerViewResourceEnquiryDetails />}
+        />
+        <Route
+          path="manager/view-course-enquiry/:id"
+          element={<ManagerViewCourseEnquiryDetails />}
+        />
 
         {/* Routes for sales pipeline and site visits */}
         <Route path="/manager/view-chart" element={<SitesVisitsChartView />} />
         <Route path="/manager/view-table" element={<SitesVisitsTableView />} />
       </Routes>
       <br />
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }

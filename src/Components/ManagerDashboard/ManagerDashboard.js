@@ -35,12 +35,12 @@ function ManagerDashboard() {
                 {" "}
                 <Link to="/manager/view-table">Table View</Link>
               </NavDropdown.Item>
-              <NavDropdown.Item>
+              {/* <NavDropdown.Item>
                 {" "}
                 <Link to="/manager/view-sales-pipeline">
                   View Sales Pipeline
                 </Link>
-              </NavDropdown.Item>
+              </NavDropdown.Item> */}
             </NavDropdown>
           </div>
         </div>
