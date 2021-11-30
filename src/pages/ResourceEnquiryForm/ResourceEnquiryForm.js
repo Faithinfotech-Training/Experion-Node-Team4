@@ -9,14 +9,14 @@ function ResourceEnquiryForm(props) {
 
     const [inputs, setInputs] = useState({});
 
-    useEffect(() => {
-        axios
-            .get(`http://localhost:5000/enquiry/${props.id}`) //assuming node api sever running at 5000 with enquiry details
-            .then(response => {
-                console.log(response)
-                setInputs(response.data)
-            })
-    }, [])
+//     useEffect(() => {
+//         axios
+//             .get(`http://localhost:5000/enquiry/${props.id}`) //assuming node api sever running at 5000 with enquiry details
+//             .then(response => {
+//                 console.log(response)
+//                 setInputs(response.data)
+//             })
+//     }, [])
 
     function handleChange(event) {
         const name = event.target.name;
@@ -29,7 +29,7 @@ function ResourceEnquiryForm(props) {
         event.preventDefault();
         console.log(inputs);
         axios
-            .post('http://localhost:5000/resource-enquiries/', inputs)
+            .post('http://localhost:3009/resource-enquiries/', inputs)
             .then(response => {
                 console.log('promise fulfilled')
                 console.log(response)
