@@ -1,9 +1,19 @@
 import React from "react";
 import { useTable } from "react-table";
 import styled from "styled-components";
+import "bootstrap/dist/css/bootstrap.css";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 import "./Table.css";
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+  crossorigin="anonymous"
+/>;
 
 const Styles = styled.div`
   table {
@@ -42,7 +52,10 @@ function Table({ columns, data }) {
   // }, []);
   // Render Data Table UI
   return (
-    <table {...getTableProps()}>
+    <table
+      className="table table-bg-primary table-light table-hover table-striped table-bordered"
+      {...getTableProps()}
+    >
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
