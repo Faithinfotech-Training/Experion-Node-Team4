@@ -49,7 +49,7 @@ function AddCourse() {
   return (
     <div>
       <Dashboard />
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} className="add-courses">
         <Form.Group className="mb-3">
           <Form.Label>Course Name</Form.Label>
           <Form.Control type="text" name="coursename" placeholder="Enter the course name" value={courses.coursename || ""} onChange={handleChange} />
