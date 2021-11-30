@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import { Form, Button } from "react-bootstrap";
 
+import './CourseDetails.css'
 import Dashboard from "../../../Components/Dashboard/Dashboard";
 
 
@@ -40,6 +41,7 @@ function CourseDetails(){
     return(
         <>
         <Dashboard />
+        <div className="detailBox">
         <h1>Course Details</h1>
         <h2>Course name: {inputs.coursename}</h2>
         <h2>Course Code : { inputs.coursecode}</h2>
@@ -47,7 +49,7 @@ function CourseDetails(){
         <Button onClick={()=> navigate(`/admin/course/edit-course/${id}`)} type="submit" variant="warning">Edit Course</Button>
         &nbsp;&nbsp;&nbsp;
         <Button onClick={()=> {deleteCourse(); navigate('/admin/course/view-courses')}} variant="danger" >Delete</Button>
-
+        </div>
         </>
     )
 }
