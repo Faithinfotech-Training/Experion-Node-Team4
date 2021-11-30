@@ -10,7 +10,7 @@ import './ResourceEnquiryForm.css';
 
 function EditReq() {
 
-    
+
     const { id } = useParams();
     return (<>
         <UpdateStatus id={id} />
@@ -78,7 +78,15 @@ function UpdateStatus(props) {
                     <Form.Label>Update : </Form.Label>
                     <Form.Control type="text" placeholder="Enter status" name="userstatus" value={inputs.userstatus || ""} onChange={handleChange} />
                 </Form.Group>
+            
+                <Form.Text className="text-muted">
+                    Options <b>['Pending','Rejected', 'Purchased', 'Payment Pending', 'Interested'] </b>
+                </Form.Text>
 
+                <Form.Text className="text-muted">
+                    Options <b>['Pending','Rejected', 'Purchased', 'Payment Pending', 'Interested'] </b>
+                </Form.Text>
+                
                 <Button variant="success" type="submit">
                     Update
                 </Button>&nbsp;&nbsp;&nbsp;
