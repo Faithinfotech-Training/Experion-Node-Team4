@@ -46,7 +46,7 @@ function CourseDetails(){
         <h2>Course name: {inputs.coursename}</h2>
         <h2>Course Code : { inputs.coursecode}</h2>
         <h2>Course Fee: {inputs.coursefee}</h2>
-        <Button onClick={()=> navigate(`/admin/course/edit-course/${id}`)} type="submit" variant="warning">Edit Course</Button>
+        <Button onClick={()=> navigate(`/admin/course/edit-course/${id}`)} type="submit" background-color= "lightsteelblue" >Edit Course</Button>
         &nbsp;&nbsp;&nbsp;
         <Button onClick={()=> {deleteCourse(); navigate('/admin/course/view-courses')}} variant="danger" >Delete</Button>
         </div>
