@@ -1,12 +1,14 @@
 import ManagerDashboard from "../../Components/ManagerDashboard/ManagerDashboard";
+import Tables from "./Table/Table";
 
-function SitesVisits() {
+function SitesVisitsTableView() {
   return (
     <div>
       <ManagerDashboard />
       <p>This is page for Site Visit View...</p>
+      <Tables />
     </div>
   );
 }
 
-export default SitesVisits;
+export default SitesVisitsTableView;
