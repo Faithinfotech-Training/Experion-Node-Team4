@@ -5,7 +5,7 @@ function SitesVisitsTableView() {
   return (
     <div>
       <ManagerDashboard />
-      <p>This is page for Table...</p>
+      {/* <p>This is page for Table...</p> */}
       <Tables />
     </div>
   );
