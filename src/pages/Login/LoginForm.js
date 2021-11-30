@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
+import './LoginForm.css';
 
 
 
@@ -50,13 +50,15 @@ function LoginForm() {
                     navigate(`/home/user/${id}`);
                     // window.location = `/home/user/${id}}`
                 }
+            }).catch(()=>{
+                alert("Wrong Credentials");
             })
 
 
     }
 
     return (
-        <>
+        <div className="loginForm">
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -80,7 +82,7 @@ function LoginForm() {
                     Go Back
                 </Button>
             </Form>
-        </>
+        </div>
     )
 }
 
