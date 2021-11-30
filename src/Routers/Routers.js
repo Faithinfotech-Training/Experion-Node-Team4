@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 import Manager from "../pages/Manager/Manager";
 import UserPage from "../pages/User/UserPage";
 import Admin from "../pages/Admin";
 import Home from "../pages/Home/Home";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
-//Access Denied page 
+//Access Denied page
 import AdminError from "../pages/AuthError/AdminError";
 
 // Login form
@@ -55,27 +56,22 @@ import SitesVisitsChartView from "../pages/Manager/SiteVIsitsChartVIew";
 import ManagerRegistrationForm from "../pages/Registration/ManagerRegistrationForm";
 
 function Routers(props) {
-
   let [role, setRole] = useState(false);
   const roles = (role) => {
-    if (localStorage.getItem('role') === 'Admin') {
+    if (localStorage.getItem("role") === "Admin") {
       setRole(true);
     }
-  }
-
+  };
 
   useEffect(() => {
     roles(role);
-
-  }, [])
-
+  }, []);
 
   return (
     <Router>
       <Header />
 
       <Routes>
-
         {/* Route for home page */}
         <Route path="/home/" element={<Home />} />
 
@@ -83,7 +79,10 @@ function Routers(props) {
         <Route path="/home/course-enquiry" element={<CourseEnquiryForm />} />
 
         {/* Routes for Resource Enqiuiry Form */}
-        <Route path="/home/resource-enquiry" element={<ResourceEnquiryForm />} />
+        <Route
+          path="/home/resource-enquiry"
+          element={<ResourceEnquiryForm />}
+        />
         {/* Route for Registration form */}
         <Route path="/home/register" element={<RegistrationForm />} />
 
@@ -94,49 +93,106 @@ function Routers(props) {
         <Route path="/home/user/:id" element={<UserPage />} />
 
         {/* Admin Page */}
-        <Route path="/admin/" element={role && localStorage.getItem('mytoken') && <Admin />} />
+        <Route
+          path="/admin/"
+          element={role && localStorage.getItem("mytoken") && <Admin />}
+        />
 
         {/* Admin error Page */}
 
         {/* Routes for Course Management */}
-        <Route path="/admin/course" element={role && localStorage.getItem('mytoken') && <CourseMng />} />
-        <Route path="/admin/course/add-course" element={role && localStorage.getItem('mytoken') &&<AddCourse />} />
-        <Route path="/admin/course/edit-course/:id" element={role && localStorage.getItem('mytoken') &&<EditCourse />} />
-        <Route path="/admin/course/view-courses" element={role && localStorage.getItem('mytoken') &&<ViewCourse />} />
-        <Route path="/admin/course/view-courses/:id" element={role && localStorage.getItem('mytoken') &&<CourseDetails />} />
+        <Route
+          path="/admin/course"
+          element={role && localStorage.getItem("mytoken") && <CourseMng />}
+        />
+        <Route
+          path="/admin/course/add-course"
+          element={role && localStorage.getItem("mytoken") && <AddCourse />}
+        />
+        <Route
+          path="/admin/course/edit-course/:id"
+          element={role && localStorage.getItem("mytoken") && <EditCourse />}
+        />
+        <Route
+          path="/admin/course/view-courses"
+          element={role && localStorage.getItem("mytoken") && <ViewCourse />}
+        />
+        <Route
+          path="/admin/course/view-courses/:id"
+          element={role && localStorage.getItem("mytoken") && <CourseDetails />}
+        />
 
         {/* Routes for Course Enquiry Management */}
-        <Route path="/admin/course-enquiry" element={role && localStorage.getItem('mytoken') &&<CeqMng />} />
-        <Route path="/admin/course-enquiry/view-course-enquiry" element={role && localStorage.getItem('mytoken') &&<ViewCeq />} />
-        <Route path="/admin/course-enquiry/view-course-enquiry/:id" element={role && localStorage.getItem('mytoken') &&<CeqDetails />} />
-        <Route path="/admin/course-enquiry/edit-course-enquiry/:id" element={role && localStorage.getItem('mytoken') &&<EditCeq />} />
+        <Route
+          path="/admin/course-enquiry"
+          element={role && localStorage.getItem("mytoken") && <CeqMng />}
+        />
+        <Route
+          path="/admin/course-enquiry/view-course-enquiry"
+          element={role && localStorage.getItem("mytoken") && <ViewCeq />}
+        />
+        <Route
+          path="/admin/course-enquiry/view-course-enquiry/:id"
+          element={role && localStorage.getItem("mytoken") && <CeqDetails />}
+        />
+        <Route
+          path="/admin/course-enquiry/edit-course-enquiry/:id"
+          element={role && localStorage.getItem("mytoken") && <EditCeq />}
+        />
 
         {/* Routes for Resource Management      */}
 
         <Route path="/admin/resource" element={<ResourceMng />} />
         <Route path="/admin/resource/add-resource" element={<AddResource />} />
-        <Route path="/admin/resource/edit-resource/:id" element={<EditResource />} />
+        <Route
+          path="/admin/resource/edit-resource/:id"
+          element={<EditResource />}
+        />
         {/* <Route path="/admin/resource/delete-resources" element={<DeleteResourcess />}/> */}
-        <Route path="/admin/resource/view-resources" element={<ViewResource />} />
+        <Route
+          path="/admin/resource/view-resources"
+          element={<ViewResource />}
+        />
 
         {/* Routes for Resource Enquiry Management */}
-        <Route path="/admin/resource-enquiry" element={role && localStorage.getItem('mytoken') && <ReqMng />} />
-        <Route path="/admin/resource-enquiry/view-resource-enquiry" element={role && localStorage.getItem('mytoken') && <ViewReq />} />
-        <Route path="/admin/resource-enquiry/view-resource-enquiry/:id" element={role && localStorage.getItem('mytoken') && <ReqDetails />} />
-        <Route path="/admin/resource-enquiry/edit-resource-enquiry" element={role && localStorage.getItem('mytoken') && <EditReq />} />
+        <Route
+          path="/admin/resource-enquiry"
+          element={role && localStorage.getItem("mytoken") && <ReqMng />}
+        />
+        <Route
+          path="/admin/resource-enquiry/view-resource-enquiry"
+          element={role && localStorage.getItem("mytoken") && <ViewReq />}
+        />
+        <Route
+          path="/admin/resource-enquiry/view-resource-enquiry/:id"
+          element={role && localStorage.getItem("mytoken") && <ReqDetails />}
+        />
+        <Route
+          path="/admin/resource-enquiry/edit-resource-enquiry"
+          element={role && localStorage.getItem("mytoken") && <EditReq />}
+        />
 
         {/* Manager HomePage */}
         <Route path="/manager" element={<Manager />} />
-        <Route path="/admin/register-manager" element={<ManagerRegistrationForm />} />
+        <Route
+          path="/admin/register-manager"
+          element={<ManagerRegistrationForm />}
+        />
         {/* Routes for managers to view course enquiry */}
-        <Route path="/manager/view-course-enquiry" element={<ViewCourseEnquiry />} />
-        <Route path="/manager/view-resourse-enquiry" element={<ViewResourseEnquiry />} />
+        <Route
+          path="/manager/view-course-enquiry"
+          element={<ViewCourseEnquiry />}
+        />
+        <Route
+          path="/manager/view-resourse-enquiry"
+          element={<ViewResourseEnquiry />}
+        />
         {/* Routes for sales pipeline and site visits */}
         <Route path="/manager/view-chart" element={<SitesVisitsChartView />} />
         <Route path="/manager/view-table" element={<SitesVisitsTableView />} />
       </Routes>
-
-
+      <br />
+      {/* <Footer /> */}
     </Router>
   );
 }
