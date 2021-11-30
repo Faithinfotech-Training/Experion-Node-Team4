@@ -28,27 +28,27 @@ function ViewCourse() {
 
 
     return (
-        <>
+        <div>
             <Dashboard />
-            <div>
+            <div className="mainBody">
                 <h1>
                     Course List
                 </h1>
-                <div>
+                <div className="mainBox">
                     {courses.map(course =>
                         // <div key={staff.id} className="staffListLI">
                         //     {/* <Staff details = {staff} /> */}
                         // </div>
-                        <div>
-                            <div>{course.coursecode}</div>
-                            <div>{course.coursename}</div>
+                        <div className="ULbox">
+                            <div>Course code: {course.coursecode}</div>
+                            <div>Course name: {course.coursename}</div>
                             <div><Link to={`${course.id}`}>View Course Details</Link></div>
                         </div>
                     )}
                 </div>
 
             </div>
-        </>
+        </div>
     )
 }
 
