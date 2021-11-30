@@ -1,0 +1,23 @@
+.mainBody{
+    margin-left:25%;
+    margin-top: 20px;
+}
+
+.ULboxs{
+    display: flex;
+    flex-direction: column;
+    border-style:groove;
+    width: 30%;
+    justify-content: space-between;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    
+    
+}
+
+.mainBox{
+    padding-bottom: 20px;
+    
+}
+
+
