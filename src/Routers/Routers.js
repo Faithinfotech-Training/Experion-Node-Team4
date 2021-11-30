@@ -127,7 +127,7 @@ function Routers(props) {
 
         {/* Manager HomePage */}
         <Route path="/manager" element={<Manager />} />
-        <Route path="/home/register-manager" element={<ManagerRegistrationForm />} />
+        <Route path="/admin/register-manager" element={<ManagerRegistrationForm />} />
         {/* Routes for managers to view course enquiry */}
         <Route path="/manager/view-course-enquiry" element={<ViewCourseEnquiry />} />
         <Route path="/manager/view-resourse-enquiry" element={<ViewResourseEnquiry />} />
