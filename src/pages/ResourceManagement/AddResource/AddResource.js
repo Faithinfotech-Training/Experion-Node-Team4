@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import Dashboard from "../../../Components/Dashboard/Dashboard";
 // import './AddResource.css'
 
 
@@ -50,6 +50,7 @@ function AddResource() {
   return (
     
       <div>
+        <Dashboard />
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Resource Name</Form.Label>

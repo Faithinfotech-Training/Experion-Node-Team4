@@ -3,7 +3,8 @@ import {useNavigate}  from 'react-router-dom';
 import {useState} from "react";
 import axios from "axios";
 import { useEffect } from "react";
-import {useParams} from "react-router-dom"
+import {useParams} from "react-router-dom";
+import Dashboard from "../../../Components/Dashboard/Dashboard";
 // import './EditCourse.css'
 
 
@@ -69,6 +70,7 @@ function MyForm(props){
 
     return(
       <div>
+        <Dashboard />
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Resource Name</Form.Label>

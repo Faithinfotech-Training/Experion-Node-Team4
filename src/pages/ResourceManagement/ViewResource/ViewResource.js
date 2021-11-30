@@ -5,6 +5,7 @@ import {useState, useEffect } from "react";
 
 import { useNavigate } from 'react-router';
 import DeleteResources from '../DeleteResource/DeleteResource';
+import Dashboard from '../../../Components/Dashboard/Dashboard';
 function ViewResource (){
 
     let navigate = useNavigate();
@@ -33,6 +34,7 @@ function ViewResource (){
 
     return(
         <>
+        <Dashboard />
         <div>
             <h1>
               Resource List
