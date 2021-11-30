@@ -6,7 +6,14 @@ import "./Chart.css";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const data = {
-  labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+  labels: [
+    "VIew Course",
+    "View Resource",
+    "Course Enquiry",
+    "Resourse Enquiry",
+    "Home",
+    "Contact",
+  ],
   datasets: [
     {
       label: "# of Votes",
@@ -36,7 +43,9 @@ function Chart() {
   return (
     <div className="chartbox">
       <Doughnut data={data} />;
+      <h1>Chart View</h1>
     </div>
+
   );
 }
 
