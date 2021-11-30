@@ -10,7 +10,7 @@ function ManagerViewCourseEnquiryDetails() {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:3009/Course-enquiries/${id}`)
+      .get(`http://localhost:3009/course-enquiries/${id}`)
       .then((response) => {
         console.log(response.data);
         setInputs(response.data);
