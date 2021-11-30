@@ -38,6 +38,7 @@ function LoginForm() {
                 let role = response.data.user.role;
                 let id = response.data.user.id;
                 localStorage.setItem('mytoken', response.data.accessToken);
+                console.log(response.data)
                 localStorage.setItem('role', response.data.user.role);
                 localStorage.setItem('username', response.data.user.name)
 
