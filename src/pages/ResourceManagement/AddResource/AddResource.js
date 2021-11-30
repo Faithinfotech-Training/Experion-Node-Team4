@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Dashboard from "../../../Components/Dashboard/Dashboard";
-// import './AddResource.css'
+import './AddResource.css'
 
 
 function AddResource() {
@@ -49,9 +49,10 @@ function AddResource() {
 
   return (
     
-      <div>
+      <div >
         <Dashboard />
-      <Form onSubmit={handleSubmit}>
+         
+      <Form onSubmit={handleSubmit} className ="add-resource">
         <Form.Group className="mb-3">
           <Form.Label>Resource Name</Form.Label>
           <Form.Control type="text" name="resourcename" placeholder="Enter the resource name" value={resources.resourcename || ""} onChange={handleChange} />
