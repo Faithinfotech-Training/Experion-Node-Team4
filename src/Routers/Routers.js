@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Manager from "../pages/Manager/Manager";
 import UserPage from "../pages/User/UserPage";
 import Admin from "../pages/Admin";
+import Home from "../pages/Home/Home";
 import Header from "../Header/Header";
 
 //Access Denied page 
@@ -72,6 +73,9 @@ function Routers(props) {
       <Header />
 
       <Routes>
+
+        {/* Route for home page */}
+        <Route path="/home/" element={<Home />} />
 
         {/* Routes for Course Enqiuiry Form */}
         <Route path="/home/course-enquiry" element={<CourseEnquiryForm />} />
