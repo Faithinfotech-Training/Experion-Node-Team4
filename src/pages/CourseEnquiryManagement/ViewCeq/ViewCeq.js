@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 
+import './ViewCeq.css';
 
 function ViewCeq() {
 
@@ -29,7 +30,7 @@ function ViewCeq() {
     return (
         <>
             <Dashboard />
-            <div>
+            <div className="mainBody">
                 <h1>
                     Course List
                 </h1>
@@ -38,9 +39,9 @@ function ViewCeq() {
                         // <div key={staff.id} className="staffListLI">
                         //     {/* <Staff details = {staff} /> */}
                         // </div>
-                        <div>
-                            <div>{courseEnquirie.name}</div>
-                            <div>{courseEnquirie.age}</div>
+                        <div className="ULBoxs">
+                            <div>Name: {courseEnquirie.name}</div>
+                            <div>Age: {courseEnquirie.age}</div>
                             <div><Link to={`${courseEnquirie.id}`}>View Enquiree Details</Link></div>
                         </div>
                     )}
