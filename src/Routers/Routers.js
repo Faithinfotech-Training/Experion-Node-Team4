@@ -100,7 +100,6 @@ function Routers(props) {
 
         {/* Routes for Course Management */}
         <Route path="/admin/course" element={role && localStorage.getItem('mytoken') && <CourseMng />} />
-<<<<<<< HEAD
         <Route path="/admin/course/add-course" element={role && localStorage.getItem('mytoken') &&<AddCourse />} />
         <Route path="/admin/course/edit-course/:id" element={role && localStorage.getItem('mytoken') &&<EditCourse />} />
         <Route path="/admin/course/view-courses" element={role && localStorage.getItem('mytoken') &&<ViewCourse />} />
@@ -111,18 +110,6 @@ function Routers(props) {
         <Route path="/admin/course-enquiry/view-course-enquiry" element={role && localStorage.getItem('mytoken') &&<ViewCeq />} />
         <Route path="/admin/course-enquiry/view-course-enquiry/:id" element={role && localStorage.getItem('mytoken') &&<CeqDetails />} />
         <Route path="/admin/course-enquiry/edit-course-enquiry/:id" element={role && localStorage.getItem('mytoken') &&<EditCeq />} />
-=======
-        <Route path="/admin/course/add-course" element={role && localStorage.getItem('mytoken') && <AddCourse />} />
-        <Route path="/admin/course/edit-course" element={role && localStorage.getItem('mytoken') && <EditCourse />} />
-        <Route path="/admin/course/view-courses" element={role && localStorage.getItem('mytoken') && <ViewCourse />} />
-        <Route path="/admin/course/view-courses/:id" element={role && localStorage.getItem('mytoken') && <CourseDetails />} />
-
-        {/* Routes for Course Enquiry Management */}
-        <Route path="/admin/course-enquiry" element={role && localStorage.getItem('mytoken') && <CeqMng />} />
-        <Route path="/admin/course-enquiry/view-course-enquiry" element={role && localStorage.getItem('mytoken') && <ViewCeq />} />
-        <Route path="/admin/course-enquiry/view-course-enquiry/:id" element={role && localStorage.getItem('mytoken') && <CeqDetails />} />
-        <Route path="/admin/course-enquiry/edit-course-enquiry" element={role && localStorage.getItem('mytoken') && <EditCeq />} />
->>>>>>> dbede71ee1bb0e3cb46b5eda7345a61eb143eab9
 
         {/* Routes for Resource Management      */}
 
