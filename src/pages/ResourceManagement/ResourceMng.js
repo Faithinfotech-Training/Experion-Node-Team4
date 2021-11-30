@@ -27,9 +27,9 @@ function ResourceMng(){
             </div>
         </div>
         <Link to="/admin/resource/add-resource">Add Resource</Link>
-        <Link to="/admin/resource/delete-resource">Delete Resources</Link>
+        <Link to="/admin/resource/view-resources">Delete Resources</Link>
         <Link to="/admin/resource/view-resources">View Resources</Link>
-        <Link to="/admin/resource/edit-resource">Edit Resources</Link>
+        {/* <Link to="/admin/resource/edit-resource">Edit Resources</Link> */}
         </>
     )
 }

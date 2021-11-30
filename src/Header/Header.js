@@ -11,30 +11,43 @@ function Header() {
   let [user, setUser] = useState(false);
   let [admin, setAdmin] = useState(false);
 
+  const User = () => {
+    let role = localStorage.getItem('role');
+    let username = localStorage.getItem('username');
+    if (localStorage.getItem('mytoken') && role === "Admin") {
+      return role;
+    } else if (localStorage.getItem('mytoken') && role === "User") {
+      return username;
+    }
+  else {
+    return "CRM App";
+}
+  }
 
-  return (
-    <div className="navbarnfkt">
-      <div className="headerTitle"><div className="headerContent">CRM System</div></div>
-      <Navbar bg="primary" expand="lg" >
-        <Container>
-          <Navbar.Brand href="#home">{localStorage.getItem('mytoken') ? localStorage.getItem('username') : 'CRM System'}</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              {localStorage.getItem('mytoken') && <Nav.Link><Link onClick={() => window.location ='home/login'} to="home/login">Logout</Link></Nav.Link>}
-              {!localStorage.getItem('mytoken') && <Nav.Link ><Link to="/home/login">Login</Link></Nav.Link>}
-              <Nav.Link ><Link to="/home/register">Register</Link></Nav.Link>
-              <NavDropdown title="Enquiry" id="basic-nav-dropdown">
-                <NavDropdown.Item ><Link to="/home/course-enquiry">Course Enquiry</Link></NavDropdown.Item>
-                <NavDropdown.Item><Link to="/home/resource-enquiry">Resource Enquiry</Link></NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </div>
-  )
+
+return (
+  <div className="navbarnfkt">
+    <div className="headerTitle"><div className="headerContent">CRM System</div></div>
+    <Navbar bg="primary" expand="lg" >
+      <Container>
+        <Navbar.Brand href="#home">{User()}</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            {localStorage.getItem('mytoken') && <Link className="navItem" onClick={() => window.location = 'home/login'} to="home/login">Logout</Link>}
+            {!localStorage.getItem('mytoken') && <Link className="navItem" to="/home/login">Login</Link>}
+            <Link className="navItem" to="/home/register">Register</Link>
+            <NavDropdown title="Enquiry" id="basic-nav-dropdown">
+              <NavDropdown.Item ><Link to="/home/course-enquiry">Course Enquiry</Link></NavDropdown.Item>
+              <NavDropdown.Item><Link to="/home/resource-enquiry">Resource Enquiry</Link></NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  </div>
+)
 }
 
 export default Header;
