@@ -14,7 +14,7 @@ function AddResource() {
   const goBack = () => {
     navigate('/admin/resource')
   }
-  const goBacktoView = ()=>{
+  const goBacktoView = () => {
     navigate('/admin/resource/view-resources')
   }
 
@@ -35,32 +35,32 @@ function AddResource() {
     e.preventDefault();
     console.log(resources);
 
-   axios.post("http://localhost:3009/resources", resources)
-        .then((response)=>{
-          console.log(response);
-        })
-        .catch((error)=>{
-          console.log(error);
-        })
+    axios.post("http://localhost:3009/resources", resources)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
 
   }
 
 
 
   return (
-    
-      <div >
-        <Dashboard />
-         
-      <Form onSubmit={handleSubmit} className ="add-resource">
+
+    <div >
+      <Dashboard />
+
+      <Form onSubmit={handleSubmit} className="add-resource">
         <Form.Group className="mb-3">
           <Form.Label>Resource Name</Form.Label>
           <Form.Control type="text" name="resourcename" placeholder="Enter the resource name" value={resources.resourcename || ""} onChange={handleChange} />
-{/* 
+          {/* 
           <Form.Text className="text-muted">
             Anything specific to course
           </Form.Text> */}
-        </Form.Group> 
+        </Form.Group>
 
         <Form.Group className="mb-3" >
           <Form.Label>Resource Code</Form.Label>
@@ -77,6 +77,7 @@ function AddResource() {
           <label for="cars">Choose a category:</label>
 
           <Form.Select name="category" aria-label="Default select example" value={resources.category || ""} onChange={handleChange}>
+            <option value="">--choose an option--</option>
             <option value="Web Dev">Web Dev</option>
             <option value="ML">ML</option>
             <option value="IOT">IOT</option>
@@ -90,7 +91,7 @@ function AddResource() {
         </Button>
       </Form>
     </div>
-    )
+  )
 }
 
 //     <div>
@@ -178,7 +179,7 @@ export default AddResource;
 //   <Form.Group className="mb-3">
 //     <Form.Label>Resource Name</Form.Label>
 //      <Form.Control type="text"  placeholder="Enter the course name" />
- 
+
 //     <Form.Text className="text-muted">
 //      Anything specific to Resource
 //     </Form.Text>
