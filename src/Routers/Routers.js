@@ -51,7 +51,9 @@ import ReqDetails from "../pages/resource enquiry management/ReqDetails/ReqDetai
 // components for view course enquiry
 import ViewCourseEnquiry from "../pages/Manager/VIewCourseEnquiry";
 import ViewResourseEnquiry from "../pages/Manager/ViewResourceEnquiry";
+import ManagerViewResourceEnquiryDetails from "../pages/Manager/ViewResourceEnquiryDetails";
 import SitesVisitsTableView from "../pages/Manager/SiteVIsitsTableVIew";
+
 import SitesVisitsChartView from "../pages/Manager/SiteVIsitsChartVIew";
 import ManagerRegistrationForm from "../pages/Registration/ManagerRegistrationForm";
 
@@ -179,14 +181,10 @@ function Routers(props) {
           element={<ManagerRegistrationForm />}
         />
         {/* Routes for managers to view course enquiry */}
-        <Route
-          path="/manager/view-course-enquiry"
-          element={<ViewCourseEnquiry />}
-        />
-        <Route
-          path="/manager/view-resourse-enquiry"
-          element={<ViewResourseEnquiry />}
-        />
+        <Route path="/manager/view-course-enquiry" element={<ViewCourseEnquiry />} />
+        <Route path="/manager/view-resourse-enquiry" element={<ViewResourseEnquiry />} />
+        <Route path="manager/view-resourse-enquiry/:id" element={<ManagerViewResourceEnquiryDetails />} />
+
         {/* Routes for sales pipeline and site visits */}
         <Route path="/manager/view-chart" element={<SitesVisitsChartView />} />
         <Route path="/manager/view-table" element={<SitesVisitsTableView />} />
