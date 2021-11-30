@@ -22,7 +22,8 @@ function Header() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link ><Link to="/home/login">Login</Link></Nav.Link>
+              {localStorage.getItem('mytoken') && <Nav.Link><Link onClick={() => window.location ='home/login'} to="home/login">Logout</Link></Nav.Link>}
+              {!localStorage.getItem('mytoken') && <Nav.Link ><Link to="/home/login">Login</Link></Nav.Link>}
               <Nav.Link ><Link to="/home/register">Register</Link></Nav.Link>
               <NavDropdown title="Enquiry" id="basic-nav-dropdown">
                 <NavDropdown.Item ><Link to="/home/course-enquiry">Course Enquiry</Link></NavDropdown.Item>

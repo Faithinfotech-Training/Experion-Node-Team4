@@ -23,11 +23,13 @@ import CourseMng from "../pages/Course/CourseMng";
 import AddCourse from "../pages/Course/AddCourse/AddCourse";
 import EditCourse from "../pages/Course/EditCourse/EditCourse";
 import ViewCourse from "../pages/Course/ViewCourse/ViewCourse";
+import CourseDetails from "../pages/Course/CourseDetails/CourseDetails";
 
 //Components for course enquiry Management
 import CeqMng from "../pages/CourseEnquiryManagement/CeqMng";
 import ViewCeq from "../pages/CourseEnquiryManagement/ViewCeq/ViewCeq";
 import EditCeq from "../pages/CourseEnquiryManagement/EditCeq/EditCeq";
+import CeqDetails from "../pages/CourseEnquiryManagement/CeqDetails/CeqDetails";
 
 //imp0rting the resource management components.
 import ResourceMng from "../pages/ResourceManagement/ResourceMng";
@@ -91,10 +93,12 @@ function Routers(props) {
         <Route path="/admin/course/add-course" element={role && localStorage.getItem('mytoken') &&<AddCourse />} />
         <Route path="/admin/course/edit-course" element={role && localStorage.getItem('mytoken') &&<EditCourse />} />
         <Route path="/admin/course/view-courses" element={role && localStorage.getItem('mytoken') &&<ViewCourse />} />
+        <Route path="/admin/course/view-courses/:id" element={role && localStorage.getItem('mytoken') &&<CourseDetails />} />
 
         {/* Routes for Course Enquiry Management */}
         <Route path="/admin/course-enquiry" element={role && localStorage.getItem('mytoken') &&<CeqMng />} />
         <Route path="/admin/course-enquiry/view-course-enquiry" element={role && localStorage.getItem('mytoken') &&<ViewCeq />} />
+        <Route path="/admin/course-enquiry/view-course-enquiry/:id" element={role && localStorage.getItem('mytoken') &&<CeqDetails />} />
         <Route path="/admin/course-enquiry/edit-course-enquiry" element={role && localStorage.getItem('mytoken') &&<EditCeq />} />
 
         {/* Routes for Resource Management      */}
