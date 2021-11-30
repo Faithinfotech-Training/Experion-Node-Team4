@@ -64,7 +64,8 @@ function Routers(props) {
 
         <Route path="/admin/resource" element={<ResourceMng />} />
         <Route path="/admin/resource/add-resource" element={<AddResource />} />
-        <Route path="/admin/resource/edit-resource" element={<EditResource />}/>
+        <Route path="/admin/resource/edit-resource/:id" element={<EditResource />}/>
+        {/* <Route path="/admin/resource/delete-resources" element={<DeleteResourcess />}/> */}
         <Route path="/admin/resource/view-resources" element={<ViewResource />}/>
 
         {/* Routes for Resource Enquiry Management */}
