@@ -34,26 +34,26 @@ function CourseEnquiryForm(props) {
     return (
         <div className="enquiryForm">
 
-            <Form onSubmit={handleSubmit}>
+            <Form>
 
                 <Form.Group className="mb-3" >
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter your name" name="name" value={inputs.name || ""} onChange={handleChange} />
+                    <Form.Control type="text" placeholder="Enter your name" name="name" />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter your email id" name="email" value={inputs.email || ""} onChange={handleChange} />
+                    <Form.Control type="email" placeholder="Enter your email id" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" >
                     <Form.Label>Age</Form.Label>
-                    <Form.Control type="number" placeholder="Enter your age" name="age" value={inputs.age || ""} onChange={handleChange} />
+                    <Form.Control type="number" placeholder="Enter your age" name="age" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" >
                     <Form.Label>Course Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter the course name" name="courseName" value={inputs.courseName || ""} onChange={handleChange} />
+                    <Form.Control type="text" placeholder="Enter the course name" name="coursename" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">

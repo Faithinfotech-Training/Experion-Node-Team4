@@ -18,6 +18,9 @@ import RegistrationForm from "../pages/Registration/RegistrationForm";
 //Course Enquiry Form Component
 import CourseEnquiryForm from "../pages/CourseEnquiryForm/CourseEnquiryForm";
 
+//Resource Enquiry Form Component
+import ResourceEnquiryForm from "../pages/ResourceEnquiryForm/ResourceEnquiryForm";
+
 //Components for course Management
 import CourseMng from "../pages/Course/CourseMng";
 import AddCourse from "../pages/Course/AddCourse/AddCourse";
@@ -70,10 +73,11 @@ function Routers(props) {
 
       <Routes>
 
-
         {/* Routes for Course Enqiuiry Form */}
         <Route path="/home/course-enquiry" element={<CourseEnquiryForm />} />
 
+        {/* Routes for Resource Enqiuiry Form */}
+        <Route path="/home/resource-enquiry" element={<ResourceEnquiryForm />} />
         {/* Route for Registration form */}
         <Route path="/home/register" element={<RegistrationForm />} />
 

@@ -27,7 +27,7 @@ function Header() {
               <Nav.Link ><Link to="/home/register">Register</Link></Nav.Link>
               <NavDropdown title="Enquiry" id="basic-nav-dropdown">
                 <NavDropdown.Item ><Link to="/home/course-enquiry">Course Enquiry</Link></NavDropdown.Item>
-                <NavDropdown.Item>Resource Enquiry</NavDropdown.Item>
+                <NavDropdown.Item><Link to="/home/resource-enquiry">Resource Enquiry</Link></NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
