@@ -35,7 +35,7 @@ function ViewResource (){
     return(
         <>
         <Dashboard />
-        <div>
+        <div className="resource-list">
             <h1>
               Resource List
             </h1>
@@ -54,12 +54,14 @@ onClick={()=> DeleteResources(resource.id)}> Delete</button> */}
 <br/>
 <button type ="button"
 onClick={()=> DeleteResources(resource.id)}> Delete</button>
-<br/>
+&nbsp; &nbsp;&nbsp;
 <button type ="button"
-onClick={()=>navigate(`/admin/resource/edit-resource/${resource.id}`) }> Edit</button> <br/> 
+onClick={()=>navigate(`/admin/resource/edit-resource/${resource.id}`) }> Edit</button>  &nbsp; &nbsp;&nbsp;
   <button variant="primary" type="reset" onClick={() => goBack()}>
-          Go Back
+          Go Back  
         </button>
+        <br/>
+        <br/>
 
                     </div>
                     )}
