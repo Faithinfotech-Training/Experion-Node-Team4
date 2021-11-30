@@ -1,0 +1,8 @@
+.tablebox{
+    height: 40vh;
+    width: 40%;
+    margin-left: 28%;
+    margin-bottom: 10px;
+    border: 1px;
+    border-color: black;
+}

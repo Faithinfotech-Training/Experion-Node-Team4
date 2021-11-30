@@ -1,6 +1,9 @@
 import React from "react";
 import { useTable } from "react-table";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "./Table.css";
 
 const Styles = styled.div`
   table {
@@ -30,7 +33,13 @@ const Styles = styled.div`
 function Table({ columns, data }) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
-
+  // const [posts, setposts] = useState();
+  // useEffect(() => {
+  //   axios.get("localhost:3009/").then((res) => {
+  //     console.log(res.data);
+  //     setposts(res.data);
+  //   });
+  // }, []);
   // Render Data Table UI
   return (
     <table {...getTableProps()}>
@@ -62,84 +71,81 @@ function Table({ columns, data }) {
 function Tables() {
   const data = [
     {
-      id: "Leanne Graham",
-      Visit: "Sincere@april.biz",
-      age: 28,
-      status: "Active",
+      id: "1",
+      name: "User 1",
+      page: "Course Enquiry",
+      count: "22",
     },
     {
-      name: "Ervin Howell",
-      email: "Shanna@melissa.tv",
-      age: 35,
-      status: "Active",
+      id: "2",
+      name: "User 2",
+      page: "Resource Enquiry",
+      count: "3",
     },
     {
-      name: "Clementine Bauch",
-      email: "Nathan@yesenia.net",
-      age: 33,
-      status: "Inactive",
+      id: "3",
+      name: "User 3",
+      page: "Course Enquiry",
+      count: "32",
     },
     {
-      name: "Patricia Lebsack",
-      email: "Julianne@kory.org",
-      age: 25,
-      status: "Active",
+      id: "4",
+      name: "User 4",
+      page: "Resource Enquiry",
+      count: "12",
     },
     {
-      name: "Kamren",
-      email: "Hettinger@annie.ca",
-      age: 42,
-      status: "Active",
+      id: "5",
+      name: "User 5",
+      page: "View Courses",
+      count: "4",
     },
     {
-      name: "Dennis Schulist",
-      email: "Dach@jasper.info",
-      age: 34,
-      status: "Inactive",
+      id: "6",
+      name: "User 6",
+      page: "View Resource",
+      count: "5",
     },
     {
-      name: "Kurtis Weissnat",
-      email: "Hoeger@billy.biz",
-      age: 44,
-      status: "Active",
+      id: "7",
+      name: "User 7",
+      page: "Home",
+      count: "7",
     },
     {
-      name: "Maxime_Nienow",
-      email: "Sherwood@rosamond.me",
-      age: 26,
-      status: "Active",
-    },
-    {
-      name: "Glenna Reichert",
-      email: "McDermott@dana.io",
-      age: 30,
-      status: "Inactive",
+      id: "8",
+      name: "User 8",
+      page: "Course Enquiry",
+      count: "4",
     },
   ];
 
   const columns = [
     {
-      Header: "Name",
+      Header: "ID",
       accessor: "id",
     },
     {
-      Header: "Email",
-      accessor: "Visit",
+      Header: "Name",
+      accessor: "name",
     },
     {
-      Header: "Age",
-      accessor: "age",
+      Header: "Page",
+      accessor: "page",
     },
     {
-      Header: "Status",
-      accessor: "status",
+      Header: "Count",
+      accessor: "count",
     },
   ];
 
   return (
-    <Styles>
-      <Table data={data} columns={columns} />
-    </Styles>
+    <div className="tablebox">
+      <h1>Table View</h1>
+      <Styles>
+        <Table data={data} columns={columns} />
+      </Styles>
+    </div>
   );
 }
 

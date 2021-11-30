@@ -24,7 +24,6 @@ yarn-error.log*
 package.json
 package-lock.json
 src/App.js
-src/pages/Manager/Table/TableAxios.js
 src/pages/Manager/Table/TableApi
 src/App.js
 src/App.js
