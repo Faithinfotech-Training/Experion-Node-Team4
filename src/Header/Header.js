@@ -38,6 +38,7 @@ return (
             {localStorage.getItem('mytoken') && <Link className="navItem" onClick={() => window.location = 'home/login'} to="home/login">Logout</Link>}
             {!localStorage.getItem('mytoken') && <Link className="navItem" to="/home/login">Login</Link>}
             <Link className="navItem" to="/home/register">Register</Link>
+            <Link className="navItem" to="/admin/register-manager">Add Manager</Link>
             <NavDropdown title="Enquiry" id="basic-nav-dropdown">
               <NavDropdown.Item ><Link to="/home/course-enquiry">Course Enquiry</Link></NavDropdown.Item>
               <NavDropdown.Item><Link to="/home/resource-enquiry">Resource Enquiry</Link></NavDropdown.Item>

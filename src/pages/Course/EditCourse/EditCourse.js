@@ -1,6 +1,6 @@
 import { Form, Button } from "react-bootstrap";
-import {useNavigate}  from 'react-router-dom';
-import {useState} from "react";
+import {useNavigate, useParams}  from 'react-router-dom';
+import {useEffect, useState} from "react";
 import axios from "axios";
 
 import Dashboard from "../../../Components/Dashboard/Dashboard";
@@ -11,6 +11,7 @@ import './EditCourse.css'
 function EditCourse(){
 
   let navigate = useNavigate();
+  const {id} = useParams();
     const goBack = ()=>{
       navigate('/admin/course')
     }
@@ -28,11 +29,19 @@ function EditCourse(){
     setCourse(values => ({ ...values, [name]: value }))
   }
 
+    useEffect(()=>{
+      axios
+      .get(`http://localhost:3009/courses/${id}`)
+      .then((response) =>{
+        setCourse(response.data);
+        console.log(response.data);
+      })
+    }, [])
   function handleSubmit(e) {
     e.preventDefault();
     console.log(courses);
 
-   axios.post("http://localhost:5000/courses", courses)
+   axios.put(`http://localhost:3009/courses/${id}`, courses)
         .then((response)=>{
           console.log(response);
         })

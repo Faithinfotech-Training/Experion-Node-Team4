@@ -4,15 +4,15 @@ import Dashboard from "../../Components/Dashboard/Dashboard";
 import './CeqMng.css';
 import { NavDropdown } from 'react-bootstrap';
 
-function CeqMng(){
+function CeqMng() {
 
-    return(
+    return (
         <>
-         <Dashboard />
-        
-        <Link to="/admin/course-enquiry/view-course-enquiry">View Course Enquiries</Link>
-        <Link to="/admin/course-enquiry/edit-course-enquiry">Edit Course Enquiries</Link>
-        <Link to="/admin/course-enquiry/delete-course-enquiry">Delete Course Enquiries</Link>
+            <Dashboard />
+
+            <Link to="/admin/course-enquiry/view-course-enquiry">View Course Enquiries</Link>
+            {/* <Link to="/admin/course-enquiry/edit-course-enquiry">Edit Course Enquiries</Link>
+            <Link to="/admin/course-enquiry/delete-course-enquiry">Delete Course Enquiries</Link> */}
         </>
     )
 }

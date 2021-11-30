@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 import { Form, Button } from "react-bootstrap";
 
@@ -8,15 +9,8 @@ import './ResourceEnquiryForm.css';
 function ResourceEnquiryForm(props) {
 
     const [inputs, setInputs] = useState({});
+    const navigate = useNavigate();
 
-//     useEffect(() => {
-//         axios
-//             .get(`http://localhost:5000/enquiry/${props.id}`) //assuming node api sever running at 5000 with enquiry details
-//             .then(response => {
-//                 console.log(response)
-//                 setInputs(response.data)
-//             })
-//     }, [])
 
     function handleChange(event) {
         const name = event.target.name;
@@ -34,6 +28,9 @@ function ResourceEnquiryForm(props) {
                 console.log('promise fulfilled')
                 console.log(response)
                 alert("enquiry submitted")
+                navigate("/home/");
+            }).catch(error => {
+                console.log(error);
             })
     }
 
@@ -52,11 +49,6 @@ function ResourceEnquiryForm(props) {
                     <Form.Label>Email : </Form.Label>
                     <Form.Control type="email" placeholder="Enter your email id" name="email" value={inputs.email || ""} onChange={handleChange} />
                 </Form.Group>
-
-                {/* <Form.Group className="mb-3" >
-                    <Form.Label>Age</Form.Label>
-                    <Form.Control type="number" placeholder="Enter your age" name="age" />
-                </Form.Group> */}
 
                 <Form.Group className="mb-3" >
                     <Form.Label>Resouce Name : </Form.Label>
@@ -78,14 +70,6 @@ function ResourceEnquiryForm(props) {
                     </Form.Select>
                 </Form.Group>
 
-                {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <label for="interest">Technology Preference:</label>
-                    <Form.Select name="category" aria-label="Default select example" >
-                        <option value="Web Dev">Web Dev</option>
-                        <option value="ML">ML</option>
-                        <option value="IOT">AI</option>
-                    </Form.Select>
-                </Form.Group> */}
                 <Button variant="success" type="submit">
                     Enquire
                 </Button>&nbsp;&nbsp;&nbsp;

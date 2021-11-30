@@ -9,11 +9,12 @@ import axios from "axios";
 
 
 
-function LoginForm() {
+function ManagerRegistrationForm() {
 
     localStorage.clear();
-    const navigate = useNavigate();
+    //initialize to empty
     const [inputs, setInputs] = useState({});
+    const navigate = useNavigate();
 
     //handle the change of form elements
     function handleChange(event) {
@@ -24,40 +25,42 @@ function LoginForm() {
         //updating the values into the state
         setInputs(values => ({ ...values, [name]: value }))
     }
-
     function handleSubmit(e) {
-        //to prevent the default submit behaviour
         e.preventDefault();
-        //printitng 
-        console.log(inputs);
+        const regData = {
+            "name": inputs.name,
+            "email": inputs.email,
+            "password": inputs.password,
+            "role": "Manager"
+        }
+
 
         axios
-            .post('http://localhost:3009/users/login', inputs)
+            .post('http://localhost:3009/users/register', regData)
             .then(response => {
-                // alert(response.data.user.role);
-                let role = response.data.user.role;
-                let id = response.data.user.id;
                 localStorage.setItem('mytoken', response.data.accessToken);
-                console.log(response.data)
                 localStorage.setItem('role', response.data.user.role);
-                localStorage.setItem('username', response.data.user.name)
+                if(response.data.user.role === 'Manager'){
+                    console.log(response);
+                    
 
-                if (role === "Admin") {
-
-                    navigate('/admin');
-                } else if (role === "User") {
-                    console.log("Working");
-                    navigate(`/home/user/${id}`);
-                    // window.location = `/home/user/${id}}`
                 }
             })
-
 
     }
 
     return (
         <>
             <Form onSubmit={handleSubmit}>
+
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter name" name="name" onChange={handleChange} value={inputs.name || ""} />
+                    <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                    </Form.Text>
+                </Form.Group>
+
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="text" placeholder="Enter email" name="email" onChange={handleChange} value={inputs.email || ""} />
@@ -85,4 +88,4 @@ function LoginForm() {
 }
 
 
-export default LoginForm;
+export default  ManagerRegistrationForm;
