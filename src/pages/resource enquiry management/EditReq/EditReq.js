@@ -82,10 +82,6 @@ function UpdateStatus(props) {
                 <Form.Text className="text-muted">
                     Options <b>['Pending','Rejected', 'Purchased', 'Payment Pending', 'Interested'] </b>
                 </Form.Text>
-
-                <Form.Text className="text-muted">
-                    Options <b>['Pending','Rejected', 'Purchased', 'Payment Pending', 'Interested'] </b>
-                </Form.Text>
                 
                 <Button variant="success" type="submit">
                     Update
