@@ -4,7 +4,7 @@ import Dashboard from "../../../Components/Dashboard/Dashboard";
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
-
+import './ViewReq.css'
 
 function ViewReq() {
 
@@ -27,8 +27,9 @@ function ViewReq() {
 
     return (
         <>
+        
             <Dashboard />
-            <div>
+            <div className="view-req">
                 <h1>
                     Resource enquiries List
                 </h1>
