@@ -204,7 +204,7 @@ function Routers(props) {
         <Route path="/manager/view-table" element={<SitesVisitsTableView />} />
       </Routes>
       <br />
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
