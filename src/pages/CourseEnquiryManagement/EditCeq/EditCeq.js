@@ -3,6 +3,7 @@ import {useNavigate, useParams}  from 'react-router-dom';
 import {useEffect, useState} from "react";
 import axios from "axios";
 
+
 import Dashboard from "../../../Components/Dashboard/Dashboard";
 
 
@@ -44,6 +45,7 @@ function handleSubmit(e) {
  axios.put(`http://localhost:3009/course-enquiries/${id}`, {userstatus: userstatus})
       .then((response)=>{
         console.log(response);
+        alert("Status Updated");
         goBack();
       })
       .catch((error)=>{
@@ -68,7 +70,7 @@ function handleSubmit(e) {
         </Form.Text>
       </Form.Group>
 
-      <button>Update Status</button>
+      <Button variant="warning" type="submit">Update Status</Button>
       </Form>
 
         </div>

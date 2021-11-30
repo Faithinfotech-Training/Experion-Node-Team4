@@ -4,6 +4,7 @@ import axios from "axios";
 import {useState, useEffect} from "react";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
+import { Form, Button } from "react-bootstrap";
 
 function CeqDetails(){
 
@@ -41,8 +42,9 @@ function CeqDetails(){
         <h2>Enquiree Name: {inputs.name}</h2>
         <h2>Enquirie Email : { inputs.email}</h2>
         <h2>Enquirie Status: {inputs.userstatus}</h2>
-        <button onClick={()=> navigate(`/admin/course-enquiry/edit-course-enquiry/${id}`)}>Update Enquiree Status</button>
-        <button onClick={()=> {deleteCourse(); navigate('/admin/course/view-courses')}}>Delete</button>
+        <Button onClick={()=> navigate(`/admin/course-enquiry/edit-course-enquiry/${id}`)} variant="warning">Update Enquiree Status</Button>
+        &nbsp;&nbsp;&nbsp;
+        <Button onClick={()=> {deleteCourse(); navigate('/admin/course/view-courses')}} variant="danger">Delete</Button>
 
         </>
     )

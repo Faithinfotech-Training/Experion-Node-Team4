@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import './RegistrationForm.css';
 
 
 
@@ -50,7 +51,7 @@ function RegistrationForm() {
     }
 
     return (
-        <>
+        <div classname="registrationForm">
             <Form onSubmit={handleSubmit}>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -83,7 +84,7 @@ function RegistrationForm() {
                     Go Back
                 </Button>
             </Form>
-        </>
+        </div>
     )
 }
 
