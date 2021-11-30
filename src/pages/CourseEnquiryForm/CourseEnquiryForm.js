@@ -34,26 +34,26 @@ function CourseEnquiryForm(props) {
     return (
         <div className="enquiryForm">
 
-            <Form>
+            <Form onSubmit={handleSubmit}>
 
                 <Form.Group className="mb-3" >
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter your name" name="name" />
+                    <Form.Control type="text" placeholder="Enter your name" name="name" value={inputs.name || ""} onChange={handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter your email id" />
+                    <Form.Control type="email" placeholder="Enter your email id" name="email" value={inputs.email || ""} onChange={handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" >
                     <Form.Label>Age</Form.Label>
-                    <Form.Control type="number" placeholder="Enter your age" name="age" />
+                    <Form.Control type="number" placeholder="Enter your age" name="age" value={inputs.age || ""} onChange={handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" >
                     <Form.Label>Course Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter the course name" name="coursename" />
+                    <Form.Control type="text" placeholder="Enter the course name" name="courseName"value={inputs.courseName || ""} onChange={handleChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -69,7 +69,7 @@ function CourseEnquiryForm(props) {
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <label for="interest">Technology Preference:</label>
-                    <Form.Select name="interest" aria-label="Default select example" vdefaultValue={inputs.interest} value={inputs.interest || ""} onChange={handleChange}>
+                    <Form.Select name="interest" aria-label="Default select example" defaultValue={inputs.interest} value={inputs.interest || ""} onChange={handleChange}>
                         <option value="Web Dev">Web Dev</option>
                         <option value="ML">ML</option>
                         <option value="IOT">AI</option>
