@@ -1,5 +1,5 @@
 import Dashboard from "../../../Components/Dashboard/Dashboard";
-
+import './ReqDetails.css'
 import { Button } from "react-bootstrap";
 
 import axios from "axios";
@@ -27,15 +27,21 @@ function ReqDetails(){
     return(
         <>
         <Dashboard />
+        <div className="req-details">
+       
         <h1>Resource enquiry Details</h1>
-        <h2>Enquirer name: {inputs.name}</h2>
-        <h2>Enquirer email : { inputs.email}</h2>
-        <h2>Enquired resource: {inputs.resourceName}</h2>
-        <h2>Date from resource required: {inputs.reqDate}</h2>
-        <h2>Enquired Duration: {inputs.duration}</h2>
-        <h2>Enquiry Status: {inputs.userstatus}</h2>
+        <br/>
+        
+        <h4>Enquirer name: <span>{inputs.name}</span> </h4>
+        <h4>Enquirer email : <span>{ inputs.email} </span></h4>
+        <h4>Enquired resource: <span> {inputs.resourceName} </span></h4>
+        <h4>Date from resource required: <span>{inputs.reqDate}</span></h4>
+        <h4>Enquired Duration: <span>{inputs.duration}</span></h4>
+        <h4>Enquiry Status: <span>{inputs.userstatus}</span></h4>
 
         <Button variant="success" type="submit" onClick={() => navigate(`/admin/resource-enquiry/edit-resource-enquiry/${inputs.id}`)}>Update Status</Button>
+       
+       </div>
         </>
     )
 }
