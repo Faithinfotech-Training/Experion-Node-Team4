@@ -39,7 +39,7 @@ function ViewReq() {
                         // </div>
                         <div>
                             <div>{resourceEnquirie.name}</div>
-                            <div>{resourceEnquirie.age}</div>
+                            <div>{resourceEnquirie.email}</div>
                             <div><Link to={`${resourceEnquirie.id}`}>View Enquiree Details</Link></div>
                         </div>
                     )}

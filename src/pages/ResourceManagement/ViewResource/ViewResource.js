@@ -46,7 +46,7 @@ function ViewResource (){
                     <div> Resource Code :{resource.resourcecode}</div>
                     <div> Resource Name:{resource.resourcename}</div>
                     <div>Resource Fee: {resource.resourcefee}</div>
-                    <div>{resource.category}</div>
+                    <div> Category: {resource.category}</div>
                     {/* <button type ="button"
 onClick={()=> DeleteResources(resource.id)}> Delete</button> */}
 <br/>
