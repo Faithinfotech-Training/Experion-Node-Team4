@@ -48,7 +48,8 @@ function AddResource() {
 
 
   return (
-    <div>
+    
+      <div>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Resource Name</Form.Label>
@@ -73,24 +74,66 @@ function AddResource() {
           {/* Course Category: <Form.Check type="checkbox" label="Web Dev"  className="formCheckBox"/><Form.Check type="checkbox" label="IOT"  className="formCheckBox"/><Form.Check type="checkbox" label="ML"  className="formCheckBox"/> */}
           <label for="cars">Choose a category:</label>
 
-          <Form.Select name="category" aria-label="Default select example" 
-defaultValue={resources.category || ""} onChange={handleChange}>
+          <Form.Select name="category" aria-label="Default select example" value={resources.category || ""} onChange={handleChange}>
             <option value="Web Dev">Web Dev</option>
             <option value="ML">ML</option>
             <option value="IOT">IOT</option>
           </Form.Select>
         </Form.Group>
-        <Button variant="success" type="submit" onClick={() => goBacktoView()}>
+        <Button variant="success" type="submit">
           Add
-        </Button>
-        &nbsp;&nbsp;&nbsp;
+        </Button>&nbsp;&nbsp;&nbsp;
         <Button variant="primary" type="reset" onClick={() => goBack()}>
           Go Back
         </Button>
       </Form>
     </div>
-  )
+    )
 }
+
+//     <div>
+//       <Form onSubmit={handleSubmit}>
+//         <Form.Group className="mb-3">
+//           <Form.Label>Resource Name</Form.Label>
+//           <Form.Control type="text" name="resourcename" placeholder="Enter the resource name" value={resources.resourcename || ""} onChange={handleChange} />
+// {/* 
+//           <Form.Text className="text-muted">
+//             Anything specific to course
+//           </Form.Text> */}
+//         </Form.Group> 
+
+//         <Form.Group className="mb-3" >
+//           <Form.Label>Resource Code</Form.Label>
+//           <Form.Control type="number" placeholder="Enter the code" name="resourcecode" value={resources.resourcecode || ""} onChange={handleChange} />
+//         </Form.Group>
+
+//         <Form.Group className="mb-3" >
+//           <Form.Label>Resource Fee in INR:</Form.Label>
+//           <Form.Control type="number" placeholder="Enter the Fee" name="resourcefee" value={resources.resourcefee || ""} onChange={handleChange} />
+//         </Form.Group>
+
+//         {/* <Form.Group className="mb-3" controlId="formBasicCheckbox"> */}
+//           {/* Course Category: <Form.Check type="checkbox" label="Web Dev"  className="formCheckBox"/><Form.Check type="checkbox" label="IOT"  className="formCheckBox"/><Form.Check type="checkbox" label="ML"  className="formCheckBox"/> */}
+//           <label for="cars">Choose a category:</label>
+
+//           {/* <Form.Select name="category" aria-label="Default select example" 
+// defaultValue={resources.category || ""} onChange={handleChange}>
+//             <option value="Web Dev">Web Dev</option>
+//             <option value="ML">ML</option>
+//             <option value="IOT">IOT</option>
+//           </Form.Select> */}
+//         {/* </Form.Group> */}
+//         <Button variant="success" type="submit" onClick={() => goBacktoView()}>
+//           Add
+//         </Button>
+//         &nbsp;&nbsp;&nbsp;
+//         <Button variant="primary" type="reset" onClick={() => goBack()}>
+//           Go Back
+//         </Button>
+//       </Form>
+//     </div>
+//   )
+// }
 
 export default AddResource;
 

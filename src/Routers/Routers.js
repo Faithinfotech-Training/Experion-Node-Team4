@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Manager from "../pages/Manager/Manager";
 import UserPage from "../pages/User/UserPage";
 import Admin from "../pages/Admin";
+import Home from "../pages/Home/Home";
 import Header from "../Header/Header";
 
 //Access Denied page 
@@ -49,8 +50,8 @@ import ReqDetails from "../pages/resource enquiry management/ReqDetails/ReqDetai
 // components for view course enquiry
 import ViewCourseEnquiry from "../pages/Manager/VIewCourseEnquiry";
 import ViewResourseEnquiry from "../pages/Manager/ViewResourceEnquiry";
-import SalesPipeline from "../pages/Manager/VIewSalesPipeline";
-import SitesVisits from "../pages/Manager/SiteVIsitsVIew";
+import SitesVisitsTableView from "../pages/Manager/SiteVIsitsTableVIew";
+import SitesVisitsChartView from "../pages/Manager/SiteVIsitsChartVIew";
 
 function Routers(props) {
 
@@ -73,6 +74,9 @@ function Routers(props) {
       <Header />
 
       <Routes>
+
+        {/* Route for home page */}
+        <Route path="/home/" element={<Home />} />
 
         {/* Routes for Course Enqiuiry Form */}
         <Route path="/home/course-enquiry" element={<CourseEnquiryForm />} />
@@ -127,8 +131,8 @@ function Routers(props) {
         <Route path="/manager/view-course-enquiry" element={<ViewCourseEnquiry />} />
         <Route path="/manager/view-resourse-enquiry" element={<ViewResourseEnquiry />} />
         {/* Routes for sales pipeline and site visits */}
-        <Route path="/manager/view-sales-pipeline" element={<SalesPipeline />} />
-        <Route path="/manager/view-site-visits" element={<SitesVisits />} />
+        <Route path="/manager/view-chart" element={<SitesVisitsChartView />} />
+        <Route path="/manager/view-table" element={<SitesVisitsTableView />} />
       </Routes>
 
 
