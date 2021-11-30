@@ -11,7 +11,7 @@ import './EditCourse.css'
 function EditCourse(){
 
   let navigate = useNavigate();
-  const id = useParams();
+  const {id} = useParams();
     const goBack = ()=>{
       navigate('/admin/course')
     }
@@ -36,7 +36,7 @@ function EditCourse(){
         setCourse(response.data);
         console.log(response.data);
       })
-    })
+    }, [])
   function handleSubmit(e) {
     e.preventDefault();
     console.log(courses);
