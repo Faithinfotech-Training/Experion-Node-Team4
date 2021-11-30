@@ -64,7 +64,7 @@ function ResourceEnquiryForm(props) {
                     <label for="duration">Duration : </label>
 
                     <Form.Select name="duration" aria-label="Default select example" value={inputs.duration} onChange={handleChange}>
-                        <option value="twoWeeks">--choose an option--</option>
+                        <option value="">--choose an option--</option>
                         <option value="twoWeeks">Two Weeks</option>
                         <option value="threeWeeks">Three Weeks</option>
                         <option value="fourWeeks">Four Weeks</option>

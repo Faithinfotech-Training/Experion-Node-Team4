@@ -34,13 +34,13 @@ function AddCourse() {
     e.preventDefault();
     console.log(courses);
 
-   axios.post("http://localhost:3009/courses", courses)
-        .then((response)=>{
-          console.log(response);
-        })
-        .catch((error)=>{
-          console.log(error);
-        })
+    axios.post("http://localhost:3009/courses", courses)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
 
   }
 
@@ -74,6 +74,7 @@ function AddCourse() {
           <label for="cars">Choose a category:</label>
 
           <Form.Select name="category" aria-label="Default select example" defaultValue={courses.category} onChange={handleChange}>
+            <option value="">--choose an option--</option>
             <option value="Web Dev">Web Dev</option>
             <option value="ML">ML</option>
             <option value="IOT">IOT</option>
