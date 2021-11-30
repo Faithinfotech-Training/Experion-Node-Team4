@@ -107,10 +107,11 @@ function Routers(props) {
 
         {/* Routes for Resource Management      */}
 
-        <Route path="/admin/resource" element={role && localStorage.getItem('mytoken') &&<ResourceMng />} />
-        <Route path="/admin/resource/add-resource" element={role && localStorage.getItem('mytoken') &&<AddResource />} />
-        <Route path="/admin/resource/edit-resource" element={role && localStorage.getItem('mytoken') &&<EditResource />} />
-        <Route path="/admin/resource/view-resources" element={role && localStorage.getItem('mytoken') &&<ViewResource />} />
+        <Route path="/admin/resource" element={<ResourceMng />} />
+        <Route path="/admin/resource/add-resource" element={<AddResource />} />
+        <Route path="/admin/resource/edit-resource/:id" element={<EditResource />}/>
+        {/* <Route path="/admin/resource/delete-resources" element={<DeleteResourcess />}/> */}
+        <Route path="/admin/resource/view-resources" element={<ViewResource />}/>
 
         {/* Routes for Resource Enquiry Management */}
         <Route path="/admin/resource-enquiry" element={role && localStorage.getItem('mytoken') &&<ReqMng />} />
