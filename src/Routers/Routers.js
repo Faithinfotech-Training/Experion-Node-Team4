@@ -51,6 +51,7 @@ import ViewCourseEnquiry from "../pages/Manager/VIewCourseEnquiry";
 import ViewResourseEnquiry from "../pages/Manager/ViewResourceEnquiry";
 import SitesVisitsTableView from "../pages/Manager/SiteVIsitsTableVIew";
 import SitesVisitsChartView from "../pages/Manager/SiteVIsitsChartVIew";
+import ManagerRegistrationForm from "../pages/Registration/ManagerRegistrationForm";
 
 function Routers(props) {
 
@@ -124,7 +125,7 @@ function Routers(props) {
 
         {/* Manager HomePage */}
         <Route path="/manager" element={<Manager />} />
-
+        <Route path="/home/register-manager" element={<ManagerRegistrationForm />} />
         {/* Routes for managers to view course enquiry */}
         <Route path="/manager/view-course-enquiry" element={<ViewCourseEnquiry />} />
         <Route path="/manager/view-resourse-enquiry" element={<ViewResourseEnquiry />} />
