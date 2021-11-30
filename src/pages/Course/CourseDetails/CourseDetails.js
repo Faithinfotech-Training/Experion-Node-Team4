@@ -2,6 +2,7 @@ import axios from "axios";
 import {useState, useEffect} from "react";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
+import { Form, Button } from "react-bootstrap";
 
 import Dashboard from "../../../Components/Dashboard/Dashboard";
 
@@ -43,8 +44,9 @@ function CourseDetails(){
         <h2>Course name: {inputs.coursename}</h2>
         <h2>Course Code : { inputs.coursecode}</h2>
         <h2>Course Fee: {inputs.coursefee}</h2>
-        <button onClick={()=> navigate(`/admin/course/edit-course/${id}`)}>Edit Course</button>
-        <button onClick={()=> {deleteCourse(); navigate('/admin/course/view-courses')}}>Delete</button>
+        <Button onClick={()=> navigate(`/admin/course/edit-course/${id}`)} type="submit" variant="warning">Edit Course</Button>
+        &nbsp;&nbsp;&nbsp;
+        <Button onClick={()=> {deleteCourse(); navigate('/admin/course/view-courses')}} variant="danger" >Delete</Button>
 
         </>
     )

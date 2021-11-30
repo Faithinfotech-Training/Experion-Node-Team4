@@ -158,22 +158,10 @@ function Routers(props) {
         />
 
         {/* Routes for Resource Enquiry Management */}
-        <Route
-          path="/admin/resource-enquiry"
-          element={role && localStorage.getItem("mytoken") && <ReqMng />}
-        />
-        <Route
-          path="/admin/resource-enquiry/view-resource-enquiry"
-          element={role && localStorage.getItem("mytoken") && <ViewReq />}
-        />
-        <Route
-          path="/admin/resource-enquiry/view-resource-enquiry/:id"
-          element={role && localStorage.getItem("mytoken") && <ReqDetails />}
-        />
-        <Route
-          path="/admin/resource-enquiry/edit-resource-enquiry"
-          element={role && localStorage.getItem("mytoken") && <EditReq />}
-        />
+        <Route path="/admin/resource-enquiry" element={role && localStorage.getItem('mytoken') && <ReqMng />} />
+        <Route path="/admin/resource-enquiry/view-resource-enquiry" element={role && localStorage.getItem('mytoken') && <ViewReq />} />
+        <Route path="/admin/resource-enquiry/view-resource-enquiry/:id" element={role && localStorage.getItem('mytoken') && <ReqDetails />} />
+        <Route path="/admin/resource-enquiry/edit-resource-enquiry/:id" element={role && localStorage.getItem('mytoken') && <EditReq />} />
 
         {/* Manager HomePage */}
         <Route path="/manager" element={<Manager />} />

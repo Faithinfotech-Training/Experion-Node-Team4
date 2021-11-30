@@ -3,15 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
-
+import './RegistrationForm.css';
 
 
 
 
 function ManagerRegistrationForm() {
 
-    localStorage.clear();
+    
     //initialize to empty
     const [inputs, setInputs] = useState({});
     const navigate = useNavigate();
@@ -38,8 +37,7 @@ function ManagerRegistrationForm() {
         axios
             .post('http://localhost:3009/users/register', regData)
             .then(response => {
-                localStorage.setItem('mytoken', response.data.accessToken);
-                localStorage.setItem('role', response.data.user.role);
+                
                 if(response.data.user.role === 'Manager'){
                     console.log(response);
                     
@@ -50,7 +48,7 @@ function ManagerRegistrationForm() {
     }
 
     return (
-        <>
+        <div className="registrationForm">
             <Form onSubmit={handleSubmit}>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -79,11 +77,11 @@ function ManagerRegistrationForm() {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>&nbsp;&nbsp;&nbsp;
-                <Button variant="primary" onClick={() => { window.location = "/home" }}>
+                <Button variant="primary" onClick={() => { navigate("/admin/")}}>
                     Go Back
                 </Button>
             </Form>
-        </>
+        </div>
     )
 }
 

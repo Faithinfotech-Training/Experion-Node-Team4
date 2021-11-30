@@ -10,13 +10,21 @@ function Header() {
 
   let [user, setUser] = useState(false);
   let [admin, setAdmin] = useState(false);
+  let [manager, setManager] = useState(false);
   const Admin = ()=>{
     if(localStorage.getItem('role') === 'Admin'){
       setAdmin(true);
     }
   }
+
+  const Manager = ()=>{
+    if(localStorage.getItem('role') === 'Manager'){
+      setManager(true);
+    }
+  }
   useEffect(()=>{
     Admin();
+    Manager()
   })
 
   const User = () => {
@@ -42,11 +50,11 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link><Link to="/home" className="navItem">Home</Link></Nav.Link>
               {localStorage.getItem('mytoken') && <Link className="navItem" onClick={() => window.location = 'home/login'} to="home/login">Logout</Link>}
               {!localStorage.getItem('mytoken') && <Link className="navItem" to="/home/login">Login</Link>}
               {!localStorage.getItem('mytoken') && <Link className="navItem" to="/home/register">Register</Link>}
-              <Link className="navItem" to="/admin/register-manager">Add Manager</Link>
+              {admin && <Link className="navItem" to="/admin/register-manager">Add Manager</Link>}
 
               {!admin && <NavDropdown title="Enquiry" id="basic-nav-dropdown">
                 <NavDropdown.Item ><Link to="/home/course-enquiry">Course Enquiry</Link></NavDropdown.Item>
