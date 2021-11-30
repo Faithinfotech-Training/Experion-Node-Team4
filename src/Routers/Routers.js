@@ -44,6 +44,7 @@ import EditResource from "../pages/ResourceManagement/EditResource/EditResource"
 import ReqMng from "../pages/resource enquiry management/ReqMng";
 import ViewReq from "../pages/resource enquiry management/ViewReq/ViewReq";
 import EditReq from "../pages/resource enquiry management/EditReq/EditReq";
+import ReqDetails from "../pages/resource enquiry management/ReqDetails/ReqDetails";
 
 // components for view course enquiry
 import ViewCourseEnquiry from "../pages/Manager/VIewCourseEnquiry";
@@ -60,11 +61,11 @@ function Routers(props) {
     }
   }
 
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     roles(role);
-   
-}, [])
+
+  }, [])
 
 
   return (
@@ -94,29 +95,30 @@ function Routers(props) {
 
         {/* Routes for Course Management */}
         <Route path="/admin/course" element={role && localStorage.getItem('mytoken') && <CourseMng />} />
-        <Route path="/admin/course/add-course" element={role && localStorage.getItem('mytoken') &&<AddCourse />} />
-        <Route path="/admin/course/edit-course" element={role && localStorage.getItem('mytoken') &&<EditCourse />} />
-        <Route path="/admin/course/view-courses" element={role && localStorage.getItem('mytoken') &&<ViewCourse />} />
-        <Route path="/admin/course/view-courses/:id" element={role && localStorage.getItem('mytoken') &&<CourseDetails />} />
+        <Route path="/admin/course/add-course" element={role && localStorage.getItem('mytoken') && <AddCourse />} />
+        <Route path="/admin/course/edit-course" element={role && localStorage.getItem('mytoken') && <EditCourse />} />
+        <Route path="/admin/course/view-courses" element={role && localStorage.getItem('mytoken') && <ViewCourse />} />
+        <Route path="/admin/course/view-courses/:id" element={role && localStorage.getItem('mytoken') && <CourseDetails />} />
 
         {/* Routes for Course Enquiry Management */}
-        <Route path="/admin/course-enquiry" element={role && localStorage.getItem('mytoken') &&<CeqMng />} />
-        <Route path="/admin/course-enquiry/view-course-enquiry" element={role && localStorage.getItem('mytoken') &&<ViewCeq />} />
-        <Route path="/admin/course-enquiry/view-course-enquiry/:id" element={role && localStorage.getItem('mytoken') &&<CeqDetails />} />
-        <Route path="/admin/course-enquiry/edit-course-enquiry" element={role && localStorage.getItem('mytoken') &&<EditCeq />} />
+        <Route path="/admin/course-enquiry" element={role && localStorage.getItem('mytoken') && <CeqMng />} />
+        <Route path="/admin/course-enquiry/view-course-enquiry" element={role && localStorage.getItem('mytoken') && <ViewCeq />} />
+        <Route path="/admin/course-enquiry/view-course-enquiry/:id" element={role && localStorage.getItem('mytoken') && <CeqDetails />} />
+        <Route path="/admin/course-enquiry/edit-course-enquiry" element={role && localStorage.getItem('mytoken') && <EditCeq />} />
 
         {/* Routes for Resource Management      */}
 
         <Route path="/admin/resource" element={<ResourceMng />} />
         <Route path="/admin/resource/add-resource" element={<AddResource />} />
-        <Route path="/admin/resource/edit-resource/:id" element={<EditResource />}/>
+        <Route path="/admin/resource/edit-resource/:id" element={<EditResource />} />
         {/* <Route path="/admin/resource/delete-resources" element={<DeleteResourcess />}/> */}
-        <Route path="/admin/resource/view-resources" element={<ViewResource />}/>
+        <Route path="/admin/resource/view-resources" element={<ViewResource />} />
 
         {/* Routes for Resource Enquiry Management */}
-        <Route path="/admin/resource-enquiry" element={role && localStorage.getItem('mytoken') &&<ReqMng />} />
-        <Route path="/admin/resource-enquiry/view-resource-enquiry" element={role && localStorage.getItem('mytoken') &&<ViewReq />} />
-        <Route path="/admin/resource-enquiry/edit-resource-enquiry" element={role && localStorage.getItem('mytoken') &&<EditReq />} />
+        <Route path="/admin/resource-enquiry" element={role && localStorage.getItem('mytoken') && <ReqMng />} />
+        <Route path="/admin/resource-enquiry/view-resource-enquiry" element={role && localStorage.getItem('mytoken') && <ViewReq />} />
+        <Route path="/admin/resource-enquiry/view-resource-enquiry/:id" element={role && localStorage.getItem('mytoken') && <ReqDetails />} />
+        <Route path="/admin/resource-enquiry/edit-resource-enquiry" element={role && localStorage.getItem('mytoken') && <EditReq />} />
 
         {/* Manager HomePage */}
         <Route path="/manager" element={<Manager />} />
