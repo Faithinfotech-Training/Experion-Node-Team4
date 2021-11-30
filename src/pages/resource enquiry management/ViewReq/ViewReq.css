@@ -1,3 +1,5 @@
 .view-req{
-    padding-left: 50px;
+    position: relative;
+    left: 25%;
+    top: 20px;
 }

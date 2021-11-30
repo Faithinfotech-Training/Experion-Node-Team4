@@ -27,7 +27,8 @@ function ReqDetails(){
     return(
         <>
         <Dashboard />
-        <div className="req-details">
+        <center>
+        <div>
        
         <h1>Resource enquiry Details</h1>
         <br/>
@@ -42,6 +43,7 @@ function ReqDetails(){
         <Button variant="success" type="submit" onClick={() => navigate(`/admin/resource-enquiry/edit-resource-enquiry/${inputs.id}`)}>Update Status</Button>
        
        </div>
+       </center>
         </>
     )
 }

@@ -50,7 +50,7 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link><Link to="/home" className="navItem">Home</Link></Nav.Link>
+              {!admin && <Nav.Link><Link to="/home" className="navItem">Home</Link></Nav.Link>}
               {localStorage.getItem('mytoken') && <Link className="navItem" onClick={() => window.location = 'home/login'} to="home/login">Logout</Link>}
               {!localStorage.getItem('mytoken') && <Link className="navItem" to="/home/login">Login</Link>}
               {!localStorage.getItem('mytoken') && <Link className="navItem" to="/home/register">Register</Link>}

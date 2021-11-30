@@ -70,7 +70,7 @@ function handleSubmit(e) {
         </Form.Text>
       </Form.Group>
 
-      <Button variant="warning" type="submit">Update Status</Button>
+      <Button variant="success" type="submit">Update Status</Button>
       </Form>
 
         </div>

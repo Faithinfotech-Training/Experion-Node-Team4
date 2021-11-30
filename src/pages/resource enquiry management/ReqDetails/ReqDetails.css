@@ -1,5 +1,7 @@
 .req-details{
-    padding: 15px 15px 15px 15px;
+    position: relative;
+    left: auto;
+    top: 20px;
 }
 
 span{

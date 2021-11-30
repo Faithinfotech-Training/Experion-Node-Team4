@@ -39,7 +39,7 @@ function CeqDetails(){
     return(
         <>
         <Dashboard />
-        <div className="mainBody">
+        <div><center>
         <h1>Course Details</h1>
         <h2>Enquiree Name: {inputs.name}</h2>
         <h2>Enquirie Email : { inputs.email}</h2>
@@ -47,7 +47,7 @@ function CeqDetails(){
         <Button onClick={()=> navigate(`/admin/course-enquiry/edit-course-enquiry/${id}`)} variant="warning">Update Enquiree Status</Button>
         &nbsp;&nbsp;&nbsp;
         <Button onClick={()=> {deleteCourse(); navigate('/admin/course/view-courses')}} variant="danger">Delete</Button>
-        </div>
+        </center></div>
         </>
     )
 }
