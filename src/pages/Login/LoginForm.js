@@ -45,10 +45,12 @@ function LoginForm() {
                 if (role === "Admin") {
 
                     navigate('/admin');
-                } else if (role === "User") {
+                } else if (role === "Manager") {
                     console.log("Working");
-                    navigate(`/home/user/${id}`);
+                    navigate('/manager');
                     // window.location = `/home/user/${id}}`
+                }else{
+                    navigate(`/home/user/${id}`);
                 }
             }).catch(()=>{
                 alert("Wrong Credentials");
@@ -76,7 +78,7 @@ function LoginForm() {
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
                 <Button variant="primary" type="submit">
-                    Submit
+                    Login
                 </Button>&nbsp;&nbsp;&nbsp;
                 <Button variant="primary" onClick={() => { window.location = "/home" }}>
                     Go Back
