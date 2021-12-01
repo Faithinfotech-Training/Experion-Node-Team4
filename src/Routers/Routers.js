@@ -95,6 +95,17 @@ function Routers(props) {
         {/* Route for user page */}
         <Route path="/home/user/:id" element={<UserPage />} />
 
+        {/* Routes for user view resource from user page */}
+        <Route
+          path="/user/view-resources"
+          element={<ViewResource />}
+        />
+        {/* Routes for user view course from user page */}
+        <Route
+          path="/user/view-courses"
+          element={role && localStorage.getItem("mytoken") && <ViewCourse />}
+        />
+
         {/* Admin Page */}
         <Route
           path="/admin/"
