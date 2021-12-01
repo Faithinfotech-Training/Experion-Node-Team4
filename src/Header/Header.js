@@ -10,7 +10,7 @@ function Header() {
   let [admin, setAdmin] = useState(false);
   let [manager, setManager] = useState(false);
   const Admin = () => {
-    if (localStorage.getItem('role') === 'Admin') {
+    if (localStorage.getItem("role") === "Admin") {
       setAdmin(true);
     }
   };
@@ -20,9 +20,16 @@ function Header() {
       setManager(true);
     }
   };
+
+  const Users = () => {
+    if (localStorage.getItem("role") === "User") {
+      setUser(true);
+    }
+  };
   useEffect(() => {
     Admin();
     Manager();
+    Users();
   });
 
   const User = () => {
@@ -72,9 +79,21 @@ function Header() {
                   Register
                 </Link>
               )}
+
               {admin && (
                 <Link className="navItem" to="/admin/register-manager">
                   Add Manager
+                </Link>
+              )}
+              {user && (
+                <Link className="navItem" to="/user/view-courses">
+                  View Course
+                </Link>
+              )}
+
+              {user && (
+                <Link className="navItem" to="/user/view-resources">
+                  View Resource
                 </Link>
               )}
 

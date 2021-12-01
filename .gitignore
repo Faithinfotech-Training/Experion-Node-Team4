@@ -29,3 +29,7 @@ src/App.js
 src/App.js
 package-lock.json
 src/App.js
+src/pages/Course/ViewCourse/ViewCourse.js
+src/pages/Manager/SiteVIsitsChartVIew.js
+package.json
+src/pages/Manager/SiteVIsitsChartVIew.js
