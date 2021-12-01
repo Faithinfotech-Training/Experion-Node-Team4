@@ -23,7 +23,7 @@ function Header() {
 
   const Users = () => {
     if (localStorage.getItem("role") === "User") {
-      setManager(true);
+      setUser(true);
     }
   };
   useEffect(() => {
