@@ -96,14 +96,16 @@ function Routers(props) {
         <Route path="/home/user/:id" element={<UserPage />} />
 
         {/* Routes for user view resource from user page */}
-        <Route
-          path="/user/view-resources"
-          element={<ViewResource />}
-        />
+        <Route path="/user/view-resources" element={<ViewResource />} />
         {/* Routes for user view course from user page */}
         <Route
           path="/user/view-courses"
-          element={role && localStorage.getItem("mytoken") && <ViewCourse />}
+          element={localStorage.getItem("mytoken") && <ViewCourse />}
+        />
+        {/* Path for Course detail for users */}
+        <Route
+          path="/user/view-courses/:id"
+          element={localStorage.getItem("mytoken") && <CourseDetails />}
         />
 
         {/* Admin Page */}
