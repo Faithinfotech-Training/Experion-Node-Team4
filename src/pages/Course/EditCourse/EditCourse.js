@@ -1,6 +1,6 @@
 import { Form, Button } from "react-bootstrap";
-import {useNavigate, useParams}  from 'react-router-dom';
-import {useEffect, useState} from "react";
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 import Dashboard from "../../../Components/Dashboard/Dashboard";
@@ -8,15 +8,15 @@ import Dashboard from "../../../Components/Dashboard/Dashboard";
 import './EditCourse.css'
 
 
-function EditCourse(){
+function EditCourse() {
 
   let navigate = useNavigate();
-  const {id} = useParams();
-    const goBack = ()=>{
-      navigate('/admin/course')
-    }
+  const { id } = useParams();
+  const goBack = () => {
+    navigate('/admin/course')
+  }
 
-    const [courses, setCourse] = useState({})
+  const [courses, setCourse] = useState({})
 
 
   //handle the change of form elements
@@ -29,33 +29,33 @@ function EditCourse(){
     setCourse(values => ({ ...values, [name]: value }))
   }
 
-    useEffect(()=>{
-      axios
+  useEffect(() => {
+    axios
       .get(`http://localhost:3009/courses/${id}`)
-      .then((response) =>{
+      .then((response) => {
         setCourse(response.data);
         console.log(response.data);
       })
-    }, [])
+  }, [])
   function handleSubmit(e) {
     e.preventDefault();
     console.log(courses);
 
-   axios.put(`http://localhost:3009/courses/${id}`, courses)
-        .then((response)=>{
-          console.log(response);
-        })
-        .catch((error)=>{
-          console.log(error);
-        })
+    axios.put(`http://localhost:3009/courses/${id}`, courses)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
 
   }
 
 
 
-    return(
-      <div>
-        <Dashboard />
+  return (
+    <div>
+      <Dashboard />
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Course Name</Form.Label>
@@ -94,7 +94,7 @@ function EditCourse(){
         </Button>
       </Form>
     </div>
-    )
+  )
 }
 
 export default EditCourse;

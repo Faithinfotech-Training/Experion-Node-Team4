@@ -2,13 +2,13 @@
 
 
 
-function UserPage(){
+function UserPage() {
 
 
-    return(
+    return (
         <>
 
-        This is user page
+            This is user page
         </>
     )
 }

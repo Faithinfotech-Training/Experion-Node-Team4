@@ -1,45 +1,45 @@
 import { Form, Button } from "react-bootstrap";
-import {useNavigate}  from 'react-router-dom';
-import {useState} from "react";
+import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Dashboard from "../../../Components/Dashboard/Dashboard";
 // import './EditCourse.css'
 
 
-function EditResource(){
-const{id} = useParams()
-return(<>
-<h1> Edit Resource </h1>
-<MyForm id ={id}/>
+function EditResource() {
+  const { id } = useParams()
+  return (<>
+    <h1> Edit Resource </h1>
+    <MyForm id={id} />
 
-</>
-)
+  </>
+  )
 }
-function MyForm(props){
+function MyForm(props) {
   let navigate = useNavigate();
   const goBack = () => {
     navigate('/admin/resource')
   }
   const [resources, setResources] = useState({})
 
-  
 
-  
 
-    useEffect(() => {
-      axios
-   //    .get("http://localhost:3003/staff_list")
-  
-  //  .get(`http://localhost:3002/staff/${props.id}`) working JSon Seever
-  .get(`http://localhost:3009/resources/${props.id}`)
-       .then(response =>{
-           console.log("promise was fulffiled")
-           console.log(response);
-           setResources(response.data)
-       })
-       },[])
+
+
+  useEffect(() => {
+    axios
+      //    .get("http://localhost:3003/staff_list")
+
+      //  .get(`http://localhost:3002/staff/${props.id}`) working JSon Seever
+      .get(`http://localhost:3009/resources/${props.id}`)
+      .then(response => {
+        console.log("promise was fulffiled")
+        console.log(response);
+        setResources(response.data)
+      })
+  }, [])
   //handle the change of form elements
   function handleChange(event) {
     //saving the name of element and its value
@@ -55,31 +55,31 @@ function MyForm(props){
     e.preventDefault();
     console.log(resources);
 
-   axios.put(`http://localhost:3009/resources/${props.id}`,resources)
-        .then((response)=>{
-          console.log(response);
-        })
-        .catch((error)=>{
-          console.log(error);
-        })
-        alert("user details updated")
-        window.location ="/admin/resource/view-resources"
+    axios.put(`http://localhost:3009/resources/${props.id}`, resources)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    alert("user details updated")
+    window.location = "/admin/resource/view-resources"
   }
 
 
 
-    return(
-      <div>
-        <Dashboard />
+  return (
+    <div>
+      <Dashboard />
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Resource Name</Form.Label>
           <Form.Control type="text" name="resourcename" placeholder="Enter the resource name" value={resources.resourcename || ""} onChange={handleChange} />
-{/* 
+          {/* 
           <Form.Text className="text-muted">
             Anything specific to course
           </Form.Text> */}
-        </Form.Group> 
+        </Form.Group>
 
         <Form.Group className="mb-3" >
           <Form.Label>Resource Code</Form.Label>
@@ -109,7 +109,7 @@ function MyForm(props){
         </Button>
       </Form>
     </div>
-    )
+  )
 }
 
 

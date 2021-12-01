@@ -36,7 +36,7 @@ import ViewCeq from "../pages/CourseEnquiryManagement/ViewCeq/ViewCeq";
 import EditCeq from "../pages/CourseEnquiryManagement/EditCeq/EditCeq";
 import CeqDetails from "../pages/CourseEnquiryManagement/CeqDetails/CeqDetails";
 
-//imp0rting the resource management components.
+//importing the resource management components.
 import ResourceMng from "../pages/ResourceManagement/ResourceMng";
 import AddResource from "../pages/ResourceManagement/AddResource/AddResource";
 import ViewResource from "../pages/ResourceManagement/ViewResource/ViewResource";
@@ -94,6 +94,19 @@ function Routers(props) {
 
         {/* Route for user page */}
         <Route path="/home/user/:id" element={<UserPage />} />
+
+        {/* Routes for user view resource from user page */}
+        <Route path="/user/view-resources" element={<ViewResource />} />
+        {/* Routes for user view course from user page */}
+        <Route
+          path="/user/view-courses"
+          element={localStorage.getItem("mytoken") && <ViewCourse />}
+        />
+        {/* Path for Course detail for users */}
+        <Route
+          path="/user/view-courses/:id"
+          element={localStorage.getItem("mytoken") && <CourseDetails />}
+        />
 
         {/* Admin Page */}
         <Route
