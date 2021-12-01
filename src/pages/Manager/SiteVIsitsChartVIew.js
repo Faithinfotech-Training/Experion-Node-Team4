@@ -6,7 +6,7 @@ function SitesVisitsChartView() {
     <div>
       <ManagerDashboard />
       {/* <p>This is page for Chart...</p> */}
-      <Chart />
+      {/* <Chart /> */}
     </div>
   );
 }
