@@ -75,12 +75,15 @@ function UpdateStatus(props) {
             <Form onSubmit={handleSubmit}>
 
                 <Form.Group className="mb-3" >
-                    <Form.Label>Update : </Form.Label>
-                    <Form.Control type="text" placeholder="Enter status" name="userstatus" value={inputs.userstatus || ""} onChange={handleChange} />
+                    <Form.Select name="userstatus" aria-label="Default select example" defaultValue={inputs.userstatus} value={inputs.userstatus || ""} onChange={handleChange}>
+                        <option value="Pending">Pending</option>
+                        <option value="Interested">Interested</option>
+                        <option value="Payment Pending">Payment Pending</option>
+                        <option value="Purchased">Purchased</option>
+                        <option value="Rejected">Rejected</option>
+                    </Form.Select>
                 </Form.Group>
-                <Form.Text className="text-muted">
-                    Options <b>['Pending','Rejected', 'Purchased', 'Payment Pending', 'Interested'] </b>
-                </Form.Text>
+
 
                 <Button variant="success" type="submit">
                     Update

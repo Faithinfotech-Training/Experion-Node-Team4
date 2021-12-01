@@ -43,6 +43,7 @@ function CeqDetails(){
         <h1>Course Details</h1>
         <h2>Enquiree Name: {inputs.name}</h2>
         <h2>Enquirie Email : { inputs.email}</h2>
+        <h2>Enquired Course: {inputs.courseName}</h2>
         <h2>Enquirie Status: {inputs.userstatus}</h2>
         <Button onClick={()=> navigate(`/admin/course-enquiry/edit-course-enquiry/${id}`)} variant="primary">Update Enquiree Status</Button>
         &nbsp;&nbsp;&nbsp;
