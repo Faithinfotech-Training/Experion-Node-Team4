@@ -11,6 +11,7 @@ function Header() {
   let [user, setUser] = useState(false);
   let [admin, setAdmin] = useState(false);
   let [manager, setManager] = useState(false);
+
   const Admin = ()=>{
     if(localStorage.getItem('role') === 'Admin'){
       setAdmin(true);
@@ -24,7 +25,7 @@ function Header() {
   }
   useEffect(()=>{
     Admin();
-    Manager()
+    Manager();
   })
 
   const User = () => {

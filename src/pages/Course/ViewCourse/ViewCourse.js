@@ -14,8 +14,18 @@ function ViewCourse() {
     useEffect(() => {
         console.log('The use effect hook has been executed');
 
-        axios
-            .get('http://localhost:3009/courses')
+        var data = '';
+
+        var config = {
+            method: 'get',
+            url: 'http://localhost:3009/courses',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('mytoken')}`
+            },
+            data: data
+        };
+
+        axios(config)
             .then(response => {
                 console.log('Promise fulfilled');
                 console.log(response);

@@ -36,7 +36,7 @@ import ViewCeq from "../pages/CourseEnquiryManagement/ViewCeq/ViewCeq";
 import EditCeq from "../pages/CourseEnquiryManagement/EditCeq/EditCeq";
 import CeqDetails from "../pages/CourseEnquiryManagement/CeqDetails/CeqDetails";
 
-//imp0rting the resource management components.
+//importing the resource management components.
 import ResourceMng from "../pages/ResourceManagement/ResourceMng";
 import AddResource from "../pages/ResourceManagement/AddResource/AddResource";
 import ViewResource from "../pages/ResourceManagement/ViewResource/ViewResource";
