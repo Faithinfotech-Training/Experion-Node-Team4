@@ -52,12 +52,12 @@ function ResourceEnquiryForm(props) {
 
                 <Form.Group className="mb-3" >
                     <Form.Label>Resouce Name : </Form.Label>
-                    <Form.Control type="text" placeholder="Enter the resource name" name="resourceName" value={inputs.resourceName || ""} onChange={handleChange}/>
+                    <Form.Control type="text" placeholder="Enter the resource name" name="resourceName" value={inputs.resourceName || ""} onChange={handleChange} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" >
                     <Form.Label>Requesting Date : </Form.Label>
-                    <Form.Control type="date" placeholder="Date from which you want to avail" name="reqDate" value={inputs.reqDate || ""} onChange={handleChange}/>
+                    <Form.Control type="date" placeholder="Date from which you want to avail" name="reqDate" value={inputs.reqDate || ""} onChange={handleChange} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicSelect">

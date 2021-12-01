@@ -18,7 +18,7 @@ function ViewReq() {
             .then(response => {
                 console.log('Promise fulfilled');
                 console.log(response);
-        
+
                 setResourceEnquiries(response.data);
             })
 
@@ -27,7 +27,7 @@ function ViewReq() {
 
     return (
         <>
-        
+
             <Dashboard />
             <div className="view-req">
                 <h1>

@@ -11,18 +11,18 @@ function Header() {
   let [user, setUser] = useState(false);
   let [admin, setAdmin] = useState(false);
   let [manager, setManager] = useState(false);
-  const Admin = ()=>{
-    if(localStorage.getItem('role') === 'Admin'){
+  const Admin = () => {
+    if (localStorage.getItem('role') === 'Admin') {
       setAdmin(true);
     }
   }
 
-  const Manager = ()=>{
-    if(localStorage.getItem('role') === 'Manager'){
+  const Manager = () => {
+    if (localStorage.getItem('role') === 'Manager') {
       setManager(true);
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
     Admin();
     Manager()
   })

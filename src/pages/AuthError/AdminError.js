@@ -2,12 +2,12 @@
 
 
 
-function AdminError(){
+function AdminError() {
 
 
-    return(
+    return (
         <>
-        You are not logged in as admin!!!
+            You are not logged in as admin!!!
 
         </>
     )

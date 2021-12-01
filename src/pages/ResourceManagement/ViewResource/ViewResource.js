@@ -58,7 +58,7 @@ function ViewResource() {
                                     onClick={() => DeleteResources(resource.id)} variant="danger"> Delete</Button>
                                 &nbsp; &nbsp;&nbsp;
                                 <Button type="button"
-                                    onClick={() => navigate(`/admin/resource/edit-resource/${resource.id}`) } variant="success"> Edit</Button>  &nbsp; &nbsp;&nbsp;
+                                    onClick={() => navigate(`/admin/resource/edit-resource/${resource.id}`)} variant="success"> Edit</Button>  &nbsp; &nbsp;&nbsp;
                                 <Button variant="primary" type="reset" onClick={() => goBack()}>
                                     Go Back
                                 </Button>
