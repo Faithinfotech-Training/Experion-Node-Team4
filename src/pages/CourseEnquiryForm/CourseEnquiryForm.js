@@ -11,6 +11,24 @@ function CourseEnquiryForm(props) {
     const [inputs, setInputs] = useState({});
     const navigate = useNavigate();
 
+    const [courses, setCourses] = useState([]);
+
+
+    useEffect(() => {
+        console.log('The use effect hook has been executed');
+
+        axios
+            .get('http://localhost:3009/courses')
+            .then(response => {
+                console.log('Promise fulfilled');
+                console.log(response);
+                //response object contains the complete HTTP REQUEST with
+                //returned data, status code, and headers. We need only 'data'
+                setCourses(response.data);
+            })
+
+    }, [])
+
 
     function handleChange(event) {
         const name = event.target.name;
@@ -56,7 +74,12 @@ function CourseEnquiryForm(props) {
 
                 <Form.Group className="mb-3" >
                     <Form.Label>Course Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter the course name" name="courseName" value={inputs.courseName || ""} onChange={handleChange} />
+                    <Form.Select name="courseName" value={inputs.courseName} onChange={handleChange}>
+                        <option >Select Course</option>
+                        {courses.map(course =>    
+                            <option value={course.coursename}>{course.coursename}</option>
+                        )}
+                    </Form.Select>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">

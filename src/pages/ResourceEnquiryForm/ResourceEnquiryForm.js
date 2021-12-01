@@ -11,6 +11,24 @@ function ResourceEnquiryForm(props) {
     const [inputs, setInputs] = useState({});
     const navigate = useNavigate();
 
+    const [resources, setResources] = useState([]);
+    // const navigate =useNavigate()
+
+    useEffect(() => {
+        console.log('The use effect hook has been executed');
+
+        axios
+            .get('http://localhost:3009/resources')
+            .then(response => {
+                console.log('Promise fulfilled');
+                console.log(response);
+                //response object contains the complete HTTP REQUEST with
+                //returned data, status code, and headers. We need only 'data'
+                setResources(response.data);
+            })
+
+    }, [])
+
 
     function handleChange(event) {
         const name = event.target.name;
@@ -52,7 +70,12 @@ function ResourceEnquiryForm(props) {
 
                 <Form.Group className="mb-3" >
                     <Form.Label>Resouce Name : </Form.Label>
-                    <Form.Control type="text" placeholder="Enter the resource name" name="resourceName" value={inputs.resourceName || ""} onChange={handleChange} />
+                    <Form.Select name="resourceName" value={inputs.resourceName} onChange={handleChange}>
+                        <option >Select Resource</option>
+                        {resources.map(resource =>    
+                            <option value={resource.resourcename}>{resource.resourcename}</option>
+                        )}
+                    </Form.Select>
                 </Form.Group>
 
                 <Form.Group className="mb-3" >
