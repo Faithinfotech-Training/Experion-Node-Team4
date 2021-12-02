@@ -49,7 +49,7 @@ function Header() {
       <div className="headerTitle">
         <div className="headerContent">Training Academy Management System</div>
       </div>
-      <Navbar bg="black" variant="dark" expand="lg">
+      <Navbar bg="primary" variant="dark" expand="lg">
         <Container>
           <Navbar.Brand href="#home">{User()}</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
