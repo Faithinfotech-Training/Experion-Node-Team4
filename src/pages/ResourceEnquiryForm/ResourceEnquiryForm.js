@@ -3,7 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 
 import { Form, Button } from "react-bootstrap";
-
+import { toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './ResourceEnquiryForm.css';
 
 function ResourceEnquiryForm(props) {
@@ -45,7 +46,11 @@ function ResourceEnquiryForm(props) {
             .then(response => {
                 console.log('promise fulfilled')
                 console.log(response)
-                alert("enquiry submitted")
+                toast.success("Submitted Successfully", {
+                    transition: Slide,
+                    hideProgressBar: true,
+                    autoClose: 5000
+                  })
                 navigate("/home/");
             }).catch(error => {
                 console.log(error);

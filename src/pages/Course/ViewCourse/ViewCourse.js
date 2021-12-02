@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import Dashboard from "../../../Components/Dashboard/Dashboard";
+import { Table } from "react-bootstrap";
 
 function ViewCourse() {
     let [user, setUser] = useState(false);
@@ -52,31 +53,48 @@ function ViewCourse() {
             <Dashboard />
             <div className="mainBody">
                 <h1>Course List</h1>
-                <div className="mainBox">
-                    {courses.map((course) => (
 
-                        <div className="ULbox">
-                            <div>Course code: {course.coursecode}</div>
-                            <div>Course name: {course.coursename}</div>
+               
+                <Table striped bordered hover>
+                        <tr>
+                            <th>id</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            
+                        </tr>
 
-                            {user ? (
-                                <button
-                                    onClick={async () => {
-                                        await updateVisitCount(course.id);
+                        {courses.map((course) => (
+                            // <div className="ULbox">
+                        <tr>
+                            <td>{course.coursecode}</td>
+                            <td>{course.coursename}</td>
+                            <td> {user ? (
+                                    <button
+                                        onClick={async () => {
+                                            await updateVisitCount(course.id);
 
-                                        navigate(`/user/view-courses/${course.id}`);
-                                    }}
-                                >
-                                    Click for details
-                                </button>
-                            ) : (
-                                <div>
-                                    <Link to={`${course.id}`}>View Course Details</Link>
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
+                                            navigate(`/user/view-courses/${course.id}`);
+                                        }}
+                                    >
+                                        Click for details
+                                    </button>
+                                ) : (
+                                    <div>
+                                        <Link to={`${course.id}`}>View Course Details</Link>
+                                    </div>
+                                )}</td>
+                        </tr>
+
+
+                                // <div>Course code: </div>
+                                // <div>Course name: {course.coursename}</div>
+
+                               
+                            
+                        ))}
+                    </Table>
+                
+
             </div>
         </div>
     );

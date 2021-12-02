@@ -1,13 +1,34 @@
 import './ViewResource.css';
 import axios from 'axios';
 import { Button } from "react-bootstrap";
-
+// import { ToastContainer, toast } from 'react-toastify';
 import { useState, useEffect } from "react";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import handleConfirmText from '../DeleteResource/DeleteAlert';
 import { useNavigate } from 'react-router';
 import DeleteResources from '../DeleteResource/DeleteResource';
 import Dashboard from '../../../Components/Dashboard/Dashboard';
+const CustomToast = ({closeToast}) =>{
+    return(
+        <div>
+            
+            Are You Sure to Delete the Resources
+            <button onClick = {closeToast}> Delete </button>
+        </div>
+    )
+}
+
+toast.configure()
 function ViewResource() {
+    let notify = () => {
+        toast.warn(<CustomToast/>,
+            {
+                position:toast.POSITION.TOP_CENTER
+            })
+    }
+ 
+  
 
     let navigate = useNavigate();
     const goBack = () => {
@@ -29,6 +50,7 @@ function ViewResource() {
                 //returned data, status code, and headers. We need only 'data'
                 setResources(response.data);
             })
+            
 
     }, [])
 
@@ -53,12 +75,15 @@ function ViewResource() {
                                 <div> Category: {resource.category}</div>
 
                                 {/* <button type ="button" onClick={()=> DeleteResources(resource.id)}> Delete</button> */}
-                                <br />
-                                <Button type="button"
-                                    onClick={() => DeleteResources(resource.id)} variant="danger"> Delete</Button>
+                                <br />  
+                                {/* <ToastContainer/> */}
+                                <Button type="button" 
+                                
+                                    onClick=  {() => handleConfirmText(resource.id) } variant="danger"> Delete</Button>
+                                    
                                 &nbsp; &nbsp;&nbsp;
                                 <Button type="button"
-                                    onClick={() => navigate(`/admin/resource/edit-resource/${resource.id}`)} variant="success"> Edit</Button>  &nbsp; &nbsp;&nbsp;
+                                    onClick={ () => navigate(`/admin/resource/edit-resource/${resource.id}`)} variant="success"> Edit</Button>  &nbsp; &nbsp;&nbsp;
                                 <Button variant="primary" type="reset" onClick={() => goBack()}>
                                     Go Back
                                 </Button>

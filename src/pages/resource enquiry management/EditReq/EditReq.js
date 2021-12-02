@@ -2,7 +2,8 @@ import { Form, Button } from "react-bootstrap";
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "../../../Components/Dashboard/Dashboard";
 
 import './ResourceEnquiryForm.css';
@@ -53,11 +54,15 @@ function UpdateStatus(props) {
         console.log(inputs);
 
         axios.put(`http://localhost:3009/resource-enquiries/${props.id}`, inputs)
-            .then((response) => {
-                console.log(response);
-                alert("status updated!")
-                navigate('/admin/resource-enquiry')
+        .then((response) => {
+            console.log(response);
+            toast.success("Updated Successfully", {
+              transition: Slide,
+              hideProgressBar: true,
+              autoClose: 5000
             })
+           
+          })
             .catch((error) => {
                 console.log(error);
             })
