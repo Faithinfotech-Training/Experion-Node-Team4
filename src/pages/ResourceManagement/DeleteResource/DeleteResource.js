@@ -2,10 +2,11 @@
 
 import axios from 'axios';
 
-
-
+import  handleConfirmText from './DeleteAlert' 
 
 function DeleteResources(id) {
+    
+    
 
     axios
         //    .get("http://localhost:3003/staff_list")

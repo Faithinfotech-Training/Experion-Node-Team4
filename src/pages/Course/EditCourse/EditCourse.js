@@ -2,7 +2,8 @@ import { Form, Button } from "react-bootstrap";
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "../../../Components/Dashboard/Dashboard";
 
 import './EditCourse.css'
@@ -42,13 +43,19 @@ function EditCourse() {
     console.log(courses);
 
     axios.put(`http://localhost:3009/courses/${id}`, courses)
-      .then((response) => {
-        console.log(response);
+    .then((response) => {
+      console.log(response);
+      toast.success("Updated Successfully", {
+        transition: Slide,
+        hideProgressBar: true,
+        autoClose: 3000
       })
+     
+    })
       .catch((error) => {
         console.log(error);
       })
-
+      navigate("/admin/course/view-courses")
   }
 
 
