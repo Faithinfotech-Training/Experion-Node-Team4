@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
-
+import { toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Form, Button } from "react-bootstrap";
 
 import './CourseEnquiryForm.css'
@@ -45,7 +46,12 @@ function CourseEnquiryForm(props) {
             .then(response => {
                 console.log('promise fulfilled')
                 console.log(response)
-                alert("enquiry submitted");
+                toast.success("Submitted Successfully", {
+                    transition: Slide,
+                    hideProgressBar: true,
+                    autoClose: 5000
+                  })
+                
                 navigate("/home/");
             }).catch(error => {
                 console.log(error);
