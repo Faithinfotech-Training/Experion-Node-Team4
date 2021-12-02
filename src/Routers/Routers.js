@@ -58,6 +58,10 @@ import SitesVisitsTableView from "../pages/Manager/SiteVIsitsTableVIew";
 import SitesVisitsChartView from "../pages/Manager/SiteVIsitsChartVIew";
 import ManagerRegistrationForm from "../pages/Registration/ManagerRegistrationForm";
 
+//components for viewing courses and resources offered in Home Page
+import OfferedCourses from "../pages/Home/OfferedCourses";
+import OfferedResources from "../pages/Home/OfferedResources";
+
 function Routers(props) {
   let [role, setRole] = useState(false);
   const roles = (role) => {
@@ -77,6 +81,10 @@ function Routers(props) {
       <Routes>
         {/* Route for home page */}
         <Route path="/home/" element={<Home />} />
+
+        {/* Routes for viewing courses and resources offeredd in Home Page */}
+        <Route path="/home/offered-courses" element={<OfferedCourses />} />
+        <Route path="/home/offered-resources" element={<OfferedResources />} />
 
         {/* Routes for Course Enqiuiry Form */}
         <Route path="/home/course-enquiry" element={<CourseEnquiryForm />} />
