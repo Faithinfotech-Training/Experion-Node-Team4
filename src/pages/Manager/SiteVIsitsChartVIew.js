@@ -1,12 +1,19 @@
 import ManagerDashboard from "../../Components/ManagerDashboard/ManagerDashboard";
 import Chart from "./Chart/Chart";
+import BarChartScreen from "./Chart/ChartApi";
 
 function SitesVisitsChartView() {
   return (
     <div>
-      <ManagerDashboard />
-      {/* <p>This is page for Chart...</p> */}
-      {/* <Chart /> */}
+      <div>
+        <ManagerDashboard />
+      </div>
+      <div>
+        <Chart />
+      </div>
+      <div>
+        <BarChartScreen />
+      </div>
     </div>
   );
 }

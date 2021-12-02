@@ -1,9 +1,9 @@
 import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+// import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import "./Chart.css";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+// ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const data = {
   labels: [
@@ -43,9 +43,7 @@ function Chart() {
   return (
     <div className="chartbox">
       <Doughnut data={data} />;
-      <h1>Chart View</h1>
     </div>
-
   );
 }
 
