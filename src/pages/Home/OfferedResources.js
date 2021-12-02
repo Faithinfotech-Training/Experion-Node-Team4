@@ -1,12 +1,22 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-import { Card, Row, Col, Button, Container, CardGroup } from "react-bootstrap";
+import { Card, Row, Col, Button, Container, CardGroup, Collapse } from "react-bootstrap";
 import './Home.css';
 
 function OfferedResources() {
 
+    let navigate = useNavigate();
+
     const [resources, setResources] = useState([]);
+    const [open, setOpen] = useState(false);
+
+    function enquireResource(resourcename) {
+        navigate('/home/resource-enquiry/')
+
+    }
+
     useEffect(() => {
         console.log('The use effect hook has been executed');
 
@@ -33,10 +43,23 @@ function OfferedResources() {
                                 <Card.Header as="h5">Resource</Card.Header>
                                 <Card.Body>
                                     <Card.Title>{resource.resourcename}</Card.Title>
-                                    <Card.Text>
-                                        With supporting text below as a natural lead-in to additional content.
-                                    </Card.Text>
-                                    <Button variant="primary">Go somewhere</Button>
+                                    <Card.Text>{resource.description}</Card.Text>
+                                    <Button variant="primary" onClick={() => enquireResource(resource.resourcename)}>Enquire</Button>
+                                    &nbsp;
+                                    <Button onClick={() => setOpen(!open)} aria-controls="example-collapse-text" aria-expanded={open}>
+                                        View Details
+                                    </Button>
+                                    <br />
+                                    <Collapse in={open}>
+                                        <div id="example-collapse-text">
+                                            <Card.Text>
+                                                Resource Code :{resource.resourcecode} <br />
+                                                Resource Name:{resource.resourcename}  <br />
+                                                Resource Fee: {resource.resourcefee}   <br />
+                                                Category: {resource.category}
+                                            </Card.Text>
+                                        </div>
+                                    </Collapse>
                                 </Card.Body>
                             </Card>
                         </CardGroup>
