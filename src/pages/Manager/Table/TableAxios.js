@@ -4,7 +4,9 @@ import Table from "react-bootstrap/Table";
 import "./Table.css";
 
 const VisitTable = () => {
-  const [visit, setVisit] = useState([]);
+  const [coursevisit, setCourseVisit] = useState([]);
+  const [resourcevisit, setResourceVisit] = useState([]);
+
   const [search, setSearch] = useState("");
 
   const getCourseVisitData = async () => {
@@ -14,7 +16,7 @@ const VisitTable = () => {
       // );
       axios.get("http://localhost:3009/courses");
       console.log(data.data);
-      setVisit(data.data);
+      setCourseVisit(data.data);
     } catch (e) {
       console.log(e);
     }
@@ -26,7 +28,7 @@ const VisitTable = () => {
       // );
       axios.get("http://localhost:3009/resources");
       console.log(data.data);
-      setVisit(data.data);
+      setResourceVisit(data.data);
     } catch (e) {
       console.log(e);
     }
@@ -67,7 +69,7 @@ const VisitTable = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {visit
+                  {coursevisit
                     .filter((item) => {
                       if (search == "") {
                         return item;
@@ -114,7 +116,7 @@ const VisitTable = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {visit
+                  {resourcevisit
                     .filter((item) => {
                       if (search == "") {
                         return item;
