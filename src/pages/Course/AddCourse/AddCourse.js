@@ -35,8 +35,18 @@ function AddCourse() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(courses);
+    const mytoken = localStorage.getItem('mytoken');
+    var config = {
+      method: 'post',
+      url: 'http://localhost:3009/courses',
+      headers: { 
+        'Authorization': `Bearer ${mytoken}`, 
+        'Content-Type': 'application/json'
+      },
+      data : courses
+    };
 
-    axios.post("http://localhost:3009/courses", courses)
+    axios(config)
       .then((response) => {
         console.log(response);
         toast.success("New course Added Successfully", {

@@ -13,6 +13,7 @@ function EditCeq() {
 
 
   let navigate = useNavigate();
+  const mytoken = localStorage.getItem('mytoken');
   const { id } = useParams();
   const goBack = () => {
     navigate('/admin/course-enquiry')
@@ -31,18 +32,42 @@ function EditCeq() {
   }
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3009/course-enquiries/${id}`)
-      .then((response) => {
-        setUserstatus(response.data.userstatus);
-        console.log(response.data);
-      })
+    var config = {
+      method: 'get',
+      url: `http://localhost:3009/course-enquiries/${id}`,
+      headers: { 
+        'Authorization': `Bearer ${mytoken}`, 
+        'Content-Type': 'application/json'
+      }
+    };
+    
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+     
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
   }, [])
   function handleSubmit(e) {
     e.preventDefault();
     console.log(userstatus);
+    var datas = JSON.stringify({
+      "userstatus": userstatus
+    });
+    var config = {
+      method: 'put',
+      url: `http://localhost:3009/course-enquiries/${id}`,
+      headers: { 
+        'Authorization': `Bearer ${mytoken}`, 
+        'Content-Type': 'application/json'
+      },
+      data: datas
+    };
 
-    axios.put(`http://localhost:3009/course-enquiries/${id}`, { userstatus: userstatus })
+    axios(config)
       .then((response) => {
         console.log(response);
         alert("Status Updated");

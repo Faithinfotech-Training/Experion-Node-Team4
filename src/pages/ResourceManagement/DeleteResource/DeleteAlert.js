@@ -22,15 +22,27 @@ const handleConfirmText = (id) => {
     
     
 
-    axios
-        
-              .delete(`http://localhost:3009/resources/${id}`)
-                      .then(response => {
-                        console.log(" delete promise was fulffiled")
-                        console.log(response);
+      const mytoken = localStorage.getItem('mytoken');
+      const data = '';
+  var config = {
+    method: 'delete',
+    url: `http://localhost:3009/resources/${id}`,
+    headers: { 
+      'Authorization': `Bearer ${mytoken}`, 
+      'Content-Type': 'application/json'
+    }
+  };
+      axios(config)
+          .then((response) => {
+              console.log(response);
+          })
+          .catch((error) => {
+              console.log(error);
+          })
+          // window.location = "/admin/course/view-courses"
            
-        })
-    window.location = "/admin/resource/view-resources"
+        
+    window.location.reload();
 }
       // console.log("handleConfirmText = ", data);
       // DeletePassFunction(data);
