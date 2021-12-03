@@ -1,8 +1,9 @@
-import { Card, Row, Col, Button, Container, CardGroup } from "react-bootstrap";
+import { Card, Row, Col, Container, CardGroup } from "react-bootstrap";
 
 import './Home.css';
 
 import ControlledCarousel from "../../Components/Carousel/ControlledCarousel";
+
 
 function Home() {
 
@@ -58,6 +59,7 @@ function Home() {
                     Aliquam sit amet ante ante. Nunc tortor nisl, lobortis vel sodales vitae, vehicula eu eros. Praesent quis pellentesque urna. In lacus erat, gravida a erat non, posuere varius enim. Phasellus vel suscipit libero, non ornare lacus. Etiam purus purus, rhoncus eu mauris vitae, tincidunt sagittis augue. Etiam mollis sodales lorem, nec lobortis eros feugiat a. Nulla scelerisque efficitur nunc sed semper.
                 </p>
             </Container>
+
         </>
     )
 }
