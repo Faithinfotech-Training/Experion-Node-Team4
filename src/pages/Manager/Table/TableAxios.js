@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import { withStyles,  } from "@material-ui/core/styles";
-import {  withStyles,makeStyles } from '@material-ui/styles';
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -36,63 +35,48 @@ const useStyles = makeStyles({
 
 const VisitTable = () => {
   const classes = useStyles();
-  const [product, setProduct] = useState([]);
+  const [visit, setVisit] = useState([]);
   const [search, setSearch] = useState("");
 
-  const getProductData = async () => {
+  const getVisitData = async () => {
     try {
       const data = await axios.get(
-        "https://jsonplaceholder.typicode.com/comments"
+        "https://mocki.io/v1/09d3f919-7991-4a80-bdab-0143d0b6cb5c"
       );
       console.log(data.data);
-      setProduct(data.data);
+      setVisit(data.data);
     } catch (e) {
       console.log(e);
     }
   };
 
   useEffect(() => {
-    getProductData();
+    getVisitData();
   }, []);
   return (
     <div className="App">
-      <h1>Site Visit View</h1>
-      <input
-        type="text"
-        placeholder="Search here"
-        onChange={(e) => {
-          setSearch(e.target.value);
-        }}
-      />
-
-      {/* {product
-        .filter((item) => {
-          if (search == "") {
-            return item;
-          } else if (item.name.toLowerCase().includes(search.toLowerCase())) {
-            return item;
-          }
-        })
-        .map((item) => {
-          return (
-            <p>
-              {item.name} - {item.price}
-            </p>
-          );
-        })} */}
-
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>ID</StyledTableCell>
-              <StyledTableCell>User</StyledTableCell>
-              <StyledTableCell>Page</StyledTableCell>
-              <StyledTableCell align="right"> Count</StyledTableCell>
+              <StyledTableCell>No:</StyledTableCell>
+              <StyledTableCell align="left">
+                User &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input
+                  type="text"
+                  align="center"
+                  placeholder="Search here"
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
+                />{" "}
+              </StyledTableCell>
+              <StyledTableCell align="left">Page</StyledTableCell>
+              <StyledTableCell align="left">Count</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {product
+            {visit
               .filter((item) => {
                 if (search == "") {
                   return item;
@@ -106,17 +90,11 @@ const VisitTable = () => {
                 return (
                   <StyledTableRow key={item.id}>
                     <StyledTableCell component="th" scope="row">
-                      {item.name}
+                      {item.id}
                     </StyledTableCell>
-                    <StyledTableCell component="th" scope="row">
-                      {item.email}
-                    </StyledTableCell>
-                    <StyledTableCell component="th" scope="row">
-                      {item.name}
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      {item.price}
-                    </StyledTableCell>
+                    <StyledTableCell align="left">{item.user}</StyledTableCell>
+                    <StyledTableCell align="left">{item.page}</StyledTableCell>
+                    <StyledTableCell align="left">{item.count}</StyledTableCell>
                   </StyledTableRow>
                 );
               })}
@@ -128,56 +106,3 @@ const VisitTable = () => {
 };
 
 export default VisitTable;
-
-// import React, { Component } from "react";
-// import axios from "axios";
-// import ReactTable from "react-table";
-// // import "react-table/react-table.css";
-
-// export default class Visittable extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       users: [],
-//       loading: true,
-//     };
-//   }
-//   async getUsersData() {
-//     const res = await axios.get("https://jsonplaceholder.typicode.com/users");
-//     console.log(res.data);
-//     this.setState({ loading: false, users: res.data });
-//   }
-//   componentDidMount() {
-//     this.getUsersData();
-//   }
-//   render() {
-//     const columns = [
-//       {
-//         Header: "ID",
-//         accessor: "id",
-//       },
-//       {
-//         Header: "Name",
-//         accessor: "name",
-//       },
-
-//       {
-//         Header: "Username",
-//         accessor: "username",
-//       },
-//       {
-//         Header: "Phone",
-//         accessor: "phone",
-//       },
-//       {
-//         Header: "Email",
-//         accessor: "email",
-//       },
-//       {
-//         Header: "Website",
-//         accessor: "website",
-//       },
-//     ];
-//     return <ReactTable data={this.state.users} columns={columns} />;
-//   }
-// }
