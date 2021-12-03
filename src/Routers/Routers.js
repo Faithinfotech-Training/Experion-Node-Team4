@@ -90,9 +90,7 @@ function Routers(props) {
         <Route path="/home/course-enquiry" element={<CourseEnquiryForm />} />
 
         {/* Routes for Resource Enqiuiry Form */}
-        <Route
-          path="/home/resource-enquiry"
-          element={<ResourceEnquiryForm />}
+        <Route path="/home/resource-enquiry" element={<ResourceEnquiryForm />}
         />
         {/* Route for Registration form */}
         <Route path="/home/register" element={<RegistrationForm />} />

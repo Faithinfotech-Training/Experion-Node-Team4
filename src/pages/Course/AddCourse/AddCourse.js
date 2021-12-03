@@ -57,28 +57,31 @@ function AddCourse() {
     <div>
       <Dashboard />
       <Form onSubmit={handleSubmit} className="add-courses">
-        <Form.Group className="mb-3">
-          <Form.Label>Course Name</Form.Label>
-          <Form.Control type="text" name="coursename" placeholder="Enter the course name" value={courses.coursename || ""} onChange={handleChange} />
 
-          <Form.Text className="text-muted">
-            Anything specific to course
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group className="mb-3" >
+        
+      <Form.Group className="mb-3" >
           <Form.Label>Course Code</Form.Label>
           <Form.Control type="number" placeholder="Enter the code" name="coursecode" value={courses.coursecode || ""} onChange={handleChange} />
         </Form.Group>
 
+        <Form.Group className="mb-3">
+          <Form.Label>Course Name</Form.Label>
+          <Form.Control type="text" name="coursename" placeholder="Enter the course name" value={courses.coursename || ""} onChange={handleChange} />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Course Description</Form.Label>
+          <Form.Control as="textarea" rows={3} name="description" placeholder="Add a description" value={courses.description || ""} onChange={handleChange}  />
+        </Form.Group>
+
         <Form.Group className="mb-3" >
           <Form.Label>Course Fee in INR:</Form.Label>
-          <Form.Control type="number" placeholder="Enter the code" name="coursefee" value={courses.coursefee || ""} onChange={handleChange} />
+          <Form.Control type="number" placeholder="Enter course fee" name="coursefee" value={courses.coursefee || ""} onChange={handleChange} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           {/* Course Category: <Form.Check type="checkbox" label="Web Dev"  className="formCheckBox"/><Form.Check type="checkbox" label="IOT"  className="formCheckBox"/><Form.Check type="checkbox" label="ML"  className="formCheckBox"/> */}
-          <label for="cars">Choose a category:</label>
+          <label for="category">Choose a category:</label>
 
           <Form.Select name="category" aria-label="Default select example" defaultValue={courses.category} onChange={handleChange}>
             <option value="">--choose an option--</option>

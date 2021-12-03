@@ -6,11 +6,11 @@ import "./ManagerDashboard.css";
 function ManagerDashboard() {
   return (
     <>
-      <div className="dashboard">
-        <div className="dashboarditem">MANAGER</div>
+      <div className="dash">
+        <div className="dashboarditem ">MANAGER</div>
         <div classname="dashboarditem">
           <div className="item">
-            <NavDropdown title="View" id="basic-nav-dropdown">
+            <NavDropdown className="" title="View" id="basic-nav-dropdown">
               <NavDropdown.Item>
                 <Link to="/manager/view-course-enquiry">
                   {" "}

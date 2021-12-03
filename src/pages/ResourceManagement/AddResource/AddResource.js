@@ -60,18 +60,20 @@ function AddResource() {
       <Dashboard />
 
       <Form onSubmit={handleSubmit} className="add-resource">
+        
+      <Form.Group className="mb-3" >
+          <Form.Label>Resource Code</Form.Label>
+          <Form.Control type="number" placeholder="Enter the code" name="resourcecode" value={resources.resourcecode || ""} onChange={handleChange} />
+        </Form.Group>
+
         <Form.Group className="mb-3">
           <Form.Label>Resource Name</Form.Label>
           <Form.Control type="text" name="resourcename" placeholder="Enter the resource name" value={resources.resourcename || ""} onChange={handleChange} />
-          {/* 
-          <Form.Text className="text-muted">
-            Anything specific to course
-          </Form.Text> */}
         </Form.Group>
 
-        <Form.Group className="mb-3" >
-          <Form.Label>Resource Code</Form.Label>
-          <Form.Control type="number" placeholder="Enter the code" name="resourcecode" value={resources.resourcecode || ""} onChange={handleChange} />
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Resource Description</Form.Label>
+          <Form.Control as="textarea" rows={3} name="description" placeholder="Add a description" value={resources.description || ""} onChange={handleChange}/>
         </Form.Group>
 
         <Form.Group className="mb-3" >
