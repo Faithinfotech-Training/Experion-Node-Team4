@@ -1,5 +1,5 @@
 import ManagerDashboard from "../../Components/ManagerDashboard/ManagerDashboard";
-import Tables from "./Table/Table";
+// import Tables from "./Table/Table";
 import VisitTable from "./Table/TableAxios";
 
 function SitesVisitsTableView() {
