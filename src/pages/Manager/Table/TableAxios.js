@@ -7,11 +7,24 @@ const VisitTable = () => {
   const [visit, setVisit] = useState([]);
   const [search, setSearch] = useState("");
 
-  const getVisitData = async () => {
+  const getCourseVisitData = async () => {
     try {
-      const data = await axios.get(
-        "https://mocki.io/v1/09d3f919-7991-4a80-bdab-0143d0b6cb5c"
-      );
+      const data = await // axios.get(
+      //   "https://mocki.io/v1/09d3f919-7991-4a80-bdab-0143d0b6cb5c"
+      // );
+      axios.get("http://localhost:3009/courses");
+      console.log(data.data);
+      setVisit(data.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const getResourseVisitData = async () => {
+    try {
+      const data = await // axios.get(
+      //   "https://mocki.io/v1/09d3f919-7991-4a80-bdab-0143d0b6cb5c"
+      // );
+      axios.get("http://localhost:3009/resources");
       console.log(data.data);
       setVisit(data.data);
     } catch (e) {
@@ -20,7 +33,8 @@ const VisitTable = () => {
   };
 
   useEffect(() => {
-    getVisitData();
+    getCourseVisitData();
+    getResourseVisitData();
   }, []);
 
   return (
@@ -37,7 +51,7 @@ const VisitTable = () => {
                   <tr>
                     <th>No:</th>
                     <th align="left">
-                      User
+                      Course Name
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <input
                         type="text"
@@ -48,7 +62,7 @@ const VisitTable = () => {
                         }}
                       />
                     </th>
-                    <th align="left">Page</th>
+                    <th align="left">Course Code</th>
                     <th align="left">Count</th>
                   </tr>
                 </thead>
@@ -65,9 +79,9 @@ const VisitTable = () => {
                       return (
                         <tr key={item.id}>
                           <td component="th">{item.id}</td>
-                          <td align="left">{item.user}</td>
-                          <td align="left">{item.page}</td>
-                          <td align="left">{item.count}</td>
+                          <td align="left">{item.coursename}</td>
+                          <td align="left">{item.coursecode}</td>
+                          <td align="left">{item.visit}</td>
                         </tr>
                       );
                     })}
@@ -84,7 +98,7 @@ const VisitTable = () => {
                   <tr>
                     <th>No:</th>
                     <th align="left">
-                      User
+                      Resource Name
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <input
                         type="text"
@@ -95,7 +109,7 @@ const VisitTable = () => {
                         }}
                       />
                     </th>
-                    <th align="left">Page</th>
+                    <th align="left">Resource Code</th>
                     <th align="left">Count</th>
                   </tr>
                 </thead>
@@ -104,7 +118,7 @@ const VisitTable = () => {
                     .filter((item) => {
                       if (search == "") {
                         return item;
-                      } else if (item.user.includes(search)) {
+                      } else if (item.resourcename.includes(search)) {
                         return item;
                       }
                     })
@@ -112,9 +126,9 @@ const VisitTable = () => {
                       return (
                         <tr key={item.id}>
                           <td component="th">{item.id}</td>
-                          <td align="left">{item.user}</td>
-                          <td align="left">{item.page}</td>
-                          <td align="left">{item.count}</td>
+                          <td align="left">{item.resourcename}</td>
+                          <td align="left">{item.resourcecode}</td>
+                          <td align="left">{item.visit}</td>
                         </tr>
                       );
                     })}

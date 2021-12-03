@@ -35,7 +35,6 @@ const BarChart = () => {
         }
         setChartData({
           labels: courseName,
-
           datasets: [
             {
               label: "Course Visit",
