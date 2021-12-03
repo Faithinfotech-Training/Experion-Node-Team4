@@ -58,8 +58,8 @@ function ViewCourse() {
                 <Table striped bordered hover>
                         <tr>
                             <th>id</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
+                            <th>Course Name</th>
+                            <th>Details</th>
                             
                         </tr>
 
@@ -83,14 +83,7 @@ function ViewCourse() {
                                         <Link to={`${course.id}`}>View Course Details</Link>
                                     </div>
                                 )}</td>
-                        </tr>
-
-
-                                // <div>Course code: </div>
-                                // <div>Course name: {course.coursename}</div>
-
-                               
-                            
+                        </tr>                            
                         ))}
                     </Table>
                 
