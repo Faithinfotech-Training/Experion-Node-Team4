@@ -7,7 +7,8 @@ const VisitTable = () => {
   const [coursevisit, setCourseVisit] = useState([]);
   const [resourcevisit, setResourceVisit] = useState([]);
 
-  const [search, setSearch] = useState("");
+  const [coursesearch, setCourseSearch] = useState("");
+  const [resoursesearch, setResourseSearch] = useState("");
 
   const getCourseVisitData = async () => {
     try {
@@ -60,7 +61,7 @@ const VisitTable = () => {
                         align="center"
                         placeholder="Search here"
                         onChange={(e) => {
-                          setSearch(e.target.value);
+                          setCourseSearch(e.target.value);
                         }}
                       />
                     </th>
@@ -71,9 +72,9 @@ const VisitTable = () => {
                 <tbody>
                   {coursevisit
                     .filter((item) => {
-                      if (search == "") {
+                      if (coursesearch == "") {
                         return item;
-                      } else if (item.coursename.includes(search)) {
+                      } else if (item.coursename.includes(coursesearch)) {
                         return item;
                       }
                     })
@@ -107,7 +108,7 @@ const VisitTable = () => {
                         align="center"
                         placeholder="Search here"
                         onChange={(e) => {
-                          setSearch(e.target.value);
+                          setResourseSearch(e.target.value);
                         }}
                       />
                     </th>
@@ -118,9 +119,9 @@ const VisitTable = () => {
                 <tbody>
                   {resourcevisit
                     .filter((item) => {
-                      if (search == "") {
+                      if (resoursesearch == "") {
                         return item;
-                      } else if (item.resourcename.includes(search)) {
+                      } else if (item.resourcename.includes(resoursesearch)) {
                         return item;
                       }
                     })
