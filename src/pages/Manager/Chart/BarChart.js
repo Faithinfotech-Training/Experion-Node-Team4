@@ -20,30 +20,33 @@ const BarChart = () => {
   const chart = () => {
     let yAxis = [];
     let xAxis = [];
+    let yAxiss = [];
+    let xAxiss = [];
     axios
       .get("http://localhost:3009/courses")
       .then((res) => {
         console.log(res);
         for (const dataObj of res.data) {
           yAxis.push(parseInt(dataObj.visit));
+          yAxiss.push(parseInt(dataObj.visit));
+
           xAxis.push(dataObj.coursename);
+          xAxiss.push(dataObj.resourcename);
         }
         setChartData({
-          // labels: [
-          //   "Course 1",
-          //   "Course 2",
-          //   "Course 3",
-          //   "Course 4",
-          //   "Course 5",
-          //   "Course 6",
-          // ],
           labels: xAxis,
 
           datasets: [
             {
-              label: "Site Visit",
+              label: "Course Visit",
               data: yAxis,
-              backgroundColor: "rgba(255, 32, 32, 1)",
+              backgroundColor: "rgba(255, 2, 2, 1)",
+            },
+
+            {
+              label: "Resource Visit",
+              data: yAxiss,
+              backgroundColor: "rgba(2, 2, 255, 1)",
             },
           ],
         });
