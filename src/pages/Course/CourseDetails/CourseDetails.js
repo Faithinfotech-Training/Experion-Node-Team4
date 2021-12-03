@@ -44,6 +44,19 @@ function ViewCourse() {
     }
 
     const [courses, setCourses] = useState([]);
+    const [admin, setAdmin] = useState(false);
+
+    const Admin = ()=>{
+
+
+
+         if(localStorage.getItem('role') === 'Admin'){
+
+             setAdmin(true);
+
+         }
+
+    }
     // const navigate =useNavigate()
 
     useEffect(() => {

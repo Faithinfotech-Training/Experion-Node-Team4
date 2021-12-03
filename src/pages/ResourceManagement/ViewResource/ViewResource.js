@@ -36,7 +36,31 @@ function ViewResource() {
              setAdmin(true);
          }
     }
-  
+    let inc = 0;
+
+    const updateVisitCount = (id) => {
+
+        axios.get(`http://localhost:3009/courses/${id}`).then((res) => {
+
+            //   setCounter(response.data.visit + 1);
+
+            console.log('initial visit', res.data.visit);
+
+            let x = res.data.visit + 1;
+
+            axios
+
+                .put(`http://localhost:3009/courses/${id}`, { visit: x })
+
+                .then((response) => {
+
+                    console.log('Updated count', inc);
+
+                });
+
+        });
+
+    };
 
     let navigate = useNavigate();
     const goBack = () => {
@@ -92,7 +116,15 @@ function ViewResource() {
                                 <td>{resource.resourcefee}</td>
                                 <td>{resource.category}</td>
                             
+                             <td>   <Button type="button"
+                                        onClick={async () => {
+                                            await updateVisitCount(resource.id);
 
+                                            navigate(`/home/resource-enquiry`);
+                                        }}
+                                    >
+                                        Enquire
+                                    </Button> </td>
                                 {/* <button type ="button" onClick={()=> DeleteResources(resource.id)}> Delete</button> */}
                                 {/* <br />   */}
                                 {/* <ToastContainer/> */}
