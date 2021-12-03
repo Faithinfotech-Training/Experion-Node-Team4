@@ -21,23 +21,23 @@ const BarChart = () => {
     let yAxis = [];
     let xAxis = [];
     axios
-      .get("https://mocki.io/v1/b7720d77-b8ce-4553-a775-df6f3cebf922")
+      .get("http://localhost:3009/courses")
       .then((res) => {
         console.log(res);
-        for (const dataObj of res.data.data) {
-          yAxis.push(parseInt(dataObj.employee_salary));
-          xAxis.push(parseInt(dataObj.employee_name));
+        for (const dataObj of res.data) {
+          yAxis.push(parseInt(dataObj.visit));
+          xAxis.push(dataObj.coursename);
         }
         setChartData({
-          labels: [
-            "Course 1",
-            "Course 2",
-            "Course 3",
-            "Course 4",
-            "Course 5",
-            "Course 6",
-          ],
-          // labels: xAxis,
+          // labels: [
+          //   "Course 1",
+          //   "Course 2",
+          //   "Course 3",
+          //   "Course 4",
+          //   "Course 5",
+          //   "Course 6",
+          // ],
+          labels: xAxis,
 
           datasets: [
             {
@@ -52,7 +52,8 @@ const BarChart = () => {
         console.log(err);
       });
 
-    console.log(yAxis);
+    console.log("yaxis", yAxis);
+    console.log("xaxis", xAxis);
   };
 
   useEffect(() => {
