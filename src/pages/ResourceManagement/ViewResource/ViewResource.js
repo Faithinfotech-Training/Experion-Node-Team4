@@ -9,6 +9,8 @@ import handleConfirmText from '../DeleteResource/DeleteAlert';
 import { useNavigate } from 'react-router';
 import DeleteResources from '../DeleteResource/DeleteResource';
 import Dashboard from '../../../Components/Dashboard/Dashboard';
+import { Table } from "react-bootstrap";
+
 const CustomToast = ({closeToast}) =>{
     return(
         <div>
@@ -62,39 +64,52 @@ function ViewResource() {
                 <center> <h1>
                     Resource List
                 </h1> </center>
+               
                 <div>
+                <Table striped bordered>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Course Name</th>
+                            <th>Details</th>
+                            
+                        </tr></thead><tbody>
+                       
                     {resources.map(resource =>
                         // <div key={staff.id} className="staffListLI">
                         //     {/* <Staff details = {staff} /> */}
                         // </div>
-                        <center>
-                            <div>
-                                <div> Resource Code :{resource.resourcecode}</div>
-                                <div> Resource Name:{resource.resourcename}</div>
-                                <div>Resource Fee: {resource.resourcefee}</div>
-                                <div> Category: {resource.category}</div>
+                      
+                            <tr>
+                                <td> {resource.resourcecode}</td>
+                                <td> {resource.resourcename}</td>
+                                <td>{resource.resourcefee}</td>
+                                <td>{resource.category}</td>
+                            
 
                                 {/* <button type ="button" onClick={()=> DeleteResources(resource.id)}> Delete</button> */}
-                                <br />  
+                                {/* <br />   */}
                                 {/* <ToastContainer/> */}
-                                <Button type="button" 
+                               <td> <Button type="button" 
                                 
                                     onClick=  {() => handleConfirmText(resource.id) } variant="danger"> Delete</Button>
-                                    
-                                &nbsp; &nbsp;&nbsp;
-                                <Button type="button"
-                                    onClick={ () => navigate(`/admin/resource/edit-resource/${resource.id}`)} variant="success"> Edit</Button>  &nbsp; &nbsp;&nbsp;
-                                <Button variant="primary" type="reset" onClick={() => goBack()}>
+                                </td>  
+                                {/* &nbsp; &nbsp;&nbsp; */}
+                              <td>  <Button type="button"
+                                    onClick={ () => navigate(`/admin/resource/edit-resource/${resource.id}`)} variant="success"> Edit</Button></td>
+                               <td> <Button variant="primary" type="reset" onClick={() => goBack()}>
                                     Go Back
-                                </Button>
-                                <br />
-                                <br />
+                                </Button></td>
+                                {/* <br />
+                                <br /> */}
+                                </tr>
 
-                            </div>
-                        </center>
+                        
                     )}
+                    </tbody>
+                   </Table> 
                 </div>
-
+                                
 
             </div>
         </>
