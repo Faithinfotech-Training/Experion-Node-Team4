@@ -107,7 +107,7 @@ function Routers(props) {
         {/* Routes for user view course from user page */}
         <Route
           path="/user/view-courses"
-          element={localStorage.getItem("mytoken") && <ViewCourse />}
+          element={localStorage.getItem("mytoken") && <CourseDetails />}
         />
         {/* Path for Course detail for users */}
         <Route
