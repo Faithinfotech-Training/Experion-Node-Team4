@@ -29,7 +29,13 @@ function ViewResource() {
                 position:toast.POSITION.TOP_CENTER
             })
     }
- 
+    const [admin, setAdmin] = useState(false);
+    const Admin = ()=>{
+
+         if(localStorage.getItem('role') === 'Admin'){
+             setAdmin(true);
+         }
+    }
   
 
     let navigate = useNavigate();
@@ -42,7 +48,7 @@ function ViewResource() {
 
     useEffect(() => {
         console.log('The use effect hook has been executed');
-
+        Admin();
         axios
             .get('http://localhost:3009/resources')
             .then(response => {
@@ -59,7 +65,7 @@ function ViewResource() {
 
     return (
         <>
-            <Dashboard />
+            {admin && <Dashboard />}
             <div className="resource-list">
                 <center> <h1>
                     Resource List
@@ -90,18 +96,16 @@ function ViewResource() {
                                 {/* <button type ="button" onClick={()=> DeleteResources(resource.id)}> Delete</button> */}
                                 {/* <br />   */}
                                 {/* <ToastContainer/> */}
-                               <td> <Button type="button" 
+                             {admin && <td> <Button type="button" 
                                 
                                     onClick=  {() => handleConfirmText(resource.id) } variant="danger"> Delete</Button>
-                                </td>  
-                                {/* &nbsp; &nbsp;&nbsp; */}
-                              <td>  <Button type="button"
-                                    onClick={ () => navigate(`/admin/resource/edit-resource/${resource.id}`)} variant="success"> Edit</Button></td>
-                               <td> <Button variant="primary" type="reset" onClick={() => goBack()}>
+                                </td> }
+                              
+                             {admin && <td>  <Button type="button"
+                                    onClick={ () => navigate(`/admin/resource/edit-resource/${resource.id}`)} variant="success"> Edit</Button></td>}
+                               {admin && <td> <Button variant="primary" type="reset" onClick={() => goBack()}>
                                     Go Back
-                                </Button></td>
-                                {/* <br />
-                                <br /> */}
+                                </Button></td>}
                                 </tr>
 
                         

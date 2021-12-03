@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { Next } from "react-bootstrap/esm/PageItem";
 
 function Header() {
   let [user, setUser] = useState(false);
@@ -63,7 +64,7 @@ function Header() {
               {localStorage.getItem("mytoken") && (
                 <Link
                   className="navItem"
-                  onClick={() => (window.location = "home/login")}
+                  onClick={() => {window.location = "/home"}}
                   to="home/login"
                 >
                   Logout

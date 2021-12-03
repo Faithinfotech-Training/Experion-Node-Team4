@@ -15,7 +15,7 @@ function CeqDetails(){
     const mytoken = localStorage.getItem('mytoken');
 
     //Delete course option
-    const deleteCourse = ()=>{
+    const deleteCourseEnquiree = ()=>{
 
         var config = {
             method: 'delete',
@@ -61,14 +61,14 @@ function CeqDetails(){
         <>
         <Dashboard />
         <div><center>
-        <h1>Course Details</h1>
+        <h1>Course Enquiree Details</h1>
         <h2>Enquiree Name: {inputs.name}</h2>
         <h2>Enquirie Email : { inputs.email}</h2>
         <h2>Enquired Course: {inputs.courseName}</h2>
         <h2>Enquirie Status: {inputs.userstatus}</h2>
         <Button onClick={()=> navigate(`/admin/course-enquiry/edit-course-enquiry/${id}`)} variant="primary">Update Enquiree Status</Button>
         &nbsp;&nbsp;&nbsp;
-        <Button onClick={()=> {deleteCourse(); navigate('/admin/course/view-courses')}} variant="danger">Delete</Button>
+        <Button onClick={()=> {deleteCourseEnquiree(); navigate('/admin/course-enquiries/')}} variant="danger">Delete</Button>
         </center></div>
         </>
     )
