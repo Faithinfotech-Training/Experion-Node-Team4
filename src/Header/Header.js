@@ -63,7 +63,7 @@ function Header() {
               {localStorage.getItem("mytoken") && (
                 <Link
                   className="navItem"
-                  onClick={() => (window.location = "home/login")}
+                  onClick={() => localStorage.clearItem()}
                   to="home/login"
                 >
                   Logout
