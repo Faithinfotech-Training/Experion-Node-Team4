@@ -1,4 +1,4 @@
-import './ViewResource.css';
+// import './ViewResource.css';
 import axios from 'axios';
 import { Button } from "react-bootstrap";
 // import { ToastContainer, toast } from 'react-toastify';

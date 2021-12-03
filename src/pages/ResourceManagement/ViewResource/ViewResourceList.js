@@ -1,4 +1,4 @@
-import "./ViewCourse.css";
+// import "./ViewCourse.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -38,7 +38,7 @@ function ViewResourceList() {
     useEffect(() => {
         console.log("The use effect hook has been executed");
 
-        axios.get("http://localhost:3009/reosurces").then((response) => {
+        axios.get("http://localhost:3009/resources").then((response) => {
             console.log("Promise fulfilled");
             console.log(response);
             //response object contains the complete HTTP REQUEST with
@@ -67,7 +67,7 @@ function ViewResourceList() {
                             // <div className="ULbox">
                         <tr>
                             <td>{resource.resourcecode}</td>
-                            <td>{resource.resoourcename}</td>
+                            <td>{resource.resourcename}</td>
                             <td> {user ? (
                                     <button
                                         onClick={async () => {
