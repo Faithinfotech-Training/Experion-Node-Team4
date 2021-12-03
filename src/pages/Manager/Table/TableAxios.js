@@ -41,7 +41,7 @@ const VisitTable = () => {
   const getVisitData = async () => {
     try {
       const data = await axios.get(
-        "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline"
+        "https://mocki.io/v1/09d3f919-7991-4a80-bdab-0143d0b6cb5c"
       );
       console.log(data.data);
       setVisit(data.data);
@@ -90,11 +90,11 @@ const VisitTable = () => {
                 return (
                   <StyledTableRow key={item.id}>
                     <StyledTableCell component="th" scope="row">
-                      {item.name}
+                      {item.id}
                     </StyledTableCell>
-                    <StyledTableCell align="left">{item.name}</StyledTableCell>
-                    <StyledTableCell align="left">{item.name}</StyledTableCell>
-                    <StyledTableCell align="left">{item.name}</StyledTableCell>
+                    <StyledTableCell align="left">{item.user}</StyledTableCell>
+                    <StyledTableCell align="left">{item.page}</StyledTableCell>
+                    <StyledTableCell align="left">{item.count}</StyledTableCell>
                   </StyledTableRow>
                 );
               })}
