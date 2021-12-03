@@ -12,13 +12,25 @@ function CeqDetails(){
     const [inputs, setInputs] = useState({});
     const { id } = useParams();
     const navigate = useNavigate();
+    const mytoken = localStorage.getItem('mytoken');
 
     //Delete course option
     const deleteCourse = ()=>{
+
+        var config = {
+            method: 'delete',
+            url: `http://localhost:3009/course-enquiries/${id}`,
+            headers: { 
+              'Authorization': `Bearer ${mytoken}`, 
+              'Content-Type': 'application/json'
+            }
+          };
+
         axios
-        .delete(`http://localhost:3009/courses/${id}`)
+        (config)
         .then((response)=>{
                 console.log(response);
+                window.location.reload();
         })
         .catch((error)=>{
             console.log(error);
@@ -27,7 +39,16 @@ function CeqDetails(){
     }
 
     useEffect(()=>{
-        axios.get(`http://localhost:3009/course-enquiries/${id}`)
+        const config = {
+            method: 'get',
+            url: `http://localhost:3009/course-enquiries/${id}`,
+            headers: { 
+              'Authorization': `Bearer ${mytoken}`, 
+              'Content-Type': 'application/json'
+            }
+
+        }
+        axios(config)
         .then(response =>{
             console.log(response.data);
             setInputs(response.data);

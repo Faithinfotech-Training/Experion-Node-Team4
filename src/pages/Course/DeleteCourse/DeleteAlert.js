@@ -23,15 +23,26 @@ const handleConfirmText = (id) => {
     
 
 
-    axios
-    .delete(`http://localhost:3009/courses/${id}`)
-    .then((response) => {
-        console.log(response);
-    })
-    .catch((error) => {
-        console.log(error);
-    })
-    window.location = "/admin/course/view-courses"
+      const mytoken = localStorage.getItem('mytoken');
+
+  var config = {
+    method: 'delete',
+    url: `http://localhost:3009/courses/${id}`,
+    headers: { 
+      'Authorization': `Bearer ${mytoken}`, 
+      'Content-Type': 'application/json',
+    }
+  }
+   
+      axios(config)
+          .then((response) => {
+              console.log("Deleted");
+          })
+          .catch((error) => {
+              console.log(error);
+          })
+          window.location.reload();
+  
 }
  
       // console.log("handleConfirmText = ", data);

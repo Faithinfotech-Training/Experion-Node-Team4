@@ -37,10 +37,21 @@ function AddResource() {
     e.preventDefault();
     console.log(resources);
 
-    axios.post("http://localhost:3009/resources", resources)
+    const mytoken = localStorage.getItem('mytoken');
+    var config = {
+      method: 'post',
+      url: 'http://localhost:3009/resources',
+      headers: { 
+        'Authorization': `Bearer ${mytoken}`, 
+        'Content-Type': 'application/json'
+      },
+      data : resources
+    };
+
+    axios(config)
       .then((response) => {
         console.log(response);
-        toast.success("New Resource Added Successfully", {
+        toast.success("New resource Added Successfully", {
           transition: Slide,
           hideProgressBar: true,
           autoClose: 3000
@@ -87,12 +98,12 @@ function AddResource() {
 
           <Form.Select name="category" aria-label="Default select example" value={resources.category || ""} onChange={handleChange}>
             <option value="">--choose an option--</option>
-            <option value="Web Dev">Web Dev</option>
-            <option value="ML">ML</option>
-            <option value="IOT">IOT</option>
+            <option value="Lab">Lab</option>
+            <option value="Class Room">Class Room</option>
+            <option value="Seminar Hall">Seminar Hall</option>
           </Form.Select>
         </Form.Group>
-        <Button variant="success" type="submit" onClick={()=>goBacktoView()}>
+        <Button variant="success" type="submit">
           Add
         </Button>&nbsp;&nbsp;&nbsp;
         <Button variant="primary" type="reset" onClick={() => goBack()}>

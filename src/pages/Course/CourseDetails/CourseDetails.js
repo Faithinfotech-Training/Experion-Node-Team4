@@ -53,7 +53,7 @@ function CourseDetails() {
                 <h2>Course Fee: {inputs.coursefee}</h2>
                 <Button onClick={() => navigate(`/admin/course/edit-course/${id}`)} type="submit" background-color="lightsteelblue" >Edit Course</Button>
                 &nbsp;&nbsp;&nbsp;
-                <Button onClick={() => { handleConfirmText(id); navigate('/admin/course/view-courses') }} variant="danger" >Delete</Button>
+                <Button onClick={async () => { await handleConfirmText(id); navigate('/admin/course/view-courses') }} variant="danger" >Delete</Button>
             </div>
         </>
     )

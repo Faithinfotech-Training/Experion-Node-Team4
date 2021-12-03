@@ -5,8 +5,19 @@ import axios from 'axios';
 
 // import  handleConfirmText from './DeleteAlert' 
      function DeleteCourses(id){
-        axios
-            .delete(`http://localhost:3009/courses/${id}`)
+
+        const mytoken = localStorage.getItem('mytoken');
+        const data = '';
+    var config = {
+      method: 'delete',
+      url: `http://localhost:3009/courses/${id}`,
+      headers: { 
+        'Authorization': `Bearer ${mytoken}`, 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+        axios(config)
             .then((response) => {
                 console.log(response);
             })
