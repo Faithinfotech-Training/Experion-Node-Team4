@@ -36,6 +36,31 @@ function ViewCourse() {
             })
     }
  
+    let inc = 0;
+
+    const updateVisitCount = (id) => {
+
+        axios.get(`http://localhost:3009/courses/${id}`).then((res) => {
+
+            //   setCounter(response.data.visit + 1);
+
+            console.log('initial visit', res.data.visit);
+
+            let x = res.data.visit + 1;
+
+            axios
+
+                .put(`http://localhost:3009/courses/${id}`, { visit: x })
+
+                .then((response) => {
+
+                    console.log('Updated count', inc);
+
+                });
+
+        });
+
+    };
   
 
     let navigate = useNavigate();
@@ -78,7 +103,7 @@ function ViewCourse() {
 
     return (
         <>
-            <Dashboard />
+        {admin &&    <Dashboard />}
             <div className="resource-list">
                 <center> <h1>
                     Course List
@@ -91,7 +116,7 @@ function ViewCourse() {
                             <th>id</th>
                             <th>Course Name</th>
                             <th>Details</th>
-                            
+                            <th>Category</th>
                         </tr></thead><tbody>
                        
                     {courses.map(course =>
@@ -105,20 +130,29 @@ function ViewCourse() {
                                 <td>{course.coursefee}</td>
                                 <td>{course.category}</td>
                             
+                                {!admin  &&     <td>   <Button type="button"
+                                        onClick={async () => {
+                                            await updateVisitCount(course.id);
 
+                                            navigate(`/home/course-enquiry`);
+                                        }}
+                                    >
+                                        Enquire
+                                    </Button> </td>}
                                 {/* <button type ="button" onClick={()=> DeleteResources(resource.id)}> Delete</button> */}
                                 {/* <br />   */}
                                 {/* <ToastContainer/> */}
-                               <td> <Button type="button" 
+                          {admin  &&     <td> <Button type="button" 
                                 
                                     onClick=  {() => handleConfirmText(course.id) } variant="danger"> Delete</Button>
-                                </td>  
+                                </td>  }
                                 {/* &nbsp; &nbsp;&nbsp; */}
-                              <td>  <Button type="button"
+                            {admin &&  <td>  <Button type="button"
                                     onClick={ () => navigate(`/admin/course/edit-course/${course.id}`)} variant="success"> Edit</Button></td>
-                               <td> <Button variant="primary" type="reset" onClick={() => goBack()}>
+                    }
+                       {admin  &&     <td> <Button variant="primary" type="reset" onClick={() => goBack()}>
                                     Go Back
-                                </Button></td>
+                                </Button></td>}
                                 {/* <br />
                                 <br /> */}
                                 </tr>

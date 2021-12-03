@@ -40,7 +40,7 @@ function ViewResource() {
 
     const updateVisitCount = (id) => {
 
-        axios.get(`http://localhost:3009/courses/${id}`).then((res) => {
+        axios.get(`http://localhost:3009/resources/${id}`).then((res) => {
 
             //   setCounter(response.data.visit + 1);
 
@@ -50,7 +50,7 @@ function ViewResource() {
 
             axios
 
-                .put(`http://localhost:3009/courses/${id}`, { visit: x })
+                .put(`http://localhost:3009/resources/${id}`, { visit: x })
 
                 .then((response) => {
 
@@ -100,9 +100,9 @@ function ViewResource() {
                     <thead>
                         <tr>
                             <th>id</th>
-                            <th>Course Name</th>
+                            <th>Resource Name</th>
                             <th>Details</th>
-                            
+                            <th>Category</th>
                         </tr></thead><tbody>
                        
                     {resources.map(resource =>
@@ -116,7 +116,7 @@ function ViewResource() {
                                 <td>{resource.resourcefee}</td>
                                 <td>{resource.category}</td>
                             
-                             <td>   <Button type="button"
+                      {!admin  &&     <td>   <Button type="button"
                                         onClick={async () => {
                                             await updateVisitCount(resource.id);
 
@@ -124,7 +124,7 @@ function ViewResource() {
                                         }}
                                     >
                                         Enquire
-                                    </Button> </td>
+                                    </Button> </td>}
                                 {/* <button type ="button" onClick={()=> DeleteResources(resource.id)}> Delete</button> */}
                                 {/* <br />   */}
                                 {/* <ToastContainer/> */}
