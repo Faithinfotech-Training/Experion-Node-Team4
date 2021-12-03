@@ -6,22 +6,23 @@ const PieChart = () => {
   const [chartData, setChartData] = useState({});
 
   const chart = () => {
-    let details = [];
-    let division = [];
+    let visits = [];
+    let course = [];
     axios
-      .get("https://mocki.io/v1/b7720d77-b8ce-4553-a775-df6f3cebf922")
+      .get("https://mocki.io/v1/14750d73-3bef-40bf-a0d6-b12ced1e2f91")
       .then((res) => {
         console.log(res);
         for (const dataObj of res.data.data) {
-          details.push(parseInt(dataObj.employee_salary));
-          division.push(parseInt(dataObj.employee_name));
+          visits.push(parseInt(dataObj.visit));
+          course.push(dataObj.coursename);
         }
         setChartData({
-          labels: division,
+          // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          labels: course,
           datasets: [
             {
               label: "# of Votes",
-              data: details,
+              data: visits,
               backgroundColor: [
                 "rgba(255, 12,33, 1)",
                 "rgba(54, 162, 235, 1)",
@@ -46,7 +47,7 @@ const PieChart = () => {
       .catch((err) => {
         console.log(err);
       });
-    console.log(details);
+    console.log(visits);
   };
 
   useEffect(() => {
