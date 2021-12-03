@@ -1,41 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-// import { withStyles, makeStyles } from "@material-ui/core/styles";
-// import Table from "@material-ui/core/Table";
-// import tbody from "@material-ui/core/tbody";
-// import TableCell from "@material-ui/core/TableCell";
-// import TableContainer from "@material-ui/core/TableContainer";
-// import th from "@material-ui/core/th";
-// import TableRow from "@material-ui/core/TableRow";
-// import Paper from "@material-ui/core/Paper";
-
-// const td = withStyles((theme) => ({
-//   head: {
-//     backgroundColor: theme.palette.common.black,
-//     color: theme.palette.common.white,
-//   },
-//   body: {
-//     fontSize: 14,
-//   },
-// }))(TableCell);
-
-// const tr = withStyles((theme) => ({
-//   root: {
-//     "&:nth-of-type(odd)": {
-//       backgroundColor: theme.palette.action.hover,
-//     },
-//   },
-// }))(TableRow);
-
-// const useStyles = makeStyles({
-//   table: {
-//     minWidth: 700,
-//   },
-// });
 
 const VisitTable = () => {
-  //   const classes = useStyles();
   const [visit, setVisit] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -58,11 +25,12 @@ const VisitTable = () => {
   return (
     <div className="App">
       <Table striped bordered hover size="sm">
-        <thead className="thead-dark">
+        <thead>
           <tr>
-            <td>No:</td>
-            <td align="left">
-              User &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <th>No:</th>
+            <th align="left">
+              User
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <input
                 type="text"
                 align="center"
@@ -71,9 +39,9 @@ const VisitTable = () => {
                   setSearch(e.target.value);
                 }}
               />
-            </td>
-            <td align="left">Page</td>
-            <td align="left">Count</td>
+            </th>
+            <th align="left">Page</th>
+            <th align="left">Count</th>
           </tr>
         </thead>
         <tbody>
@@ -81,9 +49,7 @@ const VisitTable = () => {
             .filter((item) => {
               if (search == "") {
                 return item;
-              } else if (
-                item.name.toLowerCase().includes(search.toLowerCase())
-              ) {
+              } else if (item.user.includes(search)) {
                 return item;
               }
             })
