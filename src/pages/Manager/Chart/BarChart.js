@@ -18,34 +18,34 @@ export const options = {
 const BarChart = () => {
   const [chartData, setChartData] = useState({});
   const chart = () => {
-    let yAxis = [];
-    let xAxis = [];
-    let yAxiss = [];
-    let xAxiss = [];
+    let courseCount = [];
+    let resourseCount = [];
+    let resourceName = [];
+    let courseName = [];
     axios
       .get("http://localhost:3009/courses")
       .then((res) => {
         console.log(res);
         for (const dataObj of res.data) {
-          yAxis.push(parseInt(dataObj.visit));
-          yAxiss.push(parseInt(dataObj.visit));
+          courseCount.push(parseInt(dataObj.visit));
+          resourseCount.push(parseInt(dataObj.visit));
 
-          xAxis.push(dataObj.coursename);
-          xAxiss.push(dataObj.resourcename);
+          courseName.push(dataObj.coursename);
+          resourceName.push(dataObj.resourcename);
         }
         setChartData({
-          labels: xAxis,
+          labels: courseName,
 
           datasets: [
             {
               label: "Course Visit",
-              data: yAxis,
+              data: courseCount,
               backgroundColor: "rgba(255, 2, 2, 1)",
             },
 
             {
               label: "Resource Visit",
-              data: yAxiss,
+              data: resourseCount,
               backgroundColor: "rgba(2, 2, 255, 1)",
             },
           ],
@@ -55,8 +55,8 @@ const BarChart = () => {
         console.log(err);
       });
 
-    console.log("yaxis", yAxis);
-    console.log("xaxis", xAxis);
+    // console.log("yaxis", yAxis);
+    // console.log("xaxis", xAxis);
   };
 
   useEffect(() => {
