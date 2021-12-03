@@ -19,21 +19,17 @@ function CourseDetails() {
     const [inputs, setInputs] = useState({});
     const { id } = useParams();
     const navigate = useNavigate();
+    const [admin, setAdmin] = useState(false);
+    const Admin = ()=>{
 
-    //Delete course option
-    // const deleteCourse = () => {
-    //     axios
-    //         .delete(`http://localhost:3009/courses/${id}`)
-    //         .then((response) => {
-    //             console.log(response);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         })
+         if(localStorage.getItem('role') === 'Admin'){
+             setAdmin(true);
+         }
+    }
 
-    // }
 
     useEffect(() => {
+        Admin();
         axios.get(`http://localhost:3009/courses/${id}`)
             .then(response => {
                 console.log(response.data);
@@ -45,15 +41,16 @@ function CourseDetails() {
 
     return (
         <>
-            <Dashboard />
+           {admin && <Dashboard /> }
             <div className="detailBox">
                 <h1>Course Details</h1>
                 <h2>Course name: {inputs.coursename}</h2>
                 <h2>Course Code : {inputs.coursecode}</h2>
                 <h2>Course Fee: {inputs.coursefee}</h2>
-                <Button onClick={() => navigate(`/admin/course/edit-course/${id}`)} type="submit" background-color="lightsteelblue" >Edit Course</Button>
+                {admin &&
+                <Button onClick={() => navigate(`/admin/course/edit-course/${id}`)} type="submit" background-color="lightsteelblue" >Edit Course</Button>}
                 &nbsp;&nbsp;&nbsp;
-                <Button onClick={async () => { await handleConfirmText(id); navigate('/admin/course/view-courses') }} variant="danger" >Delete</Button>
+                {admin && <Button onClick={async () => { await handleConfirmText(id); navigate('/admin/course/view-courses') }} variant="danger" >Delete</Button>}
             </div>
         </>
     )
