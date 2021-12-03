@@ -73,7 +73,7 @@ const VisitTable = () => {
                     .filter((item) => {
                       if (search == "") {
                         return item;
-                      } else if (item.user.includes(search)) {
+                      } else if (item.coursename.includes(search)) {
                         return item;
                       }
                     })
