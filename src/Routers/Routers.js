@@ -61,6 +61,7 @@ import ManagerRegistrationForm from "../pages/Registration/ManagerRegistrationFo
 //components for viewing courses and resources offered in Home Page
 import OfferedCourses from "../pages/Home/OfferedCourses";
 import OfferedResources from "../pages/Home/OfferedResources";
+import ViewResourceList from "../pages/ResourceManagement/ViewResource/ViewResourceList";
 
 function Routers(props) {
   let [role, setRole] = useState(false);
@@ -173,7 +174,11 @@ function Routers(props) {
         {/* <Route path="/admin/resource/delete-resources" element={<DeleteResourcess />}/> */}
         <Route
           path="/admin/resource/view-resources"
-          element={<ViewResource />}
+          element={<ViewResourceList />}
+        />
+           <Route
+          path="/admin/resource/view-resources/:id"
+          element={role && localStorage.getItem("mytoken") && <ViewResource />}
         />
 
         {/* Routes for Resource Enquiry Management */}

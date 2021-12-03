@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import './RegistrationForm.css';
-
+import { toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -39,6 +40,11 @@ function RegistrationForm() {
         axios
             .post('http://localhost:3009/users/register', regData)
             .then(response => {
+                toast.success(" Added Successfully", {
+                    transition: Slide,
+                    hideProgressBar: true,
+                    autoClose: 3000
+                  })
                 localStorage.setItem('mytoken', response.data.accessToken);
                 localStorage.setItem('role', response.data.user.role);
                 if(response.data.user.role === 'User'){
