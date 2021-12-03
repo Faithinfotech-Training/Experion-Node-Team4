@@ -1,0 +1,11 @@
+.footer{
+    margin-top: 1rem;
+    padding: 0.2rem;
+    background-color: lightgray;
+    position: relative;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }

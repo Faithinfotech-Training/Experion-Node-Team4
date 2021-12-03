@@ -1,48 +1,48 @@
-// import axios from "axios";
-// import { useEffect, useState } from "react";
-// import { withStyles, makeStyles } from "@material-ui/styles";
-// import Table from "@material-ui/styles/Table";
-// import TableBody from "@material-ui/styles/TableBody";
-// import TableCell from "@material-ui/styles/TableCell";
-// import TableContainer from "@material-ui/styles/TableContainer";
-// import TableHead from "@material-ui/styles/TableHead";
-// import TableRow from "@material-ui/styles/TableRow";
-// import Paper from "@material-ui/core/Paper";
+// // import axios from "axios";
+// // import { useEffect, useState } from "react";
+// // import { withStyles, makeStyles } from "@material-ui/styles";
+// // import Table from "@material-ui/styles/Table";
+// // import TableBody from "@material-ui/styles/TableBody";
+// // import TableCell from "@material-ui/styles/TableCell";
+// // import TableContainer from "@material-ui/styles/TableContainer";
+// // import TableHead from "@material-ui/styles/TableHead";
+// // import TableRow from "@material-ui/styles/TableRow";
+// // import Paper from "@material-ui/core/Paper";
 
-// const StyledTableCell = withStyles((theme) => ({
-//   head: {
-//     backgroundColor: theme.palette.common.black,
-//     color: theme.palette.common.white,
-//   },
-//   body: {
-//     fontSize: 14,
-//   },
-// }))(TableCell);
+// // const StyledTableCell = withStyles((theme) => ({
+// //   head: {
+// //     backgroundColor: theme.palette.common.black,
+// //     color: theme.palette.common.white,
+// //   },
+// //   body: {
+// //     fontSize: 14,
+// //   },
+// // }))(TableCell);
 
-// const StyledTableRow = withStyles((theme) => ({
-//   root: {
-//     "&:nth-of-type(odd)": {
-//       backgroundColor: theme.palette.action.hover,
-//     },
-//   },
-// }))(TableRow);
+// // const StyledTableRow = withStyles((theme) => ({
+// //   root: {
+// //     "&:nth-of-type(odd)": {
+// //       backgroundColor: theme.palette.action.hover,
+// //     },
+// //   },
+// // }))(TableRow);
 
-// const useStyles = makeStyles({
-//   table: {
-//     minWidth: 700,
-//   },
-// });
+// // const useStyles = makeStyles({
+// //   table: {
+// //     minWidth: 700,
+// //   },
+// // });
 
-// const VisitTable = () => {
-//   const classes = useStyles();
-//   const [visit, setVisit] = useState([]);
-//   const [search, setSearch] = useState("");
+// // const VisitTable = () => {
+// //   const classes = useStyles();
+// //   const [visit, setVisit] = useState([]);
+// //   const [search, setSearch] = useState("");
 
 // <<<<<<< HEAD
 //   const getVisitData = async () => {
 //     try {
 //       const data = await axios.get(
-//         "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline"
+//         "https://mocki.io/v1/09d3f919-7991-4a80-bdab-0143d0b6cb5c"
 //       );
 //       console.log(data.data);
 //       setVisit(data.data);
@@ -91,11 +91,11 @@
 //                 return (
 //                   <StyledTableRow key={item.id}>
 //                     <StyledTableCell component="th" scope="row">
-//                       {item.name}
+//                       {item.id}
 //                     </StyledTableCell>
-//                     <StyledTableCell align="left">{item.name}</StyledTableCell>
-//                     <StyledTableCell align="left">{item.name}</StyledTableCell>
-//                     <StyledTableCell align="left">{item.name}</StyledTableCell>
+//                     <StyledTableCell align="left">{item.user}</StyledTableCell>
+//                     <StyledTableCell align="left">{item.page}</StyledTableCell>
+//                     <StyledTableCell align="left">{item.count}</StyledTableCell>
 //                   </StyledTableRow>
 //                 );
 //               })}
