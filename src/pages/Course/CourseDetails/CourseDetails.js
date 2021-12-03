@@ -1,198 +1,175 @@
-
-
-
-
-
-
 // import './ViewResource.css';
-import axios from 'axios';
+import axios from "axios";
 import { Button } from "react-bootstrap";
 // import { ToastContainer, toast } from 'react-toastify';
 import { useState, useEffect } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import handleConfirmText from '../DeleteAlert';
-import { useNavigate } from 'react-router';
-import DeleteCourses from '../DeleteCourse/DeleteCourse';
-import Dashboard from '../../../Components/Dashboard/Dashboard';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import handleConfirmText from "../DeleteAlert";
+import { useNavigate } from "react-router";
+import DeleteCourses from "../DeleteCourse/DeleteCourse";
+import Dashboard from "../../../Components/Dashboard/Dashboard";
 import { Table } from "react-bootstrap";
 
-const CustomToast = ({closeToast}) =>{
-    return(
-        <div>
-            
-            Are You Sure to Delete the Resources
-            <button onClick = {closeToast}> Delete </button>
-        </div>
-    )
-}
+const CustomToast = ({ closeToast }) => {
+  return (
+    <div>
+      Are You Sure to Delete the Resources
+      <button onClick={closeToast}> Delete </button>
+    </div>
+  );
+};
 
-toast.configure()
+toast.configure();
 function ViewCourse() {
-    let notify = () => {
-        toast.warn(<CustomToast/>,
-            {
-                position:toast.POSITION.TOP_CENTER
-            })
-    }
- 
-    let inc = 0;
+  let notify = () => {
+    toast.warn(<CustomToast />, {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
 
-    const updateVisitCount = (id) => {
+  let inc = 0;
 
-        axios.get(`http://localhost:3009/courses/${id}`).then((res) => {
+  const updateVisitCount = (id) => {
+    axios.get(`http://localhost:3009/courses/${id}`).then((res) => {
+      //   setCounter(response.data.visit + 1);
 
-            //   setCounter(response.data.visit + 1);
+      console.log("initial visit", res.data.visit);
 
-            console.log('initial visit', res.data.visit);
+      let x = res.data.visit + 1;
 
-            let x = res.data.visit + 1;
+      axios
 
-            axios
+        .put(`http://localhost:3009/courses/${id}`, { visit: x })
 
-                .put(`http://localhost:3009/courses/${id}`, { visit: x })
-
-                .then((response) => {
-
-                    console.log('Updated count', inc);
-
-                });
-
+        .then((response) => {
+          console.log("Updated count", inc);
         });
+    });
+  };
 
-    };
-  
+  let navigate = useNavigate();
+  const goBack = () => {
+    navigate("/admin/course");
+  };
 
-    let navigate = useNavigate();
-    const goBack = () => {
-        navigate('/admin/course')
+  const [courses, setCourses] = useState([]);
+  const [admin, setAdmin] = useState(false);
+
+  const Admin = () => {
+    if (localStorage.getItem("role") === "Admin") {
+      setAdmin(true);
     }
+  };
+  // const navigate =useNavigate()
 
-    const [courses, setCourses] = useState([]);
-    const [admin, setAdmin] = useState(false);
+  useEffect(() => {
+    console.log("The use effect hook has been executed");
+      Admin()
+    axios.get("http://localhost:3009/courses").then((response) => {
+      console.log("Promise fulfilled");
+      console.log(response);
+      //response object contains the complete HTTP REQUEST with
+      //returned data, status code, and headers. We need only 'data'
+      setCourses(response.data);
+    });
+  }, []);
 
-    const Admin = ()=>{
+  return (
+    <>
+      {admin && <Dashboard />}
+      <div className="resource-list">
+        <center>
+          {" "}
+          <h1>Course List</h1>{" "}
+        </center>
 
+        <div>
+          <Table striped bordered>
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Course Name</th>
+                <th>Details</th>
+                <th>Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courses.map((course) => (
+                <tr>
+                  <td> {course.coursecode}</td>
+                  <td> {course.coursename}</td>
+                  <td>{course.coursefee}</td>
+                  <td>{course.category}</td>
 
+                  {!admin && (
+                    <td>
+                      {" "}
+                      <Button
+                        type="button"
+                        onClick={async () => {
+                          await updateVisitCount(course.id);
 
-         if(localStorage.getItem('role') === 'Admin'){
+                          navigate(`/home/course-enquiry`);
+                        }}
+                      >
+                        Enquire
+                      </Button>{" "}
+                    </td>
+                  )}
 
-             setAdmin(true);
+                  {admin && (
+                    <td>
+                      {" "}
+                      <Button
+                        type="button"
+                        onClick={() => handleConfirmText(course.id)}
+                        variant="danger"
+                      >
+                        {" "}
+                        Delete
+                      </Button>
+                    </td>
+                  )}
 
-         }
-
-    }
-    // const navigate =useNavigate()
-
-    useEffect(() => {
-        console.log('The use effect hook has been executed');
-
-        axios
-            .get('http://localhost:3009/courses')
-            .then(response => {
-                console.log('Promise fulfilled');
-                console.log(response);
-                //response object contains the complete HTTP REQUEST with
-                //returned data, status code, and headers. We need only 'data'
-                setCourses(response.data);
-            })
-            
-
-    }, [])
-
-
-    return (
-        <>
-        {admin &&    <Dashboard />}
-            <div className="resource-list">
-                <center> <h1>
-                    Course List
-                </h1> </center>
-               
-                <div>
-                <Table striped bordered>
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>Course Name</th>
-                            <th>Details</th>
-                            <th>Category</th>
-                        </tr></thead><tbody>
-                       
-                    {courses.map(course =>
-                        // <div key={staff.id} className="staffListLI">
-                        //     {/* <Staff details = {staff} /> */}
-                        // </div>
-                      
-                            <tr>
-                                <td> {course.coursecode}</td>
-                                <td> {course.coursename}</td>
-                                <td>{course.coursefee}</td>
-                                <td>{course.category}</td>
-                            
-                                {!admin  &&     <td>   <Button type="button"
-                                        onClick={async () => {
-                                            await updateVisitCount(course.id);
-
-                                            navigate(`/home/course-enquiry`);
-                                        }}
-                                    >
-                                        Enquire
-                                    </Button> </td>}
-                                {/* <button type ="button" onClick={()=> DeleteResources(resource.id)}> Delete</button> */}
-                                {/* <br />   */}
-                                {/* <ToastContainer/> */}
-                          {admin  &&     <td> <Button type="button" 
-                                
-                                    onClick=  {() => handleConfirmText(course.id) } variant="danger"> Delete</Button>
-                                </td>  }
-                                {/* &nbsp; &nbsp;&nbsp; */}
-                            {admin &&  <td>  <Button type="button"
-                                    onClick={ () => navigate(`/admin/course/edit-course/${course.id}`)} variant="success"> Edit</Button></td>
-                    }
-                       {admin  &&     <td> <Button variant="primary" type="reset" onClick={() => goBack()}>
-                                    Go Back
-                                </Button></td>}
-                                {/* <br />
-                                <br /> */}
-                                </tr>
-
-                        
-                    )}
-                    </tbody>
-                   </Table> 
-                </div>
-                                
-
-            </div>
-        </>
-    )
+                  {admin && (
+                    <td>
+                      {" "}
+                      <Button
+                        type="button"
+                        onClick={() =>
+                          navigate(`/admin/course/edit-course/${course.id}`)
+                        }
+                        variant="success"
+                      >
+                        {" "}
+                        Edit
+                      </Button>
+                    </td>
+                  )}
+                  {admin && (
+                    <td>
+                      {" "}
+                      <Button
+                        variant="primary"
+                        type="reset"
+                        onClick={() => goBack()}
+                      >
+                        Go Back
+                      </Button>
+                    </td>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default ViewCourse
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default ViewCourse;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////
@@ -207,14 +184,11 @@ export default ViewCourse
 
 // import { Table } from "react-bootstrap";
 
-
 // import { Form, Button } from "react-bootstrap";
 
 // import './CourseDetails.css'
 // import Dashboard from "../../../Components/Dashboard/Dashboard";
 // import handleConfirmText from "../DeleteCourse/DeleteAlert";
-
-
 
 // function CourseDetails() {
 
@@ -248,8 +222,6 @@ export default ViewCourse
 //             })
 //     }, [])
 
-
-
 //     return(
 //     <>
 //             <Dashboard />
@@ -257,7 +229,7 @@ export default ViewCourse
 //                 <center> <h1>
 //                     Course List
 //                 </h1> </center>
-               
+
 //                 <div>
 //                 <Table striped bordered>
 //                     <thead>
@@ -265,25 +237,24 @@ export default ViewCourse
 //                             <th>id</th>
 //                             <th>Course Name</th>
 //                             <th>Details</th>
-                            
+
 //                         </tr></thead><tbody>
-                       
+
 //                     {courses.map(course =>
-                     
+
 //                             <tr>
 //                                 <td> {course.coursecode}</td>
 //                                 <td> {course.coursename}</td>
 //                                 <td>{course.coursefee}</td>
 //                                 <td>{course.category}</td>
-                            
 
 //                                 {/* <button type ="button" onClick={()=> DeleteResources(resource.id)}> Delete</button> */}
 //                                 {/* <br />   */}
 //                                 {/* <ToastContainer/> */}
-//                                <td> <Button type="button" 
-                                
+//                                <td> <Button type="button"
+
 //                                     onClick=  {() => handleConfirmText(course.id) } variant="danger"> Delete</Button>
-//                                 </td>  
+//                                 </td>
 //                                 {/* &nbsp; &nbsp;&nbsp; */}
 //                               <td>  <Button type="button"
 //                                     onClick={ () => navigate(`/admin/course/edit-course/${course.id}`)} variant="success"> Edit</Button></td>
@@ -294,12 +265,10 @@ export default ViewCourse
 //                                 <br /> */}
 //                                 </tr>
 
-                        
 //                     )}
 //                     </tbody>
-//                    </Table> 
+//                    </Table>
 //                 </div>
-                                
 
 //             </div>
 //         </>
@@ -308,7 +277,7 @@ export default ViewCourse
 
 // export default CourseDetails
 
-    //  (
+//  (
 //         <>
 //             <Dashboard />
 //             <div className="detailBox">
@@ -326,73 +295,6 @@ export default ViewCourse
 
 // export default CourseDetails;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ////////////////////////////////////////////
 //////////////////////////////////
 ///////////////////////////////
@@ -403,15 +305,10 @@ export default ViewCourse
 // import { useParams } from "react-router";
 // import { useNavigate } from "react-router";
 
-
-
-
 // import { Form, Button } from "react-bootstrap";
 
 // import './CourseDetails.css'
 // import Dashboard from "../../../Components/Dashboard/Dashboard";
-
-
 
 // function CourseDetails() {
 
@@ -439,8 +336,6 @@ export default ViewCourse
 //                 setInputs(response.data);
 //             })
 //     }, [])
-
-
 
 //     return (
 //         <>
