@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Dashboard from "../../../Components/Dashboard/Dashboard";
-
+import { toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './AddCourse.css'
 
 
@@ -13,6 +14,7 @@ function AddCourse() {
   let navigate = useNavigate();
   const goBack = () => {
     navigate('/admin/course')
+
   }
 
   const [courses, setCourse] = useState({})
@@ -37,6 +39,11 @@ function AddCourse() {
     axios.post("http://localhost:3009/courses", courses)
       .then((response) => {
         console.log(response);
+        toast.success("New course Added Successfully", {
+          transition: Slide,
+          hideProgressBar: true,
+          autoClose: 3000
+        })
       })
       .catch((error) => {
         console.log(error);

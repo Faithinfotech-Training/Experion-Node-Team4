@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Dashboard from "../../../Components/Dashboard/Dashboard";
+import { toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './AddResource.css'
 
 
@@ -38,6 +40,11 @@ function AddResource() {
     axios.post("http://localhost:3009/resources", resources)
       .then((response) => {
         console.log(response);
+        toast.success("New Resource Added Successfully", {
+          transition: Slide,
+          hideProgressBar: true,
+          autoClose: 3000
+        })
       })
       .catch((error) => {
         console.log(error);
@@ -85,8 +92,7 @@ function AddResource() {
             <option value="IOT">IOT</option>
           </Form.Select>
         </Form.Group>
-
-        <Button variant="success" type="submit">
+        <Button variant="success" type="submit" onClick={()=>goBacktoView()}>
           Add
         </Button>&nbsp;&nbsp;&nbsp;
         <Button variant="primary" type="reset" onClick={() => goBack()}>
