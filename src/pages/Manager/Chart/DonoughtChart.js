@@ -1,32 +1,27 @@
 import React, { useState, useEffect } from "react";
-// import { Line } from "react-chartjs-2";
 import axios from "axios";
-// import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-// import "./Chart.css";
 
 const Chart = () => {
   const [chartData, setChartData] = useState({});
-  // const [employeeSalary, setEmployeeSalary] = useState([]);
-  // const [employeeAge, setEmployeeAge] = useState([]);
 
   const chart = () => {
-    let empSal = [];
-    let empAge = [];
+    let details = [];
+    let division = [];
     axios
       .get("https://mocki.io/v1/b7720d77-b8ce-4553-a775-df6f3cebf922")
       .then((res) => {
         console.log(res);
         for (const dataObj of res.data.data) {
-          empSal.push(parseInt(dataObj.employee_salary));
-          empAge.push(parseInt(dataObj.employee_name));
+          details.push(parseInt(dataObj.employee_salary));
+          division.push(parseInt(dataObj.employee_name));
         }
         setChartData({
-          labels: empAge,
+          labels: division,
           datasets: [
             {
               label: "# of Votes",
-              data: empSal,
+              data: details,
               backgroundColor: [
                 "rgba(255, 12,33, 1)",
                 "rgba(54, 162, 235, 1)",
@@ -51,8 +46,7 @@ const Chart = () => {
       .catch((err) => {
         console.log(err);
       });
-    // console.log(empSal, empAge);
-    console.log(empSal);
+    console.log(details);
   };
 
   useEffect(() => {
