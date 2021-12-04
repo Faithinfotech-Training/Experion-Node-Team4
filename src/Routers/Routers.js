@@ -65,13 +65,21 @@ import ViewResourceList from "../pages/ResourceManagement/ViewResource/ViewResou
 
 function Routers(props) {
   let [role, setRole] = useState(false);
+  let [manager, setManager] = useState(false);
   const roles = (role) => {
     if (localStorage.getItem("role") === "Admin") {
       setRole(true);
     }
   };
 
+  const Managers = ()=>{
+    if(localStorage.getItem("role") === "Manager"){
+      setManager(true);
+    }
+  }
+
   useEffect(() => {
+    Managers();
     roles(role);
   }, []);
 
@@ -165,16 +173,16 @@ function Routers(props) {
 
         {/* Routes for Resource Management      */}
 
-        <Route path="/admin/resource" element={<ResourceMng />} />
-        <Route path="/admin/resource/add-resource" element={<AddResource />} />
+        <Route path="/admin/resource" element={role && localStorage.getItem("mytoken") && <ResourceMng />} />
+        <Route path="/admin/resource/add-resource" element={role && localStorage.getItem("mytoken") && <AddResource />} />
         <Route
           path="/admin/resource/edit-resource/:id"
-          element={<EditResource />}
+          element={role && localStorage.getItem("mytoken") && <EditResource />}
         />
         {/* <Route path="/admin/resource/delete-resources" element={<DeleteResourcess />}/> */}
         <Route
           path="/admin/resource/view-resources"
-          element={<ViewResourceList />}
+          element={role && localStorage.getItem("mytoken") && <ViewResourceList />}
         />
            <Route
           path="/admin/resource/view-resources/:id"
@@ -200,32 +208,32 @@ function Routers(props) {
         />
 
         {/* Manager HomePage */}
-        <Route path="/manager" element={<Manager />} />
+        <Route path="/manager" element={manager && localStorage.getItem('mytoken') && <Manager />} />
         <Route
           path="/admin/register-manager"
-          element={<ManagerRegistrationForm />}
+          element={role && localStorage.getItem("mytoken") && <ManagerRegistrationForm />}
         />
         {/* Routes for managers to view course and Resourse enquiry */}
         <Route
           path="/manager/view-course-enquiry"
-          element={<ManagerViewCourseEnquiry />}
+          element={manager && localStorage.getItem('mytoken') && <ManagerViewCourseEnquiry />}
         />
         <Route
           path="/manager/view-resourse-enquiry"
-          element={<ViewResourseEnquiry />}
+          element={manager && localStorage.getItem('mytoken') && <ViewResourseEnquiry />}
         />
         <Route
           path="manager/view-resourse-enquiry/:id"
-          element={<ManagerViewResourceEnquiryDetails />}
+          element={manager && localStorage.getItem('mytoken') && <ManagerViewResourceEnquiryDetails />}
         />
         <Route
           path="manager/view-course-enquiry/:id"
-          element={<ManagerViewCourseEnquiryDetails />}
+          element={manager && localStorage.getItem('mytoken') && <ManagerViewCourseEnquiryDetails />}
         />
 
         {/* Routes for sales pipeline and site visits */}
-        <Route path="/manager/view-chart" element={<SitesVisitsChartView />} />
-        <Route path="/manager/view-table" element={<SitesVisitsTableView />} />
+        <Route path="/manager/view-chart" element={manager && localStorage.getItem('mytoken') && <SitesVisitsChartView />} />
+        <Route path="/manager/view-table" element={manager && localStorage.getItem('mytoken') && <SitesVisitsTableView />} />
       </Routes>
       <br />
       {/* <Footer /> */}

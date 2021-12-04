@@ -5,11 +5,20 @@ import { Link } from "react-router-dom";
 
 function ViewCourseEnquiry() {
   const [courseEnquiries, setcourseEnquiries] = useState([]);
+  const mytoken = localStorage.getItem('mytoken');
 
   useEffect(() => {
     console.log("The use effect hook has been executed");
+    var config = {
+      method: 'get',
+      url: 'http://localhost:3009/course-enquiries',
+      headers: { 
+        'Authorization': `Bearer ${mytoken}`, 
+        'Content-Type': 'application/json'
+      }
+    }
 
-    axios.get("http://localhost:3009/course-enquiries").then((response) => {
+    axios(config).then((response) => {
       console.log("Promise fulfilled");
       console.log(response);
 

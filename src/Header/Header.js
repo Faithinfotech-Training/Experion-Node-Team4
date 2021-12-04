@@ -98,7 +98,7 @@ function Header() {
                 </Link>
               )}
 
-              {!admin && (
+              {!admin && !manager && (
                 <NavDropdown title="Enquiry" id="basic-nav-dropdown">
                   <NavDropdown.Item>
                     <Link to="/home/course-enquiry">Course Enquiry</Link>

@@ -6,12 +6,20 @@ import { Link } from "react-router-dom"
 
 function ManagerViewResourseEnquiry() {
  const [resourceEnquiries, setResourceEnquiries] = useState([]);
+ const mytoken = localStorage.getItem('mytoken');
 
 useEffect(() => {
     console.log('The use effect hook has been executed');
+    var config = {
+        method: 'get',
+        url: `http://localhost:3009/resource-enquiries/`,
+        headers: { 
+          'Authorization': `Bearer ${mytoken}`, 
+          'Content-Type': 'application/json'
+        }
+      }
 
-    axios
-        .get('http://localhost:3009/resource-enquiries')
+    axios(config)
         .then(response => {
             console.log('Promise fulfilled');
             console.log(response);
