@@ -10,12 +10,12 @@ const Chart = () => {
     let course = [];
     axios
       // .get("https://mocki.io/v1/14750d73-3bef-40bf-a0d6-b12ced1e2f91")
-      .get("http://localhost:3009/courses")
+      .get("http://localhost:3009/resources")
       .then((res) => {
         console.log(res);
         for (const dataObj of res.data) {
           visits.push(parseInt(dataObj.visit));
-          course.push(dataObj.coursename);
+          course.push(dataObj.resourcename);
         }
         setChartData({
           // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -31,6 +31,8 @@ const Chart = () => {
                 "rgba(75, 192, 192, 1)",
                 "rgba(153, 102, 255, 1)",
                 "rgba(255, 159, 64, 1)",
+                "rgba(2, 134, 133, 1)",
+                "rgba(23,233, 133, 1)",
               ],
               borderColor: [
                 "rgba(255, 99, 132, 1)",
@@ -39,6 +41,8 @@ const Chart = () => {
                 "rgba(75, 192, 192, 1)",
                 "rgba(153, 102, 255, 1)",
                 "rgba(255, 159, 64, 1)",
+                "rgba(2, 134, 133, 1)",
+                "rgba(23, 233, 133, 1)",
               ],
               borderWidth: 1,
             },

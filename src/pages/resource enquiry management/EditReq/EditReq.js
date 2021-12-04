@@ -13,6 +13,7 @@ function EditReq() {
 
 
     const { id } = useParams();
+    
     return (<>
         <UpdateStatus id={id} />
     </>)
@@ -23,17 +24,26 @@ function EditReq() {
 function UpdateStatus(props) {
     //Navigate back to admin/course
     let navigate = useNavigate();
+    const [userstatus, setUserStatus] = useState();
     const goBack = () => {
         navigate('/admin/resource-enquiry')
     }
 
     const [inputs, setInputs] = useState({});
+    const mytoken = localStorage.getItem('mytoken');
 
     useEffect(() => {
-        axios
-            .get(`http://localhost:3009/resource-enquiries/${props.id}`)
+        var config = {
+            method: 'get',
+            url: `http://localhost:3009/resource-enquiries/${props.id}`,
+            headers: { 
+              'Authorization': `Bearer ${mytoken}`, 
+              'Content-Type': 'application/json'
+            }
+          };
+        axios(config)
             .then((response) => {
-                setInputs(response.data);
+                setUserStatus(response.data);
                 console.log(response.data);
             })
     }, []);
@@ -45,15 +55,28 @@ function UpdateStatus(props) {
         const value = event.target.value;
 
         //updating the values into the state
-        setInputs(values => ({ ...values, [name]: value }))
+        // setInputs(values => ({ ...values, [name]: value }))
+        setUserStatus(value);
     }
 
 
     function handleSubmit(event) {
         event.preventDefault();
         console.log(inputs);
+        var datas = JSON.stringify({
+            "userstatus": userstatus
+          });
+          var config = {
+            method: 'put',
+            url: `http://localhost:3009/resource-enquiries/${props.id}`,
+            headers: { 
+              'Authorization': `Bearer ${mytoken}`, 
+              'Content-Type': 'application/json'
+            },
+            data: datas
+          };
 
-        axios.put(`http://localhost:3009/resource-enquiries/${props.id}`, inputs)
+        axios(config)
         .then((response) => {
             console.log(response);
             toast.success("Updated Successfully", {
@@ -80,7 +103,7 @@ function UpdateStatus(props) {
             <Form onSubmit={handleSubmit}>
 
                 <Form.Group className="mb-3" >
-                    <Form.Select name="userstatus" aria-label="Default select example" defaultValue={inputs.userstatus} value={inputs.userstatus || ""} onChange={handleChange}>
+                    <Form.Select name="userstatus" aria-label="Default select example" value={userstatus || ""} onChange={handleChange}>
                         <option value="Pending">Pending</option>
                         <option value="Interested">Interested</option>
                         <option value="Payment Pending">Payment Pending</option>
