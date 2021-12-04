@@ -6,6 +6,8 @@ import {useState, useEffect} from "react";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import { Form, Button } from "react-bootstrap";
+import { toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function CeqDetails(){
 
@@ -29,6 +31,11 @@ function CeqDetails(){
         axios
         (config)
         .then((response)=>{
+            // toast.success("Deleted Successfully", {
+            //     transition: Slide,
+            //     hideProgressBar: true,
+            //     autoClose: 3000
+            //   })
                 console.log(response);
                 window.location.reload();
         })
@@ -45,11 +52,17 @@ function CeqDetails(){
             headers: { 
               'Authorization': `Bearer ${mytoken}`, 
               'Content-Type': 'application/json'
+            
             }
 
         }
         axios(config)
         .then(response =>{
+            // toast.success("Updated Successfully", {
+            //     transition: Slide,
+            //     hideProgressBar: true,
+            //     autoClose: 3000
+            //   })
             console.log(response.data);
             setInputs(response.data);
         })

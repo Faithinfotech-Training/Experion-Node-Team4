@@ -4,13 +4,22 @@ import ManagerDashboard from "../../Components/ManagerDashboard/ManagerDashboard
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { Table } from "react-bootstrap";
 
 function ManagerViewCourseEnquiryDetails() {
   const [inputs, setInputs] = useState({});
   const { id } = useParams();
+  const mytoken = localStorage.getItem('mytoken');
   useEffect(() => {
-    axios
-      .get(`http://localhost:3009/course-enquiries/${id}`)
+    var config = {
+      method: 'get',
+      url: `http://localhost:3009/course-enquiries/${id}`,
+      headers: { 
+        'Authorization': `Bearer ${mytoken}`, 
+        'Content-Type': 'application/json'
+      }
+    }
+    axios(config)
       .then((response) => {
         console.log(response.data);
         setInputs(response.data);
@@ -20,10 +29,29 @@ function ManagerViewCourseEnquiryDetails() {
   return (
     <>
       <ManagerDashboard />
-      <h1>Course enquiry Details</h1>
-      <h2>Enquirer name: {inputs.name}</h2>
-      <h2>Enquirer email : {inputs.email}</h2>
-      <h2>Enquired Course: {inputs.courseName}</h2>
+      <div className="resource-list">
+      <center>   <h1>Course enquiry Details</h1> </center>
+     
+      <Table striped bordered>
+      <thead>
+      <tr>
+   
+                            <th> Enquirer Name</th>
+                            <th> Enquirer Email</th>
+                            <th> Enquired Course</th>
+                        </tr></thead>
+     
+     <tbody>
+       <tr>
+      <td>{inputs.name}</td>
+      <td> {inputs.email}</td>
+      <td> {inputs.courseName}</td>
+      </tr>
+    </tbody>
+
+    </Table>
+    </div>
+
     </>
   );
 }

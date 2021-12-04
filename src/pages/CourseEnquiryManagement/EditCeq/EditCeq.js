@@ -2,7 +2,8 @@ import { Form, Button } from "react-bootstrap";
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Dashboard from "../../../Components/Dashboard/Dashboard";
 
@@ -70,7 +71,12 @@ function EditCeq() {
     axios(config)
       .then((response) => {
         console.log(response);
-        alert("Status Updated");
+        // alert("Status Updated");
+        toast.success("Updated Successfully", {
+          transition: Slide,
+          hideProgressBar: true,
+          autoClose: 3000
+        })
         goBack();
       })
       .catch((error) => {
