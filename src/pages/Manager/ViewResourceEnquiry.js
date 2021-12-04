@@ -3,7 +3,7 @@ import ManagerDashboard from "../../Components/ManagerDashboard/ManagerDashboard
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
-
+import { Table } from "react-bootstrap";
 function ManagerViewResourseEnquiry() {
  const [resourceEnquiries, setResourceEnquiries] = useState([]);
  const mytoken = localStorage.getItem('mytoken');
@@ -32,23 +32,30 @@ useEffect(() => {
   return (
     <>
         <ManagerDashboard />
-        <div>
+        <div className="mainBody">
             <h1>
                 Resource enquiries List
             </h1>
-            <div>
+            <Table striped bordered hover>
+            <tr>
+                            {/* <th>id</th> */}
+                            <th>Resource Name</th>
+                            <th>Details</th>
+                            
+                        </tr>
+           
                 {resourceEnquiries.map(resourceEnquirie =>
                     // <div key={staff.id} className="staffListLI">
                     //     {/* <Staff details = {staff} /> */}
                     // </div>
-                    <div>
-                        <div>{resourceEnquirie.name}</div>
-                        <div>{resourceEnquirie.email}</div>
-                        <div><Link to={`${resourceEnquirie.id}`} >View Enquiree Details</Link></div>
-                    </div>
+                   <tr>
+                        <td>{resourceEnquirie.name} </td>
+                        <td>{resourceEnquirie.email}</td>
+                        <td><Link to={`${resourceEnquirie.id}`} >View Enquiree Details</Link></td>
+                    </tr>
                 )}
-            </div>
-
+            
+         </Table>
         </div>
 
     </>

@@ -2,6 +2,7 @@ import ManagerDashboard from "../../Components/ManagerDashboard/ManagerDashboard
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Table } from "react-bootstrap";
 
 function ViewCourseEnquiry() {
   const [courseEnquiries, setcourseEnquiries] = useState([]);
@@ -29,22 +30,29 @@ function ViewCourseEnquiry() {
   return (
     <>
       <ManagerDashboard />
-      <div>
+      <div className ="mainBody">
         <h1>Course enquiries List</h1>
-        <div>
+        <Table striped bordered hover>
+        <tr>
+                            {/* <th>id</th> */}
+                            <th>Course Name</th>
+                            <th>Details</th>
+                            
+                        </tr>
           {courseEnquiries.map((courseEnquirie) => (
             // <div key={staff.id} className="staffListLI">
             //     {/* <Staff details = {staff} /> */}
             // </div>
-            <div>
-              <div>{courseEnquirie.name}</div>
-              <div>{courseEnquirie.email}</div>
-              <div>
-                <Link to={`${courseEnquirie.id}`}>View Enquiree Details</Link>
-              </div>
-            </div>
+           <tr>
+             <td> {courseEnquirie.name}</td>
+           <td>   {courseEnquirie.email}</td>
+
+              
+               <td> <Link to={`${courseEnquirie.id}`}>View Enquiree Details</Link> </td>
+              
+            </tr>
           ))}
-        </div>
+       </Table>
       </div>
     </>
   );
