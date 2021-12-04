@@ -8,6 +8,12 @@ import { Table } from "react-bootstrap";
 
 function ViewResourceList() {
     let [user, setUser] = useState(false);
+    const [admin, setAdmin] = useState(false);
+    const Admins = () => {
+        if (localStorage.getItem("role") === "Admin") {
+            setAdmin(true);
+        }
+    };
 
     const [resources, setResources] = useState([]);
 
@@ -46,11 +52,12 @@ function ViewResourceList() {
             setResources(response.data);
         });
         Users();
+        Admins();
     }, []);
 
     return (
         <div>
-            <Dashboard />
+           {admin && <Dashboard />}
             <div className="mainBody">
                 <h1>Resource List</h1>
 
@@ -71,7 +78,6 @@ function ViewResourceList() {
                             <td> {user ? (
                                     <button
                                         onClick={async () => {
-                                            await updateVisitCount(resource.id);
 
                                             navigate(`/user/view-resources/${resource.id}`);
                                         }}
