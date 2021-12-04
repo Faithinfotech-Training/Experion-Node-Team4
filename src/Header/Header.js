@@ -67,7 +67,7 @@ function Header() {
                 <Link
                   className="navItem"
                   onClick={() => {
-                    userContext.logout();
+                    userContext.logout();window.location = "/home/login"
                   }}
                   to="home/login"
                 >
@@ -87,7 +87,7 @@ function Header() {
 
               {admin && (
                 <Link className="navItem"  onClick={() => {
-                  userContext.logout();
+                  userContext.logout(); 
                 }} to="/admin/register-manager">
                   Add Manager
                 </Link>
