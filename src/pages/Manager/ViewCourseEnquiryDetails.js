@@ -20,10 +20,12 @@ function ManagerViewCourseEnquiryDetails() {
   return (
     <>
       <ManagerDashboard />
+      <div style={{height:"50vh"}}>
       <h1>Course enquiry Details</h1>
       <h2>Enquirer name: {inputs.name}</h2>
       <h2>Enquirer email : {inputs.email}</h2>
       <h2>Enquired Course: {inputs.courseName}</h2>
+      </div>
     </>
   );
 }

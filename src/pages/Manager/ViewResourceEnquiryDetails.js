@@ -23,11 +23,12 @@ function ManagerViewResourceEnquiryDetails(){
     return(
         <>
         <ManagerDashboard />
+        <div style={{height:"50vh"}}>
         <h1>Resource enquiry Details</h1>
         <h2>Enquirer name: {inputs.name}</h2>
         <h2>Enquirer email : { inputs.email}</h2>
         <h2>Enquired resource: {inputs.resourceName}</h2>
-
+        </div>
         </>
     )
 }

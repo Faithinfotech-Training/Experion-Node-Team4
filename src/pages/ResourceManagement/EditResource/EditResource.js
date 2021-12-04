@@ -101,7 +101,7 @@
 //             type="text"
 //             name="resourcename"
 //             placeholder="Enter the resource name"
-           
+
 //             onChange={(e)=>setresourcename(e.target.value)}
 //           />
 //           {/* 
@@ -141,7 +141,7 @@
 //             <option value="IOT" key="IOT">IOT</option>
 //           </Form.Select>
 //         </Form.Group>
-        
+
 //       </Form>
 //       <Button onClick={() => handleSubmit()} variant="success" type="submit">
 //           Add
@@ -150,7 +150,7 @@
 //         <Button variant="primary" type="reset" onClick={() => goBack()}>
 //           Go Back
 //         </Button>
-        
+
 //     </>
 //   );
 // }
@@ -176,7 +176,7 @@ import Dashboard from "../../../Components/Dashboard/Dashboard";
 function EditResource() {
   const { id } = useParams()
   return (<>
-    <h1> Edit Resource </h1>
+    {/* <h1> Edit Resource </h1> */}
     <MyForm id={id} />
 
   </>
@@ -224,13 +224,13 @@ function MyForm(props) {
           hideProgressBar: true,
           autoClose: 5000
         })
-       
+
       })
       .catch((error) => {
         console.log(error);
       })
-     
-      navigate("/admin/resource/view-resources")
+
+    navigate("/admin/resource/view-resources")
   }
 
   return (
@@ -261,9 +261,9 @@ function MyForm(props) {
           <label for="cars">Choose a category:</label>
 
           <Form.Select name="category" aria-label="Default select example" value={resources.category || ""} onChange={handleChange}>
-            <option value="Web Dev">Web Dev</option>
-            <option value="ML">ML</option>
-            <option value="IOT">IOT</option>
+            <option value="Lab">Lab</option>
+            <option value="Class Room">Class Room</option>
+            <option value="Seminar Hall">Seminar Hall</option>
           </Form.Select>
         </Form.Group>
         <Button variant="success" type="submit">

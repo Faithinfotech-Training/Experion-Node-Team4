@@ -20,8 +20,9 @@ function Admin() {
   // window.onload = refreshPage()
 
     return (
-        <div>
+        <div >
             <Dashboard />
+            <div style={{height:"50vh"}}></div>
         </div>
     )
 }

@@ -24,7 +24,7 @@ useEffect(() => {
   return (
     <>
         <ManagerDashboard />
-        <div>
+        <div style={{height:"50vh"}}>
             <h1>
                 Resource enquiries List
             </h1>

@@ -51,7 +51,7 @@ function ViewCourse() {
     return (
         <div>
             <Dashboard />
-            <div className="mainBody">
+            <div className="mainBody" style={{height:"50vh"}}>
                 <h1>Course List</h1>
 
                

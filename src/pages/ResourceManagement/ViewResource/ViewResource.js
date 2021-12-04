@@ -60,7 +60,7 @@ function ViewResource() {
     return (
         <>
             <Dashboard />
-            <div className="resource-list">
+            <div className="resource-list" >
                 <center> <h1>
                     Resource List
                 </h1> </center>

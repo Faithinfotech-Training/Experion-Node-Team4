@@ -42,7 +42,7 @@ function ViewCeq() {
     return (
         <>
             <Dashboard />
-            <div className="mainBody">
+            <div className="mainBody" style={{height:"50vh"}}>
                 <h1>
                     View Course Enquiriee List
                 </h1>

@@ -20,7 +20,7 @@ function ViewCourseEnquiry() {
   return (
     <>
       <ManagerDashboard />
-      <div>
+      <div style={{height:"50vh"}}>
         <h1>Course enquiries List</h1>
         <div>
           {courseEnquiries.map((courseEnquirie) => (

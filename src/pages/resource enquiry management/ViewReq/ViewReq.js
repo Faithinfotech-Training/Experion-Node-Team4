@@ -29,7 +29,7 @@ function ViewReq() {
         <>
 
             <Dashboard />
-            <div className="view-req">
+            <div className="view-req" style={{height:"50vh"}}>
                 <h1>
                     Resource enquiries List
                 </h1>
