@@ -13,12 +13,12 @@ function CourseMng() {
           <div class="col m-5 text-center">
             {" "}
             <Link to="/admin/course/add-course">
-              <div class="col btn btn-primary">View Course </div>
+              <div class="col btn btn-primary">Add Course</div>
             </Link>
           </div>
           <div class="col m-5 text-center ">
             <Link to="/admin/course/view-courses">
-              <div class="col btn btn-primary ">Add Course </div>
+              <div class="col btn btn-primary ">View Course </div>
             </Link>
           </div>
         </div>

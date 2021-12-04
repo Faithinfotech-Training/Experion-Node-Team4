@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import handleConfirmText from "../DeleteAlert";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import DeleteCourses from "../DeleteCourse/DeleteCourse";
 import Dashboard from "../../../Components/Dashboard/Dashboard";
 import { Table } from "react-bootstrap";
@@ -22,6 +22,7 @@ const CustomToast = ({ closeToast }) => {
 
 toast.configure();
 function ViewCourse() {
+  const {id} = useParams();
   let notify = () => {
     toast.warn(<CustomToast />, {
       position: toast.POSITION.TOP_CENTER,
@@ -53,7 +54,7 @@ function ViewCourse() {
     navigate("/admin/course");
   };
 
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState({});
   const [admin, setAdmin] = useState(false);
 
   const Admin = () => {
@@ -66,7 +67,7 @@ function ViewCourse() {
   useEffect(() => {
     console.log("The use effect hook has been executed");
       Admin()
-    axios.get("http://localhost:3009/courses").then((response) => {
+    axios.get(`http://localhost:3009/courses/${id}`).then((response) => {
       console.log("Promise fulfilled");
       console.log(response);
       //response object contains the complete HTTP REQUEST with
@@ -95,12 +96,12 @@ function ViewCourse() {
               </tr>
             </thead>
             <tbody>
-              {courses.map((course) => (
+              
                 <tr>
-                  <td> {course.coursecode}</td>
-                  <td> {course.coursename}</td>
-                  <td>{course.coursefee}</td>
-                  <td>{course.category}</td>
+                  <td> {courses.coursecode}</td>
+                  <td> {courses.coursename}</td>
+                  <td>{courses.coursefee}</td>
+                  <td>{courses.category}</td>
 
                   {!admin && (
                     <td>
@@ -108,7 +109,7 @@ function ViewCourse() {
                       <Button
                         type="button"
                         onClick={async () => {
-                          await updateVisitCount(course.id);
+                          await updateVisitCount(courses.id);
 
                           navigate(`/home/course-enquiry`);
                         }}
@@ -123,7 +124,7 @@ function ViewCourse() {
                       {" "}
                       <Button
                         type="button"
-                        onClick={() => handleConfirmText(course.id)}
+                        onClick={() => handleConfirmText(courses.id)}
                         variant="danger"
                       >
                         {" "}
@@ -138,7 +139,7 @@ function ViewCourse() {
                       <Button
                         type="button"
                         onClick={() =>
-                          navigate(`/admin/course/edit-course/${course.id}`)
+                          navigate(`/admin/course/edit-course/${courses.id}`)
                         }
                         variant="success"
                       >
@@ -160,7 +161,7 @@ function ViewCourse() {
                     </td>
                   )}
                 </tr>
-              ))}
+            
             </tbody>
           </Table>
         </div>
