@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import Manager from "../pages/Manager/Manager";
 import UserPage from "../pages/User/UserPage";
@@ -62,27 +62,10 @@ import ManagerRegistrationForm from "../pages/Registration/ManagerRegistrationFo
 import OfferedCourses from "../pages/Home/OfferedCourses";
 import OfferedResources from "../pages/Home/OfferedResources";
 import ViewResourceList from "../pages/ResourceManagement/ViewResource/ViewResourceList";
+import UserContext from "../context/user-context";
 
-function Routers(props) {
-  let [role, setRole] = useState(false);
-  let [manager, setManager] = useState(false);
-  const roles = (role) => {
-    if (localStorage.getItem("role") === "Admin") {
-      setRole(true);
-    }
-  };
-
-  const Managers = ()=>{
-    if(localStorage.getItem("role") === "Manager"){
-      setManager(true);
-    }
-  }
-
-  useEffect(() => {
-    Managers();
-    roles(role);
-  }, []);
-
+const Routers = (props) => {
+  const userContext = useContext(UserContext);
   return (
     <Router>
       <Header />
@@ -115,18 +98,18 @@ function Routers(props) {
         {/* Routes for user view course from user page */}
         <Route
           path="/user/view-courses"
-          element={localStorage.getItem("mytoken") && <CourseDetails />}
+          element={userContext.userDetails && <CourseDetails />}
         />
         {/* Path for Course detail for users */}
         <Route
           path="/user/view-courses/:id"
-          element={localStorage.getItem("mytoken") && <CourseDetails />}
+          element={userContext.userDetails && <CourseDetails />}
         />
 
         {/* Admin Page */}
         <Route
           path="/admin/"
-          element={role && localStorage.getItem("mytoken") && <Admin />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <Admin />}
         />
 
         {/* Admin error Page */}
@@ -134,106 +117,106 @@ function Routers(props) {
         {/* Routes for Course Management */}
         <Route
           path="/admin/course"
-          element={role && localStorage.getItem("mytoken") && <CourseMng />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <CourseMng />}
         />
         <Route
           path="/admin/course/add-course"
-          element={role && localStorage.getItem("mytoken") && <AddCourse />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <AddCourse />}
         />
         <Route
           path="/admin/course/edit-course/:id"
-          element={role && localStorage.getItem("mytoken") && <EditCourse />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <EditCourse />}
         />
         <Route
           path="/admin/course/view-courses"
-          element={role && localStorage.getItem("mytoken") && <ViewCourse />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ViewCourse />}
         />
         <Route
           path="/admin/course/view-courses/:id"
-          element={role && localStorage.getItem("mytoken") && <CourseDetails />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <CourseDetails />}
         />
 
         {/* Routes for Course Enquiry Management */}
         <Route
           path="/admin/course-enquiry"
-          element={role && localStorage.getItem("mytoken") && <CeqMng />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <CeqMng />}
         />
         <Route
           path="/admin/course-enquiry/view-course-enquiry"
-          element={role && localStorage.getItem("mytoken") && <ViewCeq />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ViewCeq />}
         />
         <Route
           path="/admin/course-enquiry/view-course-enquiry/:id"
-          element={role && localStorage.getItem("mytoken") && <CeqDetails />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <CeqDetails />}
         />
         <Route
           path="/admin/course-enquiry/edit-course-enquiry/:id"
-          element={role && localStorage.getItem("mytoken") && <EditCeq />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <EditCeq />}
         />
 
         {/* Routes for Resource Management      */}
 
-        <Route path="/admin/resource" element={role && localStorage.getItem("mytoken") && <ResourceMng />} />
-        <Route path="/admin/resource/add-resource" element={role && localStorage.getItem("mytoken") && <AddResource />} />
+        <Route path="/admin/resource" element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ResourceMng />} />
+        <Route path="/admin/resource/add-resource" element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <AddResource />} />
         <Route
           path="/admin/resource/edit-resource/:id"
-          element={role && localStorage.getItem("mytoken") && <EditResource />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <EditResource />}
         />
         {/* <Route path="/admin/resource/delete-resources" element={<DeleteResourcess />}/> */}
         <Route
           path="/admin/resource/view-resources"
-          element={role && localStorage.getItem("mytoken") && <ViewResourceList />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ViewResourceList />}
         />
            <Route
           path="/admin/resource/view-resources/:id"
-          element={role && localStorage.getItem("mytoken") && <ViewResource />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ViewResource />}
         />
 
         {/* Routes for Resource Enquiry Management */}
         <Route
           path="/admin/resource-enquiry"
-          element={role && localStorage.getItem("mytoken") && <ReqMng />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ReqMng />}
         />
         <Route
           path="/admin/resource-enquiry/view-resource-enquiry"
-          element={role && localStorage.getItem("mytoken") && <ViewReq />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ViewReq />}
         />
         <Route
           path="/admin/resource-enquiry/view-resource-enquiry/:id"
-          element={role && localStorage.getItem("mytoken") && <ReqDetails />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ReqDetails />}
         />
         <Route
           path="/admin/resource-enquiry/edit-resource-enquiry/:id"
-          element={role && localStorage.getItem("mytoken") && <EditReq />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <EditReq />}
         />
 
         {/* Manager HomePage */}
-        <Route path="/manager" element={manager && localStorage.getItem('mytoken') && <Manager />} />
+        <Route path="/manager" element={userContext.userDetails && userContext.userDetails.role === 'Manager' && <Manager />} />
         <Route
           path="/admin/register-manager"
-          element={role && localStorage.getItem("mytoken") && <ManagerRegistrationForm />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ManagerRegistrationForm />}
         />
         {/* Routes for managers to view course and Resourse enquiry */}
         <Route
           path="/manager/view-course-enquiry"
-          element={manager && localStorage.getItem('mytoken') && <ManagerViewCourseEnquiry />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Manager' && <ManagerViewCourseEnquiry />}
         />
         <Route
           path="/manager/view-resourse-enquiry"
-          element={manager && localStorage.getItem('mytoken') && <ViewResourseEnquiry />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Manager' && <ViewResourseEnquiry />}
         />
         <Route
           path="manager/view-resourse-enquiry/:id"
-          element={manager && localStorage.getItem('mytoken') && <ManagerViewResourceEnquiryDetails />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Manager' && <ManagerViewResourceEnquiryDetails />}
         />
         <Route
           path="manager/view-course-enquiry/:id"
-          element={manager && localStorage.getItem('mytoken') && <ManagerViewCourseEnquiryDetails />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Manager' && <ManagerViewCourseEnquiryDetails />}
         />
 
         {/* Routes for sales pipeline and site visits */}
-        <Route path="/manager/view-chart" element={manager && localStorage.getItem('mytoken') && <SitesVisitsChartView />} />
-        <Route path="/manager/view-table" element={manager && localStorage.getItem('mytoken') && <SitesVisitsTableView />} />
+        <Route path="/manager/view-chart" element={userContext.userDetails && userContext.userDetails.role === 'Manager' && <SitesVisitsChartView />} />
+        <Route path="/manager/view-table" element={userContext.userDetails && userContext.userDetails.role === 'Manager' && <SitesVisitsTableView />} />
       </Routes>
       <br />
       {/* <Footer /> */}
