@@ -13,10 +13,12 @@ function AddCourse() {
   //Navigate back to admin/course
   let navigate = useNavigate();
   const goBack = () => {
-    navigate('/admin/course')
+    navigate('/admin/course/view-courses')
 
   }
-
+  // const goBacktoCourse = () => {
+  //   navigate('/admin/course/view-courses')
+  // }
   const [courses, setCourse] = useState({})
 
 
@@ -100,7 +102,7 @@ function AddCourse() {
             <option value="IOT">IOT</option>
           </Form.Select>
         </Form.Group>
-        <Button variant="success" type="submit">
+        <Button variant="success" type="submit" >
           Add
         </Button>&nbsp;&nbsp;&nbsp;
         <Button variant="primary" type="reset" onClick={() => goBack()}>

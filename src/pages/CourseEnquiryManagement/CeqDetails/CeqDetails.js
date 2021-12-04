@@ -91,11 +91,11 @@ function CeqDetails(){
         <td>{ inputs.email}</td> 
         <td>{inputs.courseName}</td>
       <td>{inputs.userstatus}</td>
-      <td>  <Button onClick={()=> navigate(`/admin/course-enquiry/edit-course-enquiry/${id}`)} variant="primary">Update Enquiree Status</Button>
+      <td>  <Button onClick={()=> navigate(`/admin/course-enquiry/edit-course-enquiry/${id}`)} variant="success">Update Enquiree Status</Button>
         &nbsp;&nbsp;&nbsp;</td>
-      <td>  <Button onClick={()=> {deleteCourseEnquiree(); navigate('/admin/course-enquiries/')}} variant="danger">Delete</Button>
+      {/* <td>  <Button onClick={()=> {deleteCourseEnquiree(); navigate('admin/course-enquiry')}} variant="danger">Delete</Button>
        
-       </td> 
+       </td>  */}
        </tr>
         </tbody>
         </Table>
