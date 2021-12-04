@@ -14,11 +14,11 @@ function AddResource() {
   //Navigate back to admin/course
   let navigate = useNavigate();
   const goBack = () => {
-    navigate('/admin/resource')
-  }
-  const goBacktoView = () => {
     navigate('/admin/resource/view-resources')
   }
+  // const goBacktoView = () => {
+  //   navigate('/admin/resource/view-resources')
+  // }
 
   const [resources, setResource] = useState({})
 

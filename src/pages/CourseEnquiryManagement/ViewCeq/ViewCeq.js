@@ -49,9 +49,9 @@ function ViewCeq() {
                 <div>
                 <Table striped bordered hover>
                         <tr>
-                            <th>id</th>
-                            <th>Course Name</th>
-                            <th>Details</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            {/* <th>Details</th> */}
                             
                         </tr>
                     {courseEnquiries.map(courseEnquirie =>
@@ -60,8 +60,8 @@ function ViewCeq() {
                         // </div>
                         // <div className="ULBoxs">
                         <tr>
-                            <td>Name: {courseEnquirie.name}</td>
-                            <td>Age: {courseEnquirie.age}</td>
+                            <td>{courseEnquirie.name}</td>
+                            <td> {courseEnquirie.email}</td>
                             <td><Link to={`${courseEnquirie.id}`}>View Enquiree Details</Link></td>
                             </tr>
                         // </div>

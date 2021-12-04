@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
 import { useNavigate } from 'react-router-dom';
-
+import { Table } from "react-bootstrap";
 function ReqDetails() {
 
     const [inputs, setInputs] = useState({});
@@ -41,15 +41,32 @@ function ReqDetails() {
                     <h1>Resource enquiry Details</h1>
                     <br />
 
-                    <h4>Enquirer name: <span>{inputs.name}</span> </h4>
-                    <h4>Enquirer email : <span>{inputs.email} </span></h4>
-                    <h4>Enquired resource: <span> {inputs.resourceName} </span></h4>
-                    <h4>Date from resource required: <span>{inputs.reqDate}</span></h4>
-                    <h4>Enquired Duration: <span>{inputs.duration}</span></h4>
-                    <h4>Enquiry Status: <span>{inputs.userstatus}</span></h4>
+                    <Table striped bordered>
+                   
+                    <thead>
+    <tr>
+                
+                      <th> Name</th>
+                            <th> Email</th>
+                            <th>Resource</th>
+                            <th>Date</th>
+                            <th>Duration</th>
+                            <th>Satus</th>
+                            
+                        </tr></thead><tbody>   
+                  <tr>
+                      <td>{inputs.name}</td>
+                 <td>   {inputs.email} </td>
+                    <td>  {inputs.resourceName}</td>
+                   <td> {inputs.reqDate}</td>
+                <td>    {inputs.duration} </td>
+                <td>     {inputs.userstatus} </td>
 
-                    <Button variant="success" type="submit" onClick={() => navigate(`/admin/resource-enquiry/edit-resource-enquiry/${inputs.id}`)}>Update Status</Button>
-
+                   <td> <Button variant="success" type="submit" onClick={() => navigate(`/admin/resource-enquiry/edit-resource-enquiry/${inputs.id}`)}>Update Status</Button></td>
+                
+                   </tr>
+                   </tbody>
+                   </Table>
                 </div>
             </center>
         </>

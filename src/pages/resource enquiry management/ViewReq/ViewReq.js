@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import './ViewReq.css'
-
+import { Table } from "react-bootstrap";
 function ViewReq() {
 
     const [resourceEnquiries, setResourceEnquiries] = useState([]);
@@ -37,23 +37,31 @@ function ViewReq() {
         <>
 
             <Dashboard />
-            <div className="view-req" style={{height:"50vh"}}>
-                <h1>
+            <div className="mainBody">
+                <h1> <center>
                     Resource enquiries List
-                </h1>
-                <div>
+               
+               </center> </h1>
+               <Table striped bordered>
+               <tr>
+                            <th>name</th>
+                            <th>Email</th>
+                            {/* <th>Details</th> */}
+                            
+                        </tr>
+
                     {resourceEnquiries.map(resourceEnquirie =>
                         // <div key={staff.id} className="staffListLI">
                         //     {/* <Staff details = {staff} /> */}
                         // </div>
-                        <div>
-                            <div>{resourceEnquirie.name}</div>
-                            <div>{resourceEnquirie.email}</div>
-                            <div><Link to={`${resourceEnquirie.id}`}>View Enquiree Details</Link></div>
-                        </div>
+                        <tr>
+                            <td>{resourceEnquirie.name}</td>
+                            <td>{resourceEnquirie.email}</td>
+                            <td><Link to={`${resourceEnquirie.id}`}>View Enquiree Details</Link></td>
+                            </tr>
                     )}
-                </div>
-
+                
+        </Table>
             </div>
 
         </>
