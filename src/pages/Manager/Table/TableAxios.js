@@ -125,7 +125,7 @@ const VisitTable = () => {
                         return item;
                       }
                     })
-                    .map((item) => {
+                    .map((item) => {            
                       return (
                         <tr key={item.id}>
                           <td component="th">{item.id}</td>
