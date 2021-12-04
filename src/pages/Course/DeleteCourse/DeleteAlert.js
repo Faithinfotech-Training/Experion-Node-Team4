@@ -41,7 +41,7 @@ const handleConfirmText = (id) => {
           .catch((error) => {
               console.log(error);
           })
-          window.location.reload();
+          window.location = "/admin/course/view-courses"
   
 }
  
