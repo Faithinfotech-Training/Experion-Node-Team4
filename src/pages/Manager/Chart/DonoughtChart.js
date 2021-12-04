@@ -9,10 +9,11 @@ const Chart = () => {
     let visits = [];
     let course = [];
     axios
-      .get("https://mocki.io/v1/14750d73-3bef-40bf-a0d6-b12ced1e2f91")
+      // .get("https://mocki.io/v1/14750d73-3bef-40bf-a0d6-b12ced1e2f91")
+      .get("http://localhost:3009/courses")
       .then((res) => {
         console.log(res);
-        for (const dataObj of res.data.data) {
+        for (const dataObj of res.data) {
           visits.push(parseInt(dataObj.visit));
           course.push(dataObj.coursename);
         }

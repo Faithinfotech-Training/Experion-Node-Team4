@@ -1,25 +1,31 @@
 import { Link } from "react-router-dom";
 import Dashboard from "../../Components/Dashboard/Dashboard";
 
-import './CourseMng.css';
-import { NavDropdown } from 'react-bootstrap';
+import "./CourseMng.css";
+import { NavDropdown } from "react-bootstrap";
 
 function CourseMng() {
-
-    return (
-        <>
-            <Dashboard />
-            <div style={{height:"50vh"}}>
-            <Link to="/admin/course/add-course">Add Course</Link>
-            {/* <Link to="/admin/course/delete-course">Delete Course</Link> */}
-            <Link to="/admin/course/view-courses">View Course</Link>
-            {/* <Link to="/admin/course/edit-course">Edit Course</Link> */}
-            </div>
-        </>
-    )
+  return (
+    <>
+      <Dashboard />
+      <div class="container">
+        <div class="row">
+          <div class="col m-5 text-center">
+            {" "}
+            <Link to="/admin/course/add-course">
+              <div class="col btn btn-primary">View Course </div>
+            </Link>
+          </div>
+          <div class="col m-5 text-center ">
+            <Link to="/admin/course/view-courses">
+              <div class="col btn btn-primary ">Add Course </div>
+            </Link>
+          </div>
+        </div>
+      </div>
+      ; ;
+    </>
+  );
 }
-
-
-
 
 export default CourseMng;

@@ -5,7 +5,8 @@ import axios from "axios";
 
 import './RegistrationForm.css';
 
-
+import { toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function ManagerRegistrationForm() {
@@ -38,6 +39,11 @@ function ManagerRegistrationForm() {
             .post('http://localhost:3009/users/register', regData)
             .then(response => {
                 
+                toast.success(" Added Successfully", {
+                    transition: Slide,
+                    hideProgressBar: true,
+                    autoClose: 3000
+                  })
                 if(response.data.user.role === 'Manager'){
                     console.log(response);
                     

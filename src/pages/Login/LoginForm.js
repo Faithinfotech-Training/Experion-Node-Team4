@@ -1,20 +1,21 @@
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './LoginForm.css';
+import UserContext from "../../context/user-context";
 
 
 
 
 
 function LoginForm() {
-
-    localStorage.clear();
     const navigate = useNavigate();
     const [inputs, setInputs] = useState({});
+
+    const userContext = useContext(UserContext);
 
     //handle the change of form elements
     function handleChange(event) {
@@ -38,10 +39,8 @@ function LoginForm() {
                 // alert(response.data.user.role);
                 let role = response.data.user.role;
                 let id = response.data.user.id;
-                localStorage.setItem('mytoken', response.data.accessToken);
-                console.log(response.data)
-                localStorage.setItem('role', response.data.user.role);
-                localStorage.setItem('username', response.data.user.name)
+
+                userContext.login( response.data.accessToken, response.data.user.role, response.data.user.name);
 
                 if (role === "Admin") {
 

@@ -1,4 +1,4 @@
-import './ViewResource.css';
+// import './ViewResource.css';
 import axios from 'axios';
 import { Button } from "react-bootstrap";
 // import { ToastContainer, toast } from 'react-toastify';
@@ -29,8 +29,38 @@ function ViewResource() {
                 position:toast.POSITION.TOP_CENTER
             })
     }
- 
-  
+    const [admin, setAdmin] = useState(false);
+    const Admin = ()=>{
+
+         if(localStorage.getItem('role') === 'Admin'){
+             setAdmin(true);
+         }
+    }
+    let inc = 0;
+
+    const updateVisitCount = (id) => {
+
+        axios.get(`http://localhost:3009/resources/${id}`).then((res) => {
+
+            //   setCounter(response.data.visit + 1);
+
+            console.log('initial visit', res.data.visit);
+
+            let x = res.data.visit + 1;
+
+            axios
+
+                .put(`http://localhost:3009/resources/${id}`, { visit: x })
+
+                .then((response) => {
+
+                    console.log('Updated count', inc);
+
+                });
+
+        });
+
+    };
 
     let navigate = useNavigate();
     const goBack = () => {
@@ -42,7 +72,7 @@ function ViewResource() {
 
     useEffect(() => {
         console.log('The use effect hook has been executed');
-
+        Admin();
         axios
             .get('http://localhost:3009/resources')
             .then(response => {
@@ -59,8 +89,8 @@ function ViewResource() {
 
     return (
         <>
-            <Dashboard />
-            <div className="resource-list" >
+            {admin && <Dashboard />}
+            <div className="resource-list">
                 <center> <h1>
                     Resource List
                 </h1> </center>
@@ -70,9 +100,9 @@ function ViewResource() {
                     <thead>
                         <tr>
                             <th>id</th>
-                            <th>Course Name</th>
+                            <th>Resource Name</th>
                             <th>Details</th>
-                            
+                            <th>Category</th>
                         </tr></thead><tbody>
                        
                     {resources.map(resource =>
@@ -86,22 +116,28 @@ function ViewResource() {
                                 <td>{resource.resourcefee}</td>
                                 <td>{resource.category}</td>
                             
+                      {!admin  &&     <td>   <Button type="button"
+                                        onClick={async () => {
+                                            await updateVisitCount(resource.id);
 
+                                            navigate(`/home/resource-enquiry`);
+                                        }}
+                                    >
+                                        Enquire
+                                    </Button> </td>}
                                 {/* <button type ="button" onClick={()=> DeleteResources(resource.id)}> Delete</button> */}
                                 {/* <br />   */}
                                 {/* <ToastContainer/> */}
-                               <td> <Button type="button" 
+                             {admin && <td> <Button type="button" 
                                 
                                     onClick=  {() => handleConfirmText(resource.id) } variant="danger"> Delete</Button>
-                                </td>  
-                                {/* &nbsp; &nbsp;&nbsp; */}
-                              <td>  <Button type="button"
-                                    onClick={ () => navigate(`/admin/resource/edit-resource/${resource.id}`)} variant="success"> Edit</Button></td>
-                               <td> <Button variant="primary" type="reset" onClick={() => goBack()}>
+                                </td> }
+                              
+                             {admin && <td>  <Button type="button"
+                                    onClick={ () => navigate(`/admin/resource/edit-resource/${resource.id}`)} variant="success"> Edit</Button></td>}
+                               {admin && <td> <Button variant="primary" type="reset" onClick={() => goBack()}>
                                     Go Back
-                                </Button></td>
-                                {/* <br />
-                                <br /> */}
+                                </Button></td>}
                                 </tr>
 
                         

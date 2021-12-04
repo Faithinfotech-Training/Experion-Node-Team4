@@ -18,32 +18,34 @@ export const options = {
 const BarChart = () => {
   const [chartData, setChartData] = useState({});
   const chart = () => {
-    let yAxis = [];
-    let xAxis = [];
+    let courseCount = [];
+    let resourseCount = [];
+    let resourceName = [];
+    let courseName = [];
     axios
-      .get("https://mocki.io/v1/b7720d77-b8ce-4553-a775-df6f3cebf922")
+      .get("http://localhost:3009/courses")
       .then((res) => {
         console.log(res);
-        for (const dataObj of res.data.data) {
-          yAxis.push(parseInt(dataObj.employee_salary));
-          xAxis.push(parseInt(dataObj.employee_name));
+        for (const dataObj of res.data) {
+          courseCount.push(parseInt(dataObj.visit));
+          resourseCount.push(parseInt(dataObj.visit));
+
+          courseName.push(dataObj.coursename);
+          resourceName.push(dataObj.resourcename);
         }
         setChartData({
-          labels: [
-            "Course 1",
-            "Course 2",
-            "Course 3",
-            "Course 4",
-            "Course 5",
-            "Course 6",
-          ],
-          // labels: xAxis,
-
+          labels: courseName,
           datasets: [
             {
-              label: "Site Visit",
-              data: yAxis,
-              backgroundColor: "rgba(255, 32, 32, 1)",
+              label: "Course Visit",
+              data: courseCount,
+              backgroundColor: "rgba(255, 2, 2, 1)",
+            },
+
+            {
+              label: "Resource Visit",
+              data: resourseCount,
+              backgroundColor: "rgba(2, 2, 255, 1)",
             },
           ],
         });
@@ -52,7 +54,8 @@ const BarChart = () => {
         console.log(err);
       });
 
-    console.log(yAxis);
+    // console.log("yaxis", yAxis);
+    // console.log("xaxis", xAxis);
   };
 
   useEffect(() => {

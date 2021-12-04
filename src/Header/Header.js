@@ -1,11 +1,14 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { Next } from "react-bootstrap/esm/PageItem";
+import UserContext from "../context/user-context";
 
 function Header() {
+  const userContext = useContext(UserContext);
   let [user, setUser] = useState(false);
   let [admin, setAdmin] = useState(false);
   let [manager, setManager] = useState(false);
@@ -63,7 +66,9 @@ function Header() {
               {localStorage.getItem("mytoken") && (
                 <Link
                   className="navItem"
-                  onClick={() => (window.location = "home/")}
+                  onClick={() => {
+                    userContext.logout();
+                  }}
                   to="home/login"
                 >
                   Logout
@@ -97,7 +102,7 @@ function Header() {
                 </Link>
               )}
 
-              {!admin && (
+              {!admin && !manager && (
                 <NavDropdown title="Enquiry" id="basic-nav-dropdown">
                   <NavDropdown.Item>
                     <Link to="/home/course-enquiry">Course Enquiry</Link>

@@ -6,6 +6,8 @@ import {useState, useEffect} from "react";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import { Form, Button } from "react-bootstrap";
+import { toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function CeqDetails(){
 
@@ -15,7 +17,7 @@ function CeqDetails(){
     const mytoken = localStorage.getItem('mytoken');
 
     //Delete course option
-    const deleteCourse = ()=>{
+    const deleteCourseEnquiree = ()=>{
 
         var config = {
             method: 'delete',
@@ -29,6 +31,11 @@ function CeqDetails(){
         axios
         (config)
         .then((response)=>{
+            // toast.success("Deleted Successfully", {
+            //     transition: Slide,
+            //     hideProgressBar: true,
+            //     autoClose: 3000
+            //   })
                 console.log(response);
                 window.location.reload();
         })
@@ -45,11 +52,17 @@ function CeqDetails(){
             headers: { 
               'Authorization': `Bearer ${mytoken}`, 
               'Content-Type': 'application/json'
+            
             }
 
         }
         axios(config)
         .then(response =>{
+            // toast.success("Updated Successfully", {
+            //     transition: Slide,
+            //     hideProgressBar: true,
+            //     autoClose: 3000
+            //   })
             console.log(response.data);
             setInputs(response.data);
         })
@@ -61,14 +74,14 @@ function CeqDetails(){
         <>
         <Dashboard />
         <div><center>
-        <h1>Course Details</h1>
+        <h1>Course Enquiree Details</h1>
         <h2>Enquiree Name: {inputs.name}</h2>
         <h2>Enquirie Email : { inputs.email}</h2>
         <h2>Enquired Course: {inputs.courseName}</h2>
         <h2>Enquirie Status: {inputs.userstatus}</h2>
         <Button onClick={()=> navigate(`/admin/course-enquiry/edit-course-enquiry/${id}`)} variant="primary">Update Enquiree Status</Button>
         &nbsp;&nbsp;&nbsp;
-        <Button onClick={()=> {deleteCourse(); navigate('/admin/course/view-courses')}} variant="danger">Delete</Button>
+        <Button onClick={()=> {deleteCourseEnquiree(); navigate('/admin/course-enquiries/')}} variant="danger">Delete</Button>
         </center></div>
         </>
     )
