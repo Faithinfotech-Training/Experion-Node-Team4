@@ -228,6 +228,12 @@ function MyForm(props) {
     
     axios(config)
     .then(function (response) {
+      console.log(response);
+      toast.success("Updated Successfully", {
+        transition: Slide,
+        hideProgressBar: true,
+        autoClose: 3000
+      })
       console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {
