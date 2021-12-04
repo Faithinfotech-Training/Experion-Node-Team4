@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import handleConfirmText from '../DeleteResource/DeleteAlert';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import DeleteResources from '../DeleteResource/DeleteResource';
 import Dashboard from '../../../Components/Dashboard/Dashboard';
 import { Table } from "react-bootstrap";
@@ -23,6 +23,8 @@ const CustomToast = ({closeToast}) =>{
 
 toast.configure()
 function ViewResource() {
+
+    const {id} = useParams();
     let notify = () => {
         toast.warn(<CustomToast/>,
             {
@@ -67,14 +69,14 @@ function ViewResource() {
         navigate('/admin/resource')
     }
 
-    const [resources, setResources] = useState([]);
+    const [resources, setResources] = useState({});
     // const navigate =useNavigate()
 
     useEffect(() => {
         console.log('The use effect hook has been executed');
         Admin();
         axios
-            .get('http://localhost:3009/resources')
+            .get(`http://localhost:3009/resources/${id}`)
             .then(response => {
                 console.log('Promise fulfilled');
                 console.log(response);
@@ -103,22 +105,16 @@ function ViewResource() {
                             <th>Resource Name</th>
                             <th>Details</th>
                             <th>Category</th>
-                        </tr></thead><tbody>
-                       
-                    {resources.map(resource =>
-                        // <div key={staff.id} className="staffListLI">
-                        //     {/* <Staff details = {staff} /> */}
-                        // </div>
-                      
+                        </tr></thead><tbody>      
                             <tr>
-                                <td> {resource.resourcecode}</td>
-                                <td> {resource.resourcename}</td>
-                                <td>{resource.resourcefee}</td>
-                                <td>{resource.category}</td>
+                                <td> {resources.resourcecode}</td>
+                                <td> {resources.resourcename}</td>
+                                <td>{resources.resourcefee}</td>
+                                <td>{resources.category}</td>
                             
                       {!admin  &&     <td>   <Button type="button"
                                         onClick={async () => {
-                                            await updateVisitCount(resource.id);
+                                            await updateVisitCount(resources.id);
 
                                             navigate(`/home/resource-enquiry`);
                                         }}
@@ -130,18 +126,18 @@ function ViewResource() {
                                 {/* <ToastContainer/> */}
                              {admin && <td> <Button type="button" 
                                 
-                                    onClick=  {() => handleConfirmText(resource.id) } variant="danger"> Delete</Button>
+                                    onClick=  {() => handleConfirmText(resources.id) } variant="danger"> Delete</Button>
                                 </td> }
                               
                              {admin && <td>  <Button type="button"
-                                    onClick={ () => navigate(`/admin/resource/edit-resource/${resource.id}`)} variant="success"> Edit</Button></td>}
+                                    onClick={ () => navigate(`/admin/resource/edit-resource/${resources.id}`)} variant="success"> Edit</Button></td>}
                                {admin && <td> <Button variant="primary" type="reset" onClick={() => goBack()}>
                                     Go Back
                                 </Button></td>}
                                 </tr>
 
                         
-                    )}
+                  
                     </tbody>
                    </Table> 
                 </div>
