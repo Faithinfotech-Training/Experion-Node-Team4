@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 import { Form, Button } from "react-bootstrap";
 import { toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { Table } from "react-bootstrap";
 function CeqDetails(){
 
     const [inputs, setInputs] = useState({});
@@ -75,13 +75,30 @@ function CeqDetails(){
         <Dashboard />
         <div><center>
         <h1>Course Enquiree Details</h1>
-        <h2>Enquiree Name: {inputs.name}</h2>
-        <h2>Enquirie Email : { inputs.email}</h2>
-        <h2>Enquired Course: {inputs.courseName}</h2>
-        <h2>Enquirie Status: {inputs.userstatus}</h2>
-        <Button onClick={()=> navigate(`/admin/course-enquiry/edit-course-enquiry/${id}`)} variant="primary">Update Enquiree Status</Button>
-        &nbsp;&nbsp;&nbsp;
-        <Button onClick={()=> {deleteCourseEnquiree(); navigate('/admin/course-enquiries/')}} variant="danger">Delete</Button>
+        <Table striped bordered>
+
+<thead>
+    <tr>
+  
+                            <th> Name</th>
+                            <th> Email</th>
+                            <th>Course</th>
+                            <th>Status</th>
+                        </tr></thead><tbody>
+
+      <tr>  
+          <td>{inputs.name}</td> 
+        <td>{ inputs.email}</td> 
+        <td>{inputs.courseName}</td>
+      <td>{inputs.userstatus}</td>
+      <td>  <Button onClick={()=> navigate(`/admin/course-enquiry/edit-course-enquiry/${id}`)} variant="primary">Update Enquiree Status</Button>
+        &nbsp;&nbsp;&nbsp;</td>
+      <td>  <Button onClick={()=> {deleteCourseEnquiree(); navigate('/admin/course-enquiries/')}} variant="danger">Delete</Button>
+       
+       </td> 
+       </tr>
+        </tbody>
+        </Table>
         </center></div>
         </>
     )
