@@ -39,6 +39,7 @@ function ManagerViewCourseEnquiryDetails() {
                             <th> Enquirer Name</th>
                             <th> Enquirer Email</th>
                             <th> Enquired Course</th>
+                            <th>Enquiree Status</th>
                         </tr></thead>
      
      <tbody>
@@ -46,6 +47,7 @@ function ManagerViewCourseEnquiryDetails() {
       <td>{inputs.name}</td>
       <td> {inputs.email}</td>
       <td> {inputs.courseName}</td>
+      <td>{inputs.userstatus}</td>
       </tr>
     </tbody>
 
