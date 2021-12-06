@@ -82,9 +82,9 @@ function UpdateStatus(props) {
             toast.success("Updated Successfully", {
               transition: Slide,
               hideProgressBar: true,
-              autoClose: 5000
+              autoClose: 3000
             })
-           
+           navigate('/admin/resource-enquiry/view-resource-enquiry')
           })
             .catch((error) => {
                 console.log(error);
