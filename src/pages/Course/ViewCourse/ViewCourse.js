@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import Dashboard from "../../../Components/Dashboard/Dashboard";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 
 function ViewCourse() {
     let [user, setUser] = useState(false);
@@ -85,13 +85,13 @@ function ViewCourse() {
                                         <td>{course.coursecode}</td>
                                         <td>{course.coursename}</td>
                                         <td> {user ? (
-                                            <button
+                                            <Button variant="primary"
                                                 onClick={() => {
                                                     navigate(`/user/view-courses/${course.id}`);
                                                 }}
                                             >
                                                 Click for details
-                                            </button>
+                                            </Button>
                                         ) : (
                                             <div>
                                                 <Link to={`${course.id}`}>View Course Details</Link>
