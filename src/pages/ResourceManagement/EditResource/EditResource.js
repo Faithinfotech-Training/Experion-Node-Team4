@@ -171,7 +171,7 @@ import { useParams } from "react-router-dom";
 import { toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "../../../Components/Dashboard/Dashboard";
-// import './EditCourse.css'
+import './EditResource.css'
 
 function EditResource() {
   const { id } = useParams()
@@ -248,6 +248,7 @@ function MyForm(props) {
     <div>
       <Dashboard />
       <Form onSubmit={handleSubmit}>
+        <div className="details-table">
         <Form.Group className="mb-3" >
           <Form.Label>Resource Code :
             <span className="required">*</span>
@@ -294,6 +295,7 @@ function MyForm(props) {
         <Button variant="primary" type="reset" onClick={() => goBack()}>
           Go Back
         </Button>
+        </div>
       </Form>
     </div>
   )

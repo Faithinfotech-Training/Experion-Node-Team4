@@ -37,10 +37,16 @@ function LoginForm() {
             .post('http://localhost:3009/users/login', inputs)
             .then(response => {
                 // alert(response.data.user.role);
+                toast.success(`Welcome ${response.data.user.name}`, {
+                    transition: Slide,
+                    hideProgressBar: true,
+                    autoClose: 3000
+                })
                 let role = response.data.user.role;
                 let id = response.data.user.id;
 
                 userContext.login(response.data.accessToken, response.data.user.role, response.data.user.name, response.data.user.id);
+
 
                 if (role === "Admin") {
 
@@ -48,7 +54,7 @@ function LoginForm() {
                 } else if (role === "Manager") {
                     console.log("Working");
                     navigate('/manager');
-                    // window.location = `/home/user/${id}}`
+               
                 } else {
                     navigate(`/home/user/${id}`);
                 }
@@ -58,7 +64,7 @@ function LoginForm() {
                     hideProgressBar: true,
                     autoClose: 3000
                 })
-                // alert("Wrong Credentials");
+               
             })
 
 
@@ -83,15 +89,13 @@ function LoginForm() {
                     </Form.Label>
                     <Form.Control type="password" required placeholder="Password" name="password" onChange={handleChange} value={inputs.password || ""} />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
+              
+                <center><Button variant="primary" type="submit">
                     Login
-                </Button>&nbsp;&nbsp;&nbsp;
-                <Button variant="primary" onClick={() => { window.location = "/home" }}>
+                </Button></center>
+                {/* <Button variant="primary" onClick={() => { window.location = "/home" }}>
                     Go Back
-                </Button>
+                </Button> */}
             </Form>
         </div>
     )

@@ -9,3 +9,8 @@ span{
     font-size: large;
     font-style: italic;
 }
+
+.details-table{
+    padding-left: 10%;
+    padding-right: 10%;
+}

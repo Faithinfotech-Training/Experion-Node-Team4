@@ -7,7 +7,7 @@ import { toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Dashboard from "../../../Components/Dashboard/Dashboard";
-
+import './ResourceEnquiryForm.css'
 
 
 function EditReq() {
@@ -93,8 +93,12 @@ function EditReq() {
     <div>
       <Dashboard />
       <Form onSubmit={handleSubmit}>
+      <div className="details-table">
         <Form.Group className="mb-3">
-          <Form.Label>Update Status</Form.Label>
+        
+
+       <h3>   <Form.Label>Update Status</Form.Label> </h3>
+          
 
           <Form.Select name="userstatus" aria-label="Default select example" defaultValue={userstatus} value={userstatus || ""} onChange={handleChange}>
             <option value="Pending">Pending</option>
@@ -103,9 +107,11 @@ function EditReq() {
             <option value="Purchased">Purchased</option>
             <option value="Rejected">Rejected</option>
           </Form.Select>
+         
         </Form.Group>
-
+       
         <Button variant="success" type="submit">Update Status</Button>
+        </div>
       </Form>
 
     </div>

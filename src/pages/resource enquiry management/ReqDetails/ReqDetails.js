@@ -8,6 +8,7 @@ import { useParams } from "react-router";
 
 import { useNavigate } from 'react-router-dom';
 import { Table } from "react-bootstrap";
+import './ReqDetails.css'
 function ReqDetails() {
 
     const [inputs, setInputs] = useState({});
@@ -36,11 +37,11 @@ function ReqDetails() {
         <>
             <Dashboard />
             <center>
-                <div>
+                <div >
 
-                    <h1>Resource enquiry Details</h1>
+                    <h3>Resource enquiry Details</h3>
                     <br />
-
+                 <div className="details-table">
                     <Table striped bordered>
                    
                     <thead>
@@ -68,7 +69,9 @@ function ReqDetails() {
                    </tbody>
                    </Table>
                 </div>
+                </div>
             </center>
+            
         </>
     )
 }

@@ -59,7 +59,11 @@ function AddResource() {
         navigate("/admin/resource/view-resources")
       })
       .catch((error) => {
-        console.log(error);
+        toast.error("Resource already exists", {
+          transition: Slide,
+          hideProgressBar: true,
+          autoClose: 3000
+        })
       })
 
   }

@@ -59,7 +59,11 @@ function AddCourse() {
         navigate("/admin/course/view-courses")
       })
       .catch((error) => {
-        console.log(error);
+        toast.error("Course already exists", {
+          transition: Slide,
+          hideProgressBar: true,
+          autoClose: 3000
+        })
       })
 
   }

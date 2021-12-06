@@ -70,9 +70,10 @@ function CeqDetails() {
     <>
       <Dashboard />
       <div><center>
-        <h1>Course Enquiree Details</h1>
+        <h3>Course Enquiree Details</h3>
+        <div className="details-table">
         <Table striped bordered>
-
+         
           <thead>
             <tr>
 
@@ -95,6 +96,7 @@ function CeqDetails() {
             </tr>
           </tbody>
         </Table>
+        </div>
       </center></div>
     </>
   )

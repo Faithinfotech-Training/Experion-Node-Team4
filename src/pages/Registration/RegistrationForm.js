@@ -27,21 +27,22 @@ function RegistrationForm() {
         //updating the values into the state
         setInputs(values => ({ ...values, [name]: value }))
     }
-    function handleSubmit(e) {
-        e.preventDefault();
-        const regData = {
-            "name": inputs.name,
-            "email": inputs.email,
-            "password": inputs.password,
-            "role": "User"
-        }
+    const matchpassword = ()=>{
+        const pwd = inputs.password;
+        const cfpwd = inputs.cfpassword;
+        if(pwd === cfpwd){
+            const regData = {
+                "name": inputs.name,
+                "email": inputs.email,
+                "password": inputs.password,
+                "role": "User"
+            }
 
-
-        axios
+            axios
             .post('http://localhost:3009/users/register', regData)
             .then(response => {
                 if (response.status === 200) {
-                    toast.success(" Added Successfully", {
+                    toast.success(" Registered Successfully", {
                         transition: Slide,
                         hideProgressBar: true,
                         autoClose: 3000
@@ -52,6 +53,7 @@ function RegistrationForm() {
                         console.log(response);
                     }
                 }
+                navigate("/home/login");
 
             }).catch(err => {
                 toast.error(" User Already Exist", {
@@ -60,6 +62,24 @@ function RegistrationForm() {
                     autoClose: 3000
                 })
             })
+            return true;
+        }else{
+            // alert("Incorrect password");
+            toast.error(" Incorrect Password", {
+                transition: Slide,
+                hideProgressBar: true,
+                autoClose: 3000
+            })
+            return false;
+        }
+
+    }
+    function handleSubmit(e) {
+        e.preventDefault();
+        
+        matchpassword();
+
+        
 
 
     }
@@ -93,11 +113,22 @@ function RegistrationForm() {
                     <Form.Text className="text-muted">
                         Password must be minimum eight characters, at least one letter, one number and one special character
                     </Form.Text>
-                    <Form.Control type="password" required placeholder="Password" name="password" onChange={handleChange} value={inputs.password || ""} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid password') }} onInput={(e) => { e.target.setCustomValidity('') }} />
+                    <Form.Control type="password" required placeholder="Password" name="password"  onChange={handleChange} value={inputs.password || ""} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid password') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                 </Form.Group>
 
-                <Button variant="primary" type="submit" onClick={()=> navigate("/home/login")}>
-                    Submit
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Confirm Password :
+                        <span className="required">*</span>
+                    </Form.Label>
+                    <br/>
+                    <Form.Text className="text-muted">
+                        Password must be minimum eight characters, at least one letter, one number and one special character
+                    </Form.Text>
+                    <Form.Control type="password" required placeholder="Confirm password" name="cfpassword"  onChange={handleChange} value={inputs.cfpassword || ""} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid password') }} onInput={(e) => { e.target.setCustomValidity('') }} />
+                </Form.Group>
+
+                <Button variant="success" type="submit">
+                    Register
                 </Button>&nbsp;&nbsp;&nbsp;
                 <Button variant="primary" onClick={() => { window.location = "/home" }}>
                     Go Back
