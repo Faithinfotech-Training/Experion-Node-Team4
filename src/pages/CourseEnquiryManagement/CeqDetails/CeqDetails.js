@@ -58,11 +58,7 @@ function CeqDetails(){
         }
         axios(config)
         .then(response =>{
-            // toast.success("Updated Successfully", {
-            //     transition: Slide,
-            //     hideProgressBar: true,
-            //     autoClose: 3000
-            //   })
+            
             console.log(response.data);
             setInputs(response.data);
         })
@@ -91,7 +87,7 @@ function CeqDetails(){
         <td>{ inputs.email}</td> 
         <td>{inputs.courseName}</td>
       <td>{inputs.userstatus}</td>
-      <td>  <Button onClick={()=> navigate(`/admin/course-enquiry/edit-course-enquiry/${id}`)} variant="success">Update Enquiree Status</Button>
+      <td>  <Button onClick={()=> navigate(`/admin/course-enquiry/edit-course-enquiry/${id}`)} variant="success">Update Status</Button>
         &nbsp;&nbsp;&nbsp;</td>
       {/* <td>  <Button onClick={()=> {deleteCourseEnquiree(); navigate('admin/course-enquiry')}} variant="danger">Delete</Button>
        

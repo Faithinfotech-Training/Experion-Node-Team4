@@ -92,7 +92,7 @@ function RegistrationForm() {
                     <Form.Control type="password" required placeholder="Password" name="password" onChange={handleChange} value={inputs.password || ""} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" onInvalid={(e) => { e.target.setCustomValidity('Password must be minimum eight characters, at least one letter, one number and one special character') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" onClick={()=> navigate("/home/login")}>
                     Submit
                 </Button>&nbsp;&nbsp;&nbsp;
                 <Button variant="primary" onClick={() => { window.location = "/home" }}>

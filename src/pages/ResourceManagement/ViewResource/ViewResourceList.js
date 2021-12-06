@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import Dashboard from "../../../Components/Dashboard/Dashboard";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 
 function ViewResourceList() {
     let [user, setUser] = useState(false);
@@ -97,14 +97,14 @@ function ViewResourceList() {
                                         <td>{resource.resourcecode}</td>
                                         <td>{resource.resourcename}</td>
                                         <td> {user ? (
-                                            <button
+                                            <Button variant="primary"
                                                 onClick={async () => {
 
                                                     navigate(`/user/view-resources/${resource.id}`);
                                                 }}
                                             >
                                                 Click for details
-                                            </button>
+                                            </Button>
                                         ) : (
                                             <div>
                                                 <Link to={`${resource.id}`}>View Resource Details</Link>
