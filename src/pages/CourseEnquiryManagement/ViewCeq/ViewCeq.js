@@ -44,16 +44,16 @@ function ViewCeq() {
     return (
         <>
             <Dashboard />
-            <div className="mainBody" style={{height:"50vh"}}>
-                <h1>
+            <div className="mainBody" style={{ height: "50vh" }}>
+                <h4>
                     View all course enquiries
-                </h1>
+                </h4>
                 <div>
                     <Table striped bordered hover>
                         <thead>
                             <tr>
-                                <th align="left">Name
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <th align="left" >Course Name
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <input
                                         type="text"
                                         align="center"
@@ -63,6 +63,7 @@ function ViewCeq() {
                                         }}
                                     />
                                 </th>
+                                <th>Enquiree Name</th>
                                 <th>Email</th>
                                 <th>Details</th>
 
@@ -72,13 +73,14 @@ function ViewCeq() {
                             {courseEnquiries.filter((courseEnquirie) => {
                                 if (ceqsearch == "") {
                                     return courseEnquirie;
-                                } else if (courseEnquirie.name.includes(ceqsearch)) {
+                                } else if (courseEnquirie.courseName.includes(ceqsearch)) {
                                     return courseEnquirie;
                                 }
                             })
                                 .map(courseEnquirie => {
                                     return (
                                         <tr>
+                                            <td>{courseEnquirie.courseName}</td>
                                             <td>{courseEnquirie.name}</td>
                                             <td>{courseEnquirie.email}</td>
                                             <td><Link to={`${courseEnquirie.id}`}>View Enquiree Details</Link></td>

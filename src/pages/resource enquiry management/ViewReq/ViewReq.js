@@ -40,15 +40,14 @@ function ViewReq() {
 
             <Dashboard />
             <div className="view-req">
-                <h1>
-                    Resource all resource enquiries
-                </h1>
+                <h4>
+                    View all resource enquiries
+                </h4>
                 <div>
                     <Table striped bordered hover>
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th align="left"> Email
+                            <th align="left" >Resource Name
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <input
                                         type="text"
@@ -59,6 +58,8 @@ function ViewReq() {
                                         }}
                                     />
                                 </th>
+                                <th>Enquiree Name</th>
+                                <th>Email</th>
                                 <th>Details</th>
 
                             </tr>
@@ -67,13 +68,14 @@ function ViewReq() {
                             {resourceEnquiries.filter((resourceEnquirie) => {
                                 if (reqsearch == "") {
                                     return resourceEnquirie;
-                                } else if (resourceEnquirie.name.includes(reqsearch)) {
+                                } else if (resourceEnquirie.resourceName.includes(reqsearch)) {
                                     return resourceEnquirie;
                                 }
                             })
                                 .map(resourceEnquirie => {
                                     return (
                                         <tr>
+                                            <td>{resourceEnquirie.resourceName}</td>
                                             <td>{resourceEnquirie.name}</td>
                                             <td>{resourceEnquirie.email}</td>
                                             <td><Link to={`${resourceEnquirie.id}`}>View Enquiree Details</Link></td>
