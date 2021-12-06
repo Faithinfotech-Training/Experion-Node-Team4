@@ -76,7 +76,7 @@ function EditCourse() {
           <Form.Label>Course Name :
             <span className="required">*</span>
           </Form.Label>
-          <Form.Control type="text" required name="coursename" placeholder="Enter the course name" value={courses.coursename || ""} onChange={handleChange} pattern="[A-Za-z]+(\s{1}[A-Za-z])*" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid course name') }} onInput={(e) => { e.target.setCustomValidity('') }} />
+          <Form.Control type="text" required name="coursename" placeholder="Enter the course name" value={courses.coursename || ""} onChange={handleChange} pattern="[A-Za-z]+\s{0,1}(([A-Za-z])+)*" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid course name') }} onInput={(e) => { e.target.setCustomValidity('') }} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
