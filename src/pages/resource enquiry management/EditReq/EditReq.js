@@ -109,8 +109,9 @@ function EditReq() {
           </Form.Select>
          
         </Form.Group>
-        </div>
+       
         <Button variant="success" type="submit">Update Status</Button>
+        </div>
       </Form>
 
     </div>
