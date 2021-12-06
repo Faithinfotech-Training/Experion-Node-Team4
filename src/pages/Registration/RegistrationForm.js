@@ -52,8 +52,8 @@ function RegistrationForm() {
                         console.log(response);
                     }
                 }
-            
-            }).catch( err=>{
+
+            }).catch(err => {
                 toast.error(" User Already Exist", {
                     transition: Slide,
                     hideProgressBar: true,
@@ -89,7 +89,10 @@ function RegistrationForm() {
                     <Form.Label>Password :
                         <span className="required">*</span>
                     </Form.Label>
-                    <Form.Control type="password" required placeholder="Password" name="password" onChange={handleChange} value={inputs.password || ""} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" onInvalid={(e) => { e.target.setCustomValidity('Password must be minimum eight characters, at least one letter, one number and one special character') }} onInput={(e) => { e.target.setCustomValidity('') }} />
+                    <Form.Text className="text-muted">
+                        Password must be minimum eight characters, at least one letter, one number and one special character
+                    </Form.Text>
+                    <Form.Control type="password" required placeholder="Password" name="password" onChange={handleChange} value={inputs.password || ""} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid password') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
