@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Table } from "react-bootstrap";
-
+import './Manager.css'
 function ManagerViewResourceEnquiryDetails() {
 
     const [inputs, setInputs] = useState({});

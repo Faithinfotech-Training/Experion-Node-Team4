@@ -37,7 +37,7 @@ function ReqDetails() {
         <>
             <Dashboard />
             <center>
-                <div>
+                <div >
 
                     <h3>Resource enquiry Details</h3>
                     <br />

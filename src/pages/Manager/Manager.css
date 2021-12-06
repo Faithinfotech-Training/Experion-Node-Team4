@@ -23,3 +23,8 @@
     display: inline-block;
     
 }
+
+.resource-list{
+    padding-left: 10%;
+    padding-right: 10%;
+}
