@@ -56,6 +56,7 @@ function AddResource() {
           hideProgressBar: true,
           autoClose: 3000
         })
+        navigate("/admin/resource/view-resources")
       })
       .catch((error) => {
         console.log(error);
