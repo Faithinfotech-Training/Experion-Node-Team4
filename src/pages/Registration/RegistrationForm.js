@@ -89,6 +89,7 @@ function RegistrationForm() {
                     <Form.Label>Password :
                         <span className="required">*</span>
                     </Form.Label>
+                    <br/>
                     <Form.Text className="text-muted">
                         Password must be minimum eight characters, at least one letter, one number and one special character
                     </Form.Text>
