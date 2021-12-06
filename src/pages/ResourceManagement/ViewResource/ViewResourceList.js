@@ -16,6 +16,7 @@ function ViewResourceList() {
     };
 
     const [resources, setResources] = useState([]);
+    const [resourcesearch, setResourceSearch] = useState("");
 
 
 
@@ -57,42 +58,66 @@ function ViewResourceList() {
 
     return (
         <div>
-           {admin && <Dashboard />}
+            {admin && <Dashboard />}
             <div className="mainBody">
                 <h1>Resource List</h1>
 
-               
+
                 <Table striped bordered hover>
+                    <thead>
                         <tr>
                             <th>id</th>
-                            <th>Resource Name</th>
+                            <th align="left">Resource Name
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input
+                                    type="text"
+                                    align="center"
+                                    placeholder="Search here"
+                                    onChange={(e) => {
+                                        setResourceSearch(e.target.value);
+                                    }}
+                                />
+                            </th>
                             <th>Details</th>
-                            
+
                         </tr>
+                    </thead>
+                    <tbody>
+                        {resources.filter((resource) => {
+                            if (resourcesearch == "") {
+                                return resource;
+                            } else if (resource.resourcename.includes(resourcesearch)) {
+                                return resource;
+                            }
+                        })
+                            .map((resource) => {
+                                return (
+                                    // <div className="ULbox">
+                                    <tr>
+                                        <td>{resource.resourcecode}</td>
+                                        <td>{resource.resourcename}</td>
+                                        <td> {user ? (
+                                            <button
+                                                onClick={async () => {
 
-                        {resources.map((resource) => (
-                            // <div className="ULbox">
-                        <tr>
-                            <td>{resource.resourcecode}</td>
-                            <td>{resource.resourcename}</td>
-                            <td> {user ? (
-                                    <button
-                                        onClick={async () => {
+                                                    navigate(`/user/view-resources/${resource.id}`);
+                                                }}
+                                            >
+                                                Click for details
+                                            </button>
+                                        ) : (
+                                            <div>
+                                                <Link to={`${resource.id}`}>View Resource Details</Link>
+                                            </div>
+                                        )}</td>
+                                    </tr>
+                                )
+                            }
+                            )
+                        }
+                    </tbody>
+                </Table>
 
-                                            navigate(`/user/view-resources/${resource.id}`);
-                                        }}
-                                    >
-                                        Click for details
-                                    </button>
-                                ) : (
-                                    <div>
-                                        <Link to={`${resource.id}`}>View Resource Details</Link>
-                                    </div>
-                                )}</td>
-                        </tr>                            
-                        ))}
-                    </Table>
-                
 
             </div>
         </div>
