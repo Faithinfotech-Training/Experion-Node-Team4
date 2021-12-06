@@ -37,10 +37,16 @@ function LoginForm() {
             .post('http://localhost:3009/users/login', inputs)
             .then(response => {
                 // alert(response.data.user.role);
+                toast.success(`Welcome ${response.data.user.name}`, {
+                    transition: Slide,
+                    hideProgressBar: true,
+                    autoClose: 3000
+                })
                 let role = response.data.user.role;
                 let id = response.data.user.id;
 
                 userContext.login(response.data.accessToken, response.data.user.role, response.data.user.name);
+
 
                 if (role === "Admin") {
 
