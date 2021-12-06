@@ -40,28 +40,27 @@ function RegistrationForm() {
         axios
             .post('http://localhost:3009/users/register', regData)
             .then(response => {
-                toast.success(" Added Successfully", {
-                    transition: Slide,
-                    hideProgressBar: true,
-                    autoClose: 3000
-                  })
-                localStorage.setItem('mytoken', response.data.accessToken);
-                localStorage.setItem('role', response.data.user.role);
-                if(response.data.user.role === 'User'){
-                    console.log(response);
-                    
-
+                if (response.status === 200) {
+                    toast.success(" Added Successfully", {
+                        transition: Slide,
+                        hideProgressBar: true,
+                        autoClose: 3000
+                    })
+                    localStorage.setItem('mytoken', response.data.accessToken);
+                    localStorage.setItem('role', response.data.user.role);
+                    if (response.data.user.role === 'User') {
+                        console.log(response);
+                    }
                 }
-            })
-            .catch(err=>{
+            
+            }).catch( err=>{
                 toast.error(" User Already Exist", {
                     transition: Slide,
                     hideProgressBar: true,
                     autoClose: 3000
-                  })
-
+                })
             })
-            
+
 
     }
 
