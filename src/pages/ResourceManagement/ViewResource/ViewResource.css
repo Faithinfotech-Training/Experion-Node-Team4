@@ -5,6 +5,10 @@ button{
     margin-top: 10px;
 }
 
-.resource-list{
+/* .resource-list{
     padding: 20px
+} */
+.details-table{
+    padding-left: 10%;
+    padding-right: 10%;
 }

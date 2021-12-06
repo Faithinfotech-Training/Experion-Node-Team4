@@ -64,7 +64,7 @@ function EditCourse() {
     <div>
       <Dashboard />
       <Form onSubmit={handleSubmit}>
-
+      <div className= "details-table">
         <Form.Group className="mb-3" >
           <Form.Label>Course Code :
             <span className="required">*</span>
@@ -112,6 +112,7 @@ function EditCourse() {
         <Button variant="primary" type="reset" onClick={() => goBack()}>
           Go Back
         </Button>
+        </div>
       </Form>
     </div>
   )

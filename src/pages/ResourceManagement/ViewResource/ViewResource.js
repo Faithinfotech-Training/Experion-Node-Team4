@@ -10,6 +10,7 @@ import { useNavigate, useParams } from 'react-router';
 import DeleteResources from '../DeleteResource/DeleteResource';
 import Dashboard from '../../../Components/Dashboard/Dashboard';
 import { Table } from "react-bootstrap";
+import './ViewResource.css'
 
 const CustomToast = ({closeToast}) =>{
     return(
@@ -93,11 +94,11 @@ function ViewResource() {
         <>
             {admin && <Dashboard />}
             <div className="resource-list">
-                <center> <h1>
+                <center> <h3>
                     Resource List
-                </h1> </center>
+                </h3> </center>
                
-                <div>
+                <div className="details-table">
                 <Table striped bordered>
                     <thead>
                         <tr>

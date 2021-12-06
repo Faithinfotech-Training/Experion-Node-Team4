@@ -10,7 +10,7 @@ import { useNavigate, useParams } from "react-router";
 import DeleteCourses from "../DeleteCourse/DeleteCourse";
 import Dashboard from "../../../Components/Dashboard/Dashboard";
 import { Table } from "react-bootstrap";
-
+import './CourseDetails.css'
 const CustomToast = ({ closeToast }) => {
   return (
     <div>
@@ -82,16 +82,16 @@ function ViewCourse() {
       <div className="resource-list">
         <center>
           {" "}
-          <h1>Course List</h1>{" "}
+          <h3>Course List</h3>{" "}
         </center>
 
-        <div>
+        <div className="details-table">
           <Table striped bordered>
             <thead>
               <tr>
                 <th>id</th>
                 <th>Course Name</th>
-                <th>Details</th>
+                <th>Fees</th>
                 <th>Category</th>
               </tr>
             </thead>

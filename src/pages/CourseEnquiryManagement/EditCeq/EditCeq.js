@@ -92,6 +92,7 @@ function EditCeq() {
     <div>
       <Dashboard />
       <Form onSubmit={handleSubmit}>
+        <div className= "details-table">
         <Form.Group className="mb-3">
           <Form.Label>Update Status</Form.Label>
 
@@ -105,6 +106,7 @@ function EditCeq() {
         </Form.Group>
 
         <Button variant="success" type="submit">Update Status</Button>
+        </div>
       </Form>
 
     </div>
