@@ -54,7 +54,7 @@ function LoginForm() {
                 } else if (role === "Manager") {
                     console.log("Working");
                     navigate('/manager');
-                    // window.location = `/home/user/${id}}`
+               
                 } else {
                     navigate(`/home/user/${id}`);
                 }
@@ -64,7 +64,7 @@ function LoginForm() {
                     hideProgressBar: true,
                     autoClose: 3000
                 })
-                // alert("Wrong Credentials");
+               
             })
 
 
@@ -90,9 +90,9 @@ function LoginForm() {
                     <Form.Control type="password" required placeholder="Password" name="password" onChange={handleChange} value={inputs.password || ""} />
                 </Form.Group>
               
-                <Button variant="primary" type="submit">
+                <center><Button variant="primary" type="submit">
                     Login
-                </Button>&nbsp;&nbsp;&nbsp;
+                </Button></center>
                 {/* <Button variant="primary" onClick={() => { window.location = "/home" }}>
                     Go Back
                 </Button> */}
