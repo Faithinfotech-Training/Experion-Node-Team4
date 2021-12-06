@@ -40,7 +40,7 @@ function LoginForm() {
                 let role = response.data.user.role;
                 let id = response.data.user.id;
 
-                userContext.login( response.data.accessToken, response.data.user.role, response.data.user.name);
+                userContext.login(response.data.accessToken, response.data.user.role, response.data.user.name);
 
                 if (role === "Admin") {
 
@@ -49,15 +49,15 @@ function LoginForm() {
                     console.log("Working");
                     navigate('/manager');
                     // window.location = `/home/user/${id}}`
-                }else{
+                } else {
                     navigate(`/home/user/${id}`);
                 }
-            }).catch(()=>{
+            }).catch(() => {
                 toast.error("Wrong Credentials", {
                     transition: Slide,
                     hideProgressBar: true,
                     autoClose: 3000
-                  })
+                })
                 // alert("Wrong Credentials");
             })
 
@@ -68,15 +68,19 @@ function LoginForm() {
         <div className="loginForm">
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="text" placeholder="Enter email" name="email" onChange={handleChange} value={inputs.email || ""} />
+                    <Form.Label>Email address
+                        <span className="required">*</span>
+                    </Form.Label>
+                    <Form.Control type="text" placeholder="Enter email" name="email" onChange={handleChange} value={inputs.email || ""} onInvalid={(e) => { e.target.setCustomValidity('Enter a valid email-id') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                     <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                     </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>Password
+                        <span className="required">*</span>
+                    </Form.Label>
                     <Form.Control type="password" placeholder="Password" name="password" onChange={handleChange} value={inputs.password || ""} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">

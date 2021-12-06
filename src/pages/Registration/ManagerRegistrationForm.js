@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function ManagerRegistrationForm() {
 
-    
+
     //initialize to empty
     const [inputs, setInputs] = useState({});
     const navigate = useNavigate();
@@ -38,15 +38,15 @@ function ManagerRegistrationForm() {
         axios
             .post('http://localhost:3009/users/register', regData)
             .then(response => {
-                
+
                 toast.success(" Added Successfully", {
                     transition: Slide,
                     hideProgressBar: true,
                     autoClose: 3000
-                  })
-                if(response.data.user.role === 'Manager'){
+                })
+                if (response.data.user.role === 'Manager') {
                     console.log(response);
-                    
+
 
                 }
             })
@@ -58,32 +58,33 @@ function ManagerRegistrationForm() {
             <Form onSubmit={handleSubmit}>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter name" name="name" onChange={handleChange} value={inputs.name || ""} />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
+                    <Form.Label>Name :
+                        <span className="required">*</span>
+                    </Form.Label>
+                    <Form.Control type="text" placeholder="Enter name" name="name" onChange={handleChange} value={inputs.name || ""} pattern="[A-Za-z]+\s{1}[A-Za-z]+" onInvalid={(e) => { e.target.setCustomValidity('Enter your name') }} onInput={(e) => { e.target.setCustomValidity('') }} />
+
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="text" placeholder="Enter email" name="email" onChange={handleChange} value={inputs.email || ""} />
+                    <Form.Label>Email address :</Form.Label>
+                    <span className="required">*</span>
+                    <Form.Control type="email" required placeholder="Enter email" name="email" onChange={handleChange} value={inputs.email || ""} onInvalid={(e) => { e.target.setCustomValidity('Enter a valid email-id') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                     <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                     </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name="password" onChange={handleChange} value={inputs.password || ""} />
+                    <Form.Label>Password :
+                        <span className="required">*</span>
+                        </Form.Label>
+                    <Form.Control type="password" required placeholder="Password" name="password" onChange={handleChange} value={inputs.password || ""} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" onInvalid={(e) => { e.target.setCustomValidity('Password must be minimum eight characters, at least one letter, one number and one special character') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
+
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>&nbsp;&nbsp;&nbsp;
-                <Button variant="primary" onClick={() => { navigate("/admin/")}}>
+                <Button variant="primary" onClick={() => { navigate("/admin/") }}>
                     Go Back
                 </Button>
             </Form>
@@ -92,4 +93,4 @@ function ManagerRegistrationForm() {
 }
 
 
-export default  ManagerRegistrationForm;
+export default ManagerRegistrationForm;
