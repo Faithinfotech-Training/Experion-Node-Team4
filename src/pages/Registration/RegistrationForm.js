@@ -40,7 +40,7 @@ function RegistrationForm() {
         axios
             .post('http://localhost:3009/users/register', regData)
             .then(response => {
-                toast.success(" Added Successfully", {
+                toast.sucess(" Added Successfully", {
                     transition: Slide,
                     hideProgressBar: true,
                     autoClose: 3000
@@ -52,6 +52,13 @@ function RegistrationForm() {
                     
 
                 }
+            }).catch(err=>{
+                toast.error(" User Already Exist", {
+                    transition: Slide,
+                    hideProgressBar: true,
+                    autoClose: 3000
+                  })
+
             })
             
 
