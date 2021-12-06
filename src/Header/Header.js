@@ -87,7 +87,7 @@ function Header() {
 
               {admin && (
                 <Link className="navItem"  onClick={() => {
-                  userContext.logout(); 
+                  // userContext.logout(); 
                 }} to="/admin/register-manager">
                   Add Manager
                 </Link>
