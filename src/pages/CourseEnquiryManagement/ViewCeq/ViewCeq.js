@@ -13,28 +13,30 @@ function ViewCeq() {
     const [courseEnquiries, setCourseEnquiries] = useState([]);
     const mytoken = localStorage.getItem('mytoken');
 
+    const [ceqsearch, setCeqSearch] = useState("");
+
     useEffect(() => {
         console.log('The use effect hook has been executed');
 
         var config = {
             method: 'get',
             url: 'http://localhost:3009/course-enquiries',
-            headers: { 
-              'Authorization': `Bearer ${mytoken}`, 
-              'Content-Type': 'application/json'
+            headers: {
+                'Authorization': `Bearer ${mytoken}`,
+                'Content-Type': 'application/json'
             }
-          };
-          
-          axios(config)
-          .then(function (response) {
-            console.log(JSON.stringify(response.data));
-            setCourseEnquiries(response.data);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-          
-            
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+                setCourseEnquiries(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
 
     }, [])
 
@@ -44,28 +46,47 @@ function ViewCeq() {
             <Dashboard />
             <div className="mainBody">
                 <h1>
-                    View Course Enquiriee List
+                    View all course enquiries
                 </h1>
                 <div>
-                <Table striped bordered hover>
-                        <tr>
-                            <th>id</th>
-                            <th>Course Name</th>
-                            <th>Details</th>
-                            
-                        </tr>
-                    {courseEnquiries.map(courseEnquirie =>
-                        // <div key={staff.id} className="staffListLI">
-                        //     {/* <Staff details = {staff} /> */}
-                        // </div>
-                        // <div className="ULBoxs">
-                        <tr>
-                            <td>Name: {courseEnquirie.name}</td>
-                            <td>Age: {courseEnquirie.age}</td>
-                            <td><Link to={`${courseEnquirie.id}`}>View Enquiree Details</Link></td>
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th align="left">Name
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input
+                                        type="text"
+                                        align="center"
+                                        placeholder="Search here"
+                                        onChange={(e) => {
+                                            setCeqSearch(e.target.value);
+                                        }}
+                                    />
+                                </th>
+                                <th>Email</th>
+                                <th>Details</th>
+
                             </tr>
-                        // </div>
-                    )}
+                        </thead>
+                        <tbody>
+                            {courseEnquiries.filter((courseEnquirie) => {
+                                if (ceqsearch == "") {
+                                    return courseEnquirie;
+                                } else if (courseEnquirie.name.includes(ceqsearch)) {
+                                    return courseEnquirie;
+                                }
+                            })
+                                .map(courseEnquirie => {
+                                    return (
+                                        <tr>
+                                            <td>{courseEnquirie.name}</td>
+                                            <td>{courseEnquirie.email}</td>
+                                            <td><Link to={`${courseEnquirie.id}`}>View Enquiree Details</Link></td>
+                                        </tr>
+
+                                    )
+                                })}
+                        </tbody>
                     </Table>
                 </div>
 
