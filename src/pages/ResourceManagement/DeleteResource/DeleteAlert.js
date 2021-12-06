@@ -39,11 +39,11 @@ const handleConfirmText = (id) => {
           .catch((error) => {
               console.log(error);
           })
-          // window.location = "/admin/course/view-courses"
+          window.location = "/admin/resource/view-resources"
            
-        
-    window.location.reload();
-}
+    }
+//    
+// }
       // console.log("handleConfirmText = ", data);
       // DeletePassFunction(data);
     

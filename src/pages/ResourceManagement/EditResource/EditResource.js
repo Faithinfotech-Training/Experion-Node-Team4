@@ -101,7 +101,7 @@
 //             type="text"
 //             name="resourcename"
 //             placeholder="Enter the resource name"
-           
+
 //             onChange={(e)=>setresourcename(e.target.value)}
 //           />
 //           {/* 
@@ -141,7 +141,7 @@
 //             <option value="IOT" key="IOT">IOT</option>
 //           </Form.Select>
 //         </Form.Group>
-        
+
 //       </Form>
 //       <Button onClick={() => handleSubmit()} variant="success" type="submit">
 //           Add
@@ -150,7 +150,7 @@
 //         <Button variant="primary" type="reset" onClick={() => goBack()}>
 //           Go Back
 //         </Button>
-        
+
 //     </>
 //   );
 // }
@@ -176,7 +176,7 @@ import Dashboard from "../../../Components/Dashboard/Dashboard";
 function EditResource() {
   const { id } = useParams()
   return (<>
-    <h1> Edit Resource </h1>
+    {/* <h1> Edit Resource </h1> */}
     <MyForm id={id} />
 
   </>
@@ -228,6 +228,12 @@ function MyForm(props) {
     
     axios(config)
     .then(function (response) {
+      console.log(response);
+      toast.success("Updated Successfully", {
+        transition: Slide,
+        hideProgressBar: true,
+        autoClose: 3000
+      })
       console.log(JSON.stringify(response.data));
     })
     .catch(function (error) {

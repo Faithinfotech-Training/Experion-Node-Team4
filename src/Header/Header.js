@@ -54,20 +54,21 @@ function Header() {
       </div>
       <Navbar bg="primary" variant="dark" expand="lg">
         <Container>
-          <Navbar.Brand href="/home">{User()}</Navbar.Brand>
+          <Navbar.Brand >{User()}</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link>
+              {!admin && !manager && <Nav.Link>
                 <Link to="/home" className="navItem">
                   Home
                 </Link>
               </Nav.Link>
+              }
               {localStorage.getItem("mytoken") && (
                 <Link
                   className="navItem"
                   onClick={() => {
-                    userContext.logout();window.location = "/home/login"
+                    userContext.logout(); window.location = "/home/login"
                   }}
                   to="home/login"
                 >
@@ -86,9 +87,7 @@ function Header() {
               )}
 
               {admin && (
-                <Link className="navItem"  onClick={() => {
-                  // userContext.logout(); 
-                }} to="/admin/register-manager">
+                <Link className="navItem"   to="/admin/register-manager">
                   Add Manager
                 </Link>
               )}

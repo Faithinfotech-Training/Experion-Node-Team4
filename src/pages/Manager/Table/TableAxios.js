@@ -141,7 +141,6 @@ const VisitTable = () => {
           </div>
         </div>
       </div>
-      ;
     </div>
   );
 };
