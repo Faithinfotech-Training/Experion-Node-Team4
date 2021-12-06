@@ -16,6 +16,9 @@ function ViewCourse() {
 
 
     const navigate = useNavigate();
+    const goBack = () => {
+        navigate('/admin')
+    }
 
 
     const Users = () => {
@@ -48,7 +51,7 @@ function ViewCourse() {
         <div>
             {admin && <Dashboard />}
             <div className="mainBody">
-                <h1>Course List</h1>
+                <h4>Course List</h4>
 
 
                 <Table striped bordered hover>
@@ -79,13 +82,13 @@ function ViewCourse() {
                             }
                         })
                             .map((course) => {
-                                return(
+                                return (
                                     // <div className="ULbox">
                                     <tr key={course.id}>
                                         <td>{course.coursecode}</td>
                                         <td>{course.coursename}</td>
                                         <td> {user ? (
-                                            <Button variant="primary"
+                                            <Button variant="outline-primary"
                                                 onClick={() => {
                                                     navigate(`/user/view-courses/${course.id}`);
                                                 }}
@@ -104,7 +107,9 @@ function ViewCourse() {
                         }
                     </tbody>
                 </Table>
-
+                <Button className="right" variant="primary" type="reset" onClick={() => goBack()}>
+                    Go Back
+                </Button>
 
             </div>
         </div>

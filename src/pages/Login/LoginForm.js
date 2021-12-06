@@ -87,7 +87,7 @@ function LoginForm() {
                     <Form.Label>Password :
                         <span className="required">*</span>
                     </Form.Label>
-                    <Form.Control type="password" required placeholder="Password" name="password" onChange={handleChange} value={inputs.password || ""} />
+                    <Form.Control type="password" required placeholder="Password" name="password" onChange={handleChange} value={inputs.password || ""} onInvalid={(e) => { e.target.setCustomValidity('Enter a valid password') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                 </Form.Group>
               
                 <center><Button variant="primary" type="submit">

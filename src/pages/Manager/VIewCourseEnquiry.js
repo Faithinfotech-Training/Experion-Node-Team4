@@ -13,8 +13,8 @@ function ViewCourseEnquiry() {
     var config = {
       method: 'get',
       url: 'http://localhost:3009/course-enquiries',
-      headers: { 
-        'Authorization': `Bearer ${mytoken}`, 
+      headers: {
+        'Authorization': `Bearer ${mytoken}`,
         'Content-Type': 'application/json'
       }
     }
@@ -30,29 +30,27 @@ function ViewCourseEnquiry() {
   return (
     <>
       <ManagerDashboard />
-      <div className ="mainBody">
-        <h1>Course enquiries List</h1>
+      <div className="mainBody">
+        <h4>Course enquiries List</h4>
         <Table striped bordered hover>
-        <tr>
-                            {/* <th>id</th> */}
-                            <th>Course Name</th>
-                            <th>Details</th>
-                            
-                        </tr>
-          {courseEnquiries.map((courseEnquirie) => (
-            // <div key={staff.id} className="staffListLI">
-            //     {/* <Staff details = {staff} /> */}
-            // </div>
-           <tr>
-             <td> {courseEnquirie.name}</td>
-           <td>   {courseEnquirie.email}</td>
+          <tr>
+            {/* <th>id</th> */}
+            <th>Course Name</th>
+            <th>Details</th>
 
-              
-               <td> <Link to={`${courseEnquirie.id}`}>View Enquiree Details</Link> </td>
-              
+          </tr>
+          {courseEnquiries.map((courseEnquirie) => (
+
+            <tr>
+              <td> {courseEnquirie.name}</td>
+              <td>   {courseEnquirie.email}</td>
+
+
+              <td> <Link to={`${courseEnquirie.id}`}>View Enquiree Details</Link> </td>
+
             </tr>
           ))}
-       </Table>
+        </Table>
       </div>
     </>
   );

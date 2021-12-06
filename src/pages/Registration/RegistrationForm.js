@@ -1,6 +1,6 @@
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import axios from "axios";
 
 import './RegistrationForm.css';
@@ -65,7 +65,7 @@ function RegistrationForm() {
             return true;
         }else{
             // alert("Incorrect password");
-            toast.error(" Incorrect Password", {
+            toast.error("Password doesn't match", {
                 transition: Slide,
                 hideProgressBar: true,
                 autoClose: 3000
@@ -122,7 +122,7 @@ function RegistrationForm() {
                     </Form.Label>
                     <br/>
                     <Form.Text className="text-muted">
-                        Password must be minimum eight characters, at least one letter, one number and one special character
+                        Re-enter password
                     </Form.Text>
                     <Form.Control type="password" required placeholder="Confirm password" name="cfpassword"  onChange={handleChange} value={inputs.cfpassword || ""} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid password') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                 </Form.Group>

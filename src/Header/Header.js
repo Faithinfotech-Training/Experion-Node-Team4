@@ -106,10 +106,10 @@ function Header() {
               {!admin && !manager && (
                 <NavDropdown title="Enquiry" id="basic-nav-dropdown">
                   <NavDropdown.Item>
-                    <Link to="/home/course-enquiry">Course Enquiry</Link>
+                    <Link to="/user/course-enquiry">Course Enquiry</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to="/home/resource-enquiry">Resource Enquiry</Link>
+                    <Link to="/user/resource-enquiry">Resource Enquiry</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
               )}

@@ -98,7 +98,7 @@ function EditCourse() {
             <span className="required">*</span>
           </Form.Label>
 
-          <Form.Select name="category" required aria-label="Default select example" defaultValue={courses.category} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('choose a category from the list') }} onInput={(e) => { e.target.setCustomValidity('') }}>
+          <Form.Select name="category" required aria-label="Default select example"  value={courses.category || ""} defaultValue={courses.category} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('choose a category from the list') }} onInput={(e) => { e.target.setCustomValidity('') }}>
             <option value="">--choose an option--</option>
             <option value="Web Dev">Web Dev</option>
             <option value="ML">ML</option>
@@ -109,7 +109,7 @@ function EditCourse() {
         <Button variant="success" type="submit">
           Update
         </Button>&nbsp;&nbsp;&nbsp;
-        <Button variant="primary" type="reset" onClick={() => goBack()}>
+        <Button className="right" variant="primary" type="reset" onClick={() => goBack()}>
           Go Back
         </Button>
         </div>

@@ -290,9 +290,9 @@ function MyForm(props) {
           </Form.Select>
         </Form.Group>
         <Button variant="success" type="submit">
-          Edit
+          Update
         </Button>&nbsp;&nbsp;&nbsp;
-        <Button variant="primary" type="reset" onClick={() => goBack()}>
+        <Button className="right" variant="primary" type="reset" onClick={() => goBack()}>
           Go Back
         </Button>
         </div>

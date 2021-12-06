@@ -33,7 +33,7 @@ function ManagerViewResourceEnquiryDetails() {
         <>
             <ManagerDashboard />
             <div className="resource-list">
-                <center>  <h1>Resource enquiry Details</h1> </center>
+                <center>  <h4>Resource enquiry Details</h4> </center>
 
                 <Table striped bordered>
                     <thead>

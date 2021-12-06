@@ -13,12 +13,12 @@ function AddResource() {
 
   //Navigate back to admin/course
   let navigate = useNavigate();
-  const goBack = () => {
+  const viewResources = () => {
     navigate('/admin/resource/view-resources')
   }
-  // const goBacktoView = () => {
-  //   navigate('/admin/resource/view-resources')
-  // }
+  const goBack = () => {
+    navigate('/admin')
+  }
 
   const [resources, setResource] = useState({})
 
@@ -120,7 +120,10 @@ function AddResource() {
         <Button variant="success" type="submit">
           Add
         </Button>&nbsp;&nbsp;&nbsp;
-        <Button variant="primary" type="reset" onClick={() => goBack()}>
+        <Button variant="primary" type="reset" onClick={() => viewResources()}>
+          View Resources
+        </Button>
+        <Button className="right" variant="primary" type="reset" onClick={() => goBack()}>
           Go Back
         </Button>
       </Form>

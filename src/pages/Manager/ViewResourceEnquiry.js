@@ -33,9 +33,9 @@ useEffect(() => {
     <>
         <ManagerDashboard />
         <div className="mainBody">
-            <h1>
+            <h4>
                 Resource enquiries List
-            </h1>
+            </h4>
             <Table striped bordered hover>
             <tr>
                             {/* <th>id</th> */}

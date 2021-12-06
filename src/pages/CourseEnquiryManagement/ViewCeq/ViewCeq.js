@@ -90,8 +90,9 @@ function ViewCeq() {
                                 })}
                         </tbody>
                     </Table>
+                    
                 </div>
-
+            
             </div>
 
         </>

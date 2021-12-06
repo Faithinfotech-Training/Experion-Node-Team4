@@ -30,7 +30,7 @@ function ManagerViewCourseEnquiryDetails() {
     <>
       <ManagerDashboard />
       <div className="resource-list">
-      <center>   <h1>Course enquiry Details</h1> </center>
+      <center>   <h4>Course enquiry Details</h4> </center>
      
       <Table striped bordered>
       <thead>

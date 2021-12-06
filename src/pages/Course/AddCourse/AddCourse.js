@@ -12,15 +12,14 @@ function AddCourse() {
 
   //Navigate back to admin/course
   let navigate = useNavigate();
-  const goBack = () => {
+  const viewCourses = () => {
     navigate('/admin/course/view-courses')
-
   }
-  // const goBacktoCourse = () => {
-  //   navigate('/admin/course/view-courses')
-  // }
-  const [courses, setCourse] = useState({})
+  const goBack = () => {
+    navigate('/admin')
+  }
 
+  const [courses, setCourse] = useState({})
 
   //handle the change of form elements
   function handleChange(event) {
@@ -116,10 +115,13 @@ function AddCourse() {
             <option value="IOT">IOT</option>
           </Form.Select>
         </Form.Group>
-        <Button variant="success" type="submit"   >
+        <Button variant="success" type="submit" >
           Add
         </Button>&nbsp;&nbsp;&nbsp;
-        <Button variant="primary" type="reset" onClick={() => goBack()}>
+        <Button variant="primary" type="reset" onClick={() => viewCourses()}>
+          View Courses
+        </Button>
+        <Button className="right" variant="primary" type="reset" onClick={() => goBack()}>
           Go Back
         </Button>
       </Form>

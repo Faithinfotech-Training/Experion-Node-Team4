@@ -21,6 +21,10 @@ function ViewResourceList() {
 
 
     const navigate = useNavigate();
+    const goBack = () => {
+        navigate('/admin')
+    }
+
 
 
     const Users = () => {
@@ -60,7 +64,7 @@ function ViewResourceList() {
         <div>
             {admin && <Dashboard />}
             <div className="mainBody">
-                <h1>Resource List</h1>
+                <h4>Resource List</h4>
 
 
                 <Table striped bordered hover>
@@ -97,7 +101,7 @@ function ViewResourceList() {
                                         <td>{resource.resourcecode}</td>
                                         <td>{resource.resourcename}</td>
                                         <td> {user ? (
-                                            <Button variant="primary"
+                                            <Button variant="outline-primary"
                                                 onClick={async () => {
 
                                                     navigate(`/user/view-resources/${resource.id}`);
@@ -118,7 +122,9 @@ function ViewResourceList() {
                     </tbody>
                 </Table>
 
-
+                <Button style={{ float: "right" }} variant="primary" type="reset" onClick={() => goBack()}>
+                    Go Back
+                </Button>
             </div>
         </div>
     );

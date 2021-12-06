@@ -111,7 +111,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function ManagerRegistrationForm() {
 
-    
+
     //initialize to empty
     const [inputs, setInputs] = useState({});
     const navigate = useNavigate();
@@ -125,10 +125,10 @@ function ManagerRegistrationForm() {
         //updating the values into the state
         setInputs(values => ({ ...values, [name]: value }))
     }
-    const matchpassword = ()=>{
+    const matchpassword = () => {
         const pwd = inputs.password;
         const cfpwd = inputs.cfpassword;
-        if(pwd === cfpwd){
+        if (pwd === cfpwd) {
             const regData = {
                 "name": inputs.name,
                 "email": inputs.email,
@@ -137,33 +137,33 @@ function ManagerRegistrationForm() {
             }
 
             axios
-            .post('http://localhost:3009/users/register', regData)
-            .then(response => {
-                if (response.status === 200) {
-                    toast.success(" Manager added successfully", {
+                .post('http://localhost:3009/users/register', regData)
+                .then(response => {
+                    if (response.status === 200) {
+                        toast.success(" Manager added successfully", {
+                            transition: Slide,
+                            hideProgressBar: true,
+                            autoClose: 3000
+                        })
+                        localStorage.setItem('mytoken', response.data.accessToken);
+                        localStorage.setItem('role', response.data.user.role);
+                        if (response.data.user.role === 'User') {
+                            console.log(response);
+                        }
+                    }
+
+
+                }).catch(err => {
+                    toast.error(" Manager Already Exist", {
                         transition: Slide,
                         hideProgressBar: true,
                         autoClose: 3000
                     })
-                    localStorage.setItem('mytoken', response.data.accessToken);
-                    localStorage.setItem('role', response.data.user.role);
-                    if (response.data.user.role === 'User') {
-                        console.log(response);
-                    }
-                }
-               
-
-            }).catch(err => {
-                toast.error(" Manager Already Exist", {
-                    transition: Slide,
-                    hideProgressBar: true,
-                    autoClose: 3000
                 })
-            })
             return true;
-        }else{
+        } else {
             // alert("Incorrect password");
-            toast.error(" Incorrect Password", {
+            toast.error("Password doesn't match", {
                 transition: Slide,
                 hideProgressBar: true,
                 autoClose: 3000
@@ -174,10 +174,10 @@ function ManagerRegistrationForm() {
     }
     function handleSubmit(e) {
         e.preventDefault();
-        
+
         matchpassword();
 
-        
+
 
 
     }
@@ -208,28 +208,28 @@ function ManagerRegistrationForm() {
                     <Form.Label>Password :
                         <span className="required">*</span>
                     </Form.Label>
-                    <br/>
+                    <br />
                     <Form.Text className="text-muted">
                         Password must be minimum eight characters, at least one letter, one number and one special character
                     </Form.Text>
-                    <Form.Control type="password" required placeholder="Password" name="password"  onChange={handleChange} value={inputs.password || ""} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid password') }} onInput={(e) => { e.target.setCustomValidity('') }} />
+                    <Form.Control type="password" required placeholder="Password" name="password" onChange={handleChange} value={inputs.password || ""} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid password') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Confirm Password :
                         <span className="required">*</span>
                     </Form.Label>
-                    <br/>
+                    <br />
                     <Form.Text className="text-muted">
-                        Password must be minimum eight characters, at least one letter, one number and one special character
+                        Re-enter password
                     </Form.Text>
-                    <Form.Control type="password" required placeholder="Confirm password" name="cfpassword"  onChange={handleChange} value={inputs.cfpassword || ""} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid password') }} onInput={(e) => { e.target.setCustomValidity('') }} />
+                    <Form.Control type="password" required placeholder="Confirm password" name="cfpassword" onChange={handleChange} value={inputs.cfpassword || ""} pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid password') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                 </Form.Group>
 
                 <Button variant="success" type="submit">
                     Register Manager
                 </Button>&nbsp;&nbsp;&nbsp;
-                
+
             </Form>
         </div>
     )
