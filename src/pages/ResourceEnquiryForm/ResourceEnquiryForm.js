@@ -50,13 +50,20 @@ function ResourceEnquiryForm(props) {
                     transition: Slide,
                     hideProgressBar: true,
                     autoClose: 5000
-                  })
+                })
                 navigate("/home/");
             }).catch(error => {
                 console.log(error);
             })
     }
 
+    const disablePastDate = () => {
+        const today = new Date();
+        const dd = String(today.getDate() + 1).padStart(2, "0");
+        const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+        const yyyy = today.getFullYear();
+        return yyyy + "-" + mm + "-" + dd;
+    };
 
     return (
         <div className="enquiryForm">
@@ -64,34 +71,44 @@ function ResourceEnquiryForm(props) {
             <Form onSubmit={handleSubmit}>
 
                 <Form.Group className="mb-3" >
-                    <Form.Label>Name : </Form.Label>
-                    <Form.Control type="text" placeholder="Enter your name" name="name" value={inputs.name || ""} onChange={handleChange} />
+                    <Form.Label>Name :
+                        <span className="required">*</span>
+                    </Form.Label>
+                    <Form.Control type="text" required placeholder="Enter your name" name="name" value={inputs.name || ""} onChange={handleChange} pattern="[A-Za-z]+\s{1}[A-Za-z]+" onInvalid={(e) => { e.target.setCustomValidity('Enter your name') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Label>Email : </Form.Label>
-                    <Form.Control type="email" placeholder="Enter your email id" name="email" value={inputs.email || ""} onChange={handleChange} />
+                    <Form.Label>Email :
+                        <span className="required">*</span>
+                    </Form.Label>
+                    <Form.Control type="email" required placeholder="Enter your email id" name="email" value={inputs.email || ""} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('Enter a valid email-id') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" >
-                    <Form.Label>Resouce Name : </Form.Label>
-                    <Form.Select name="resourceName" value={inputs.resourceName} onChange={handleChange}>
-                        <option >Select Resource</option>
-                        {resources.map(resource =>    
+                    <Form.Label>Resouce Name :
+                        <span className="required">*</span>
+                    </Form.Label>
+                    <Form.Select name="resourceName" value={inputs.resourceName} onChange={handleChange} required>
+                        <option value="" >Select Resource</option>
+                        {resources.map(resource =>
                             <option value={resource.resourcename}>{resource.resourcename}</option>
                         )}
                     </Form.Select>
                 </Form.Group>
 
                 <Form.Group className="mb-3" >
-                    <Form.Label>Requesting Date : </Form.Label>
-                    <Form.Control type="date" placeholder="Date from which you want to avail" name="reqDate" value={inputs.reqDate || ""} onChange={handleChange} />
+                    <Form.Label>Requesting Date :
+                        <span className="required">*</span>
+                    </Form.Label>
+                    <Form.Control type="date" min={disablePastDate()} required placeholder="Date from which you want to avail" name="reqDate" value={inputs.reqDate || ""} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('Enter a date from which you want to avail, must be a future date') }} onInput={(e) => { e.target.setCustomValidity('') }} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicSelect">
-                    <label for="duration">Duration : </label>
+                    <Form.Label for="duration">Duration :
+                        <span className="required">*</span>
+                    </Form.Label>
 
-                    <Form.Select name="duration" aria-label="Default select example" value={inputs.duration} onChange={handleChange}>
+                    <Form.Select name="duration" required aria-label="Default select example" value={inputs.duration} onChange={handleChange}>
                         <option value="">--choose an option--</option>
                         <option value="twoWeeks">Two Weeks</option>
                         <option value="threeWeeks">Three Weeks</option>

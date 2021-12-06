@@ -41,11 +41,11 @@ function AddCourse() {
     var config = {
       method: 'post',
       url: 'http://localhost:3009/courses',
-      headers: { 
-        'Authorization': `Bearer ${mytoken}`, 
+      headers: {
+        'Authorization': `Bearer ${mytoken}`,
         'Content-Type': 'application/json'
       },
-      data : courses
+      data: courses
     };
 
     axios(config)
@@ -71,32 +71,41 @@ function AddCourse() {
       <Dashboard />
       <Form onSubmit={handleSubmit} className="add-courses">
 
-        
-      <Form.Group className="mb-3" >
-          <Form.Label>Course Code</Form.Label>
-          <Form.Control type="number" placeholder="Enter the code" name="coursecode" value={courses.coursecode || ""} onChange={handleChange} />
+
+        <Form.Group className="mb-3" >
+          <Form.Label>Course Code :
+            <span className="required">*</span>
+          </Form.Label>
+          <Form.Control type="number" min='100' required placeholder="Enter the code" name="coursecode" value={courses.coursecode || ""} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('Enter course code, min 3 digits') }} onInput={(e) => { e.target.setCustomValidity('') }} />
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Course Name</Form.Label>
-          <Form.Control type="text" name="coursename" placeholder="Enter the course name" value={courses.coursename || ""} onChange={handleChange} />
+          <Form.Label>Course Name :
+            <span className="required">*</span>
+          </Form.Label>
+          <Form.Control type="text" required name="coursename" placeholder="Enter the course name" value={courses.coursename || ""} onChange={handleChange} pattern="[A-Za-z]+\s{1}[A-Za-z]+" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid course name') }} onInput={(e) => { e.target.setCustomValidity('') }} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Course Description</Form.Label>
-          <Form.Control as="textarea" rows={3} name="description" placeholder="Add a description" value={courses.description || ""} onChange={handleChange}  />
+          <Form.Label>Course Description :
+            <span className="required">*</span>
+          </Form.Label>
+          <Form.Control as="textarea" rows={3} required name="description" placeholder="Add a description" value={courses.description || ""} onChange={handleChange} pattern="{5,}" onInvalid={(e) => { e.target.setCustomValidity('Enter atleast 5 characters') }} onInput={(e) => { e.target.setCustomValidity('') }} />
         </Form.Group>
 
         <Form.Group className="mb-3" >
-          <Form.Label>Course Fee in INR:</Form.Label>
-          <Form.Control type="number" placeholder="Enter course fee" name="coursefee" value={courses.coursefee || ""} onChange={handleChange} />
+          <Form.Label>Course Fee in INR :
+            <span className="required">*</span>
+          </Form.Label>
+          <Form.Control type="number" min='1000' required placeholder="Enter course fee" name="coursefee" value={courses.coursefee || ""} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('Enter fee for the course') }} onInput={(e) => { e.target.setCustomValidity('') }} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          {/* Course Category: <Form.Check type="checkbox" label="Web Dev"  className="formCheckBox"/><Form.Check type="checkbox" label="IOT"  className="formCheckBox"/><Form.Check type="checkbox" label="ML"  className="formCheckBox"/> */}
-          <label for="category">Choose a category:</label>
+          <Form.Label for="category">Choose a category :
+            <span className="required">*</span>
+          </Form.Label>
 
-          <Form.Select name="category" aria-label="Default select example" defaultValue={courses.category} onChange={handleChange}>
+          <Form.Select name="category" required aria-label="Default select example" defaultValue={courses.category} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('choose a category from the list') }} onInput={(e) => { e.target.setCustomValidity('') }}>
             <option value="">--choose an option--</option>
             <option value="Web Dev">Web Dev</option>
             <option value="ML">ML</option>

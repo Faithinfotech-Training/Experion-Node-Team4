@@ -41,11 +41,11 @@ function AddResource() {
     var config = {
       method: 'post',
       url: 'http://localhost:3009/resources',
-      headers: { 
-        'Authorization': `Bearer ${mytoken}`, 
+      headers: {
+        'Authorization': `Bearer ${mytoken}`,
         'Content-Type': 'application/json'
       },
-      data : resources
+      data: resources
     };
 
     axios(config)
@@ -72,32 +72,41 @@ function AddResource() {
       <Dashboard />
 
       <Form onSubmit={handleSubmit} className="add-resource">
-        
-      <Form.Group className="mb-3" >
-          <Form.Label>Resource Code</Form.Label>
-          <Form.Control type="number" placeholder="Enter the code" name="resourcecode" value={resources.resourcecode || ""} onChange={handleChange} />
+
+        <Form.Group className="mb-3" >
+          <Form.Label>Resource Code :
+            <span className="required">*</span>
+          </Form.Label>
+          <Form.Control type="number" min='100' required placeholder="Enter the code" name="resourcecode" value={resources.resourcecode || ""} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('Enter resource code, min 3 digits') }} onInput={(e) => { e.target.setCustomValidity('') }} />
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Resource Name</Form.Label>
-          <Form.Control type="text" name="resourcename" placeholder="Enter the resource name" value={resources.resourcename || ""} onChange={handleChange} />
+          <Form.Label>Resource Name :
+            <span className="required">*</span>
+          </Form.Label>
+          <Form.Control type="text" required name="resourcename" placeholder="Enter the resource name" value={resources.resourcename || ""} onChange={handleChange} pattern="[A-Za-z]+\s{1}[A-Za-z]+" onInvalid={(e) => { e.target.setCustomValidity('Enter a valid resource name') }} onInput={(e) => { e.target.setCustomValidity('') }} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Resource Description</Form.Label>
-          <Form.Control as="textarea" rows={3} name="description" placeholder="Add a description" value={resources.description || ""} onChange={handleChange}/>
+          <Form.Label>Resource Description :
+            <span className="required">*</span>
+          </Form.Label>
+          <Form.Control as="textarea" rows={3} required name="description" placeholder="Add a description" value={resources.description || ""} onChange={handleChange} pattern="{5, }$" onInvalid={(e) => { e.target.setCustomValidity('Add atleast 5 characters') }} onInput={(e) => { e.target.setCustomValidity('') }} />
         </Form.Group>
 
         <Form.Group className="mb-3" >
-          <Form.Label>Resource Fee in INR:</Form.Label>
-          <Form.Control type="number" placeholder="Enter the Fee" name="resourcefee" value={resources.resourcefee || ""} onChange={handleChange} />
+          <Form.Label>Resource Fee in INR :
+            <span className="required">*</span>
+          </Form.Label>
+          <Form.Control type="number" min='1000' required placeholder="Enter the Fee" name="resourcefee" value={resources.resourcefee || ""} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('Enter fee for the resource') }} onInput={(e) => { e.target.setCustomValidity('') }} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          {/* Course Category: <Form.Check type="checkbox" label="Web Dev"  className="formCheckBox"/><Form.Check type="checkbox" label="IOT"  className="formCheckBox"/><Form.Check type="checkbox" label="ML"  className="formCheckBox"/> */}
-          <label for="cars">Choose a category:</label>
+          <Form.Label for="category">Choose a category:
+            <span className="required">*</span>
+          </Form.Label>
 
-          <Form.Select name="category" aria-label="Default select example" value={resources.category || ""} onChange={handleChange}>
+          <Form.Select name="category" aria-label="Default select example" value={resources.category || ""} onChange={handleChange} required onInvalid={(e) => { e.target.setCustomValidity('choose a category from the list') }} onInput={(e) => { e.target.setCustomValidity('') }}>
             <option value="">--choose an option--</option>
             <option value="Lab">Lab</option>
             <option value="Class Room">Class Room</option>
