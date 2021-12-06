@@ -9,7 +9,7 @@ export default function App() {
     <UserContextProvider>
       <>
         <Routers />
-        <Footer />
+        {/* <Footer /> */}
         {/* <Tab /> */}
         {/* <LoginForm/> */}
       </>

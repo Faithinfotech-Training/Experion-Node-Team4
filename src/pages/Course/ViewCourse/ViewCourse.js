@@ -11,6 +11,7 @@ function ViewCourse() {
     let [admin, setAdmin] = useState(false);
 
     const [courses, setCourses] = useState([]);
+    const [coursesearch, setCourseSearch] = useState("");
 
 
 
@@ -45,41 +46,65 @@ function ViewCourse() {
 
     return (
         <div>
-           {admin && <Dashboard />}
+            {admin && <Dashboard />}
             <div className="mainBody">
                 <h1>Course List</h1>
 
-               
+
                 <Table striped bordered hover>
+                    <thead>
                         <tr>
                             <th>id</th>
-                            <th>Course Name</th>
+                            <th align="left">Course Name
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input
+                                    type="text"
+                                    align="center"
+                                    placeholder="Search here"
+                                    onChange={(e) => {
+                                        setCourseSearch(e.target.value);
+                                    }}
+                                />
+                            </th>
                             <th>Details</th>
-                            
-                        </tr>
 
-                        {courses.map((course) => (
-                            // <div className="ULbox">
-                        <tr>
-                            <td>{course.coursecode}</td>
-                            <td>{course.coursename}</td>
-                            <td> {user ? (
-                                    <button
-                                        onClick={() => {
-                                            navigate(`/user/view-courses/${course.id}`);
-                                        }}
-                                    >
-                                        Click for details
-                                    </button>
-                                ) : (
-                                    <div>
-                                        <Link to={`${course.id}`}>View Course Details</Link>
-                                    </div>
-                                )}</td>
-                        </tr>                            
-                        ))}
-                    </Table>
-                
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {courses.filter((course) => {
+                            if (coursesearch == "") {
+                                return course;
+                            } else if (course.coursename.includes(coursesearch)) {
+                                return course;
+                            }
+                        })
+                            .map((course) => {
+                                return(
+                                    // <div className="ULbox">
+                                    <tr key={course.id}>
+                                        <td>{course.coursecode}</td>
+                                        <td>{course.coursename}</td>
+                                        <td> {user ? (
+                                            <button
+                                                onClick={() => {
+                                                    navigate(`/user/view-courses/${course.id}`);
+                                                }}
+                                            >
+                                                Click for details
+                                            </button>
+                                        ) : (
+                                            <div>
+                                                <Link to={`${course.id}`}>View Course Details</Link>
+                                            </div>
+                                        )}</td>
+                                    </tr>
+                                )
+                            }
+                            )
+                        }
+                    </tbody>
+                </Table>
+
 
             </div>
         </div>

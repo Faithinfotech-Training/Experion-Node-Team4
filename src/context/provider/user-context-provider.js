@@ -17,7 +17,7 @@ const UserContextProvider = ({children}) => {
     }, []);
 
     const login = (token, role, username) => {
-debugger;
+// debugger;
         if(token){
             localStorage.setItem('mytoken',token);
             localStorage.setItem('role', role);
@@ -32,7 +32,7 @@ debugger;
     };
 
     const logout = () => {
-        debugger;
+        // debugger;
         localStorage.removeItem('mytoken');
         localStorage.removeItem('role');
         localStorage.removeItem('username');

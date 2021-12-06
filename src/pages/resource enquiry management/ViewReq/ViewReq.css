@@ -1,5 +1,5 @@
 .view-req{
-    position: relative;
-    left: 25%;
-    top: 20px;
+    margin-left:25%;
+    margin-top: 20px;
+    margin-right: 25%;
 }
