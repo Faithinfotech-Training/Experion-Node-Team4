@@ -116,7 +116,7 @@ function ViewResource() {
                                         onClick={async () => {
                                             await updateVisitCount(resources.id);
 
-                                            navigate(`/home/resource-enquiry`);
+                                            navigate(`/user/resource-enquiry`);
                                         }}
                                     >
                                         Enquire

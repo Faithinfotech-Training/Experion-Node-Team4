@@ -62,6 +62,8 @@ import ManagerRegistrationForm from "../pages/Registration/ManagerRegistrationFo
 import OfferedCourses from "../pages/Home/OfferedCourses";
 import OfferedResources from "../pages/Home/OfferedResources";
 import ViewResourceList from "../pages/ResourceManagement/ViewResource/ViewResourceList";
+import UserCourseEnquiryForm from "../pages/User/UserCourseEnquiryForm";
+import UserResourceEnquiryForm from "../pages/User/UserResourceEnquiryForm";
 import UserContext from "../context/user-context";
 
 const Routers = (props) => {
@@ -96,6 +98,7 @@ const Routers = (props) => {
         {/* Routes for user view resource from user page */}
         <Route path="/user/view-resources" element={userContext.userDetails && <ViewResourceList />} />
         <Route path="/user/view-resources/:id" element={userContext.userDetails && <ViewResource />} />
+        <Route path="/user/resource-enquiry" element={userContext.userDetails && <UserResourceEnquiryForm />} />
         {/* Routes for user view course from user page */}
         <Route
           path="/user/view-courses"
@@ -107,10 +110,12 @@ const Routers = (props) => {
           element={userContext.userDetails && <CourseDetails />}
         />
 
+        <Route path="/user/course-enquiry/" element={userContext.userDetails && <UserCourseEnquiryForm />} />
+
         {/* Admin Page */}
         <Route
           path="/admin/"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <Admin />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <Admin />}
         />
 
         {/* Admin error Page */}
@@ -118,84 +123,84 @@ const Routers = (props) => {
         {/* Routes for Course Management */}
         <Route
           path="/admin/course"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <CourseMng />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <CourseMng />}
         />
         <Route
           path="/admin/course/add-course"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <AddCourse />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <AddCourse />}
         />
         <Route
           path="/admin/course/edit-course/:id"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <EditCourse />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <EditCourse />}
         />
         <Route
           path="/admin/course/view-courses"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ViewCourse />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <ViewCourse />}
         />
         <Route
           path="/admin/course/view-courses/:id"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <CourseDetails />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <CourseDetails />}
         />
 
         {/* Routes for Course Enquiry Management */}
         <Route
           path="/admin/course-enquiry"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <CeqMng />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <CeqMng />}
         />
         <Route
           path="/admin/course-enquiry/view-course-enquiry"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ViewCeq />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <ViewCeq />}
         />
         <Route
           path="/admin/course-enquiry/view-course-enquiry/:id"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <CeqDetails />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <CeqDetails />}
         />
         <Route
           path="/admin/course-enquiry/edit-course-enquiry/:id"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <EditCeq />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <EditCeq />}
         />
 
         {/* Routes for Resource Management      */}
 
-        <Route path="/admin/resource" element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ResourceMng />} />
-        <Route path="/admin/resource/add-resource" element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <AddResource />} />
+        <Route path="/admin/resource" element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <ResourceMng />} />
+        <Route path="/admin/resource/add-resource" element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <AddResource />} />
         <Route
           path="/admin/resource/edit-resource/:id"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <EditResource />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <EditResource />}
         />
         {/* <Route path="/admin/resource/delete-resources" element={<DeleteResourcess />}/> */}
         <Route
           path="/admin/resource/view-resources"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ViewResourceList />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <ViewResourceList />}
         />
-           <Route
+        <Route
           path="/admin/resource/view-resources/:id"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ViewResource />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <ViewResource />}
         />
 
         {/* Routes for Resource Enquiry Management */}
         <Route
           path="/admin/resource-enquiry"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ReqMng />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <ReqMng />}
         />
         <Route
           path="/admin/resource-enquiry/view-resource-enquiry"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ViewReq />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <ViewReq />}
         />
         <Route
           path="/admin/resource-enquiry/view-resource-enquiry/:id"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ReqDetails />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <ReqDetails />}
         />
         <Route
           path="/admin/resource-enquiry/edit-resource-enquiry/:id"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <EditReq />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <EditReq />}
         />
 
         {/* Manager HomePage */}
         <Route path="/manager" element={userContext.userDetails && userContext.userDetails.role === 'Manager' && <Manager />} />
         <Route
           path="/admin/register-manager"
-          element={userContext.userDetails && userContext.userDetails.role === 'Admin' &&  <ManagerRegistrationForm />}
+          element={userContext.userDetails && userContext.userDetails.role === 'Admin' && <ManagerRegistrationForm />}
         />
         {/* Routes for managers to view course and Resourse enquiry */}
         <Route

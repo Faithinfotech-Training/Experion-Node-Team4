@@ -110,8 +110,8 @@ function ViewCourse() {
                         type="button"
                         onClick={async () => {
                           await updateVisitCount(courses.id);
-
-                          navigate(`/home/course-enquiry`);
+                          // localStorage.setItem('Cid',courses.id)
+                          navigate(`/user/course-enquiry`);
                         }}
                       >
                         Enquire

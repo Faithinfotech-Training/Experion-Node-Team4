@@ -40,7 +40,7 @@ function LoginForm() {
                 let role = response.data.user.role;
                 let id = response.data.user.id;
 
-                userContext.login(response.data.accessToken, response.data.user.role, response.data.user.name);
+                userContext.login(response.data.accessToken, response.data.user.role, response.data.user.name, response.data.user.id);
 
                 if (role === "Admin") {
 
