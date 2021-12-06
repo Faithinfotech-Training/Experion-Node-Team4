@@ -64,23 +64,31 @@ function CourseEnquiryForm(props) {
             <Form onSubmit={handleSubmit}>
 
                 <Form.Group className="mb-3" >
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter your name" name="name" value={inputs.name || ""} onChange={handleChange} />
+                    <Form.Label>Name :
+                        <span className="required">*</span>
+                    </Form.Label>
+                    <Form.Control type="text" required placeholder="Enter your name" name="name" value={inputs.name || ""} onChange={handleChange} pattern="[A-Za-z]+" onInvalid={(e)=>{e.target.setCustomValidity('Enter your name')}} onInput={(e)=>{e.target.setCustomValidity('')}}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter your email id" name="email" value={inputs.email || ""} onChange={handleChange} />
+                    <Form.Label>Email :
+                    <span className="required">*</span>
+                    </Form.Label>
+                    <Form.Control type="email" required placeholder="Enter your email id" name="email" value={inputs.email || ""} onChange={handleChange} onInvalid={(e)=>{e.target.setCustomValidity('Enter a valid email-id')}} onInput={(e)=>{e.target.setCustomValidity('')}}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" >
-                    <Form.Label>Age</Form.Label>
-                    <Form.Control type="number" placeholder="Enter your age" name="age" value={inputs.age || ""} onChange={handleChange} />
+                    <Form.Label>Age :
+                    <span className="required">*</span>
+                    </Form.Label>
+                    <Form.Control type="number" min="7" required placeholder="Enter your age" name="age" value={inputs.age || ""} onChange={handleChange} onInvalid={(e)=>{e.target.setCustomValidity('Enter your age')}} onInput={(e)=>{e.target.setCustomValidity('')}}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" >
-                    <Form.Label>Course Name</Form.Label>
-                    <Form.Select name="courseName" value={inputs.courseName} onChange={handleChange}>
+                    <Form.Label>Course Name :
+                    <span className="required">*</span>
+                    </Form.Label>
+                    <Form.Select name="courseName" required aria-label="Default select example" defaultValue={inputs.courseName} value={inputs.courseName} onChange={handleChange}>
                         <option >Select Course</option>
                         {courses.map(course =>    
                             <option value={course.coursename}>{course.coursename}</option>
@@ -90,9 +98,11 @@ function CourseEnquiryForm(props) {
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     {/* Course Category: <Form.Check type="checkbox" label="Web Dev"  className="formCheckBox"/><Form.Check type="checkbox" label="IOT"  className="formCheckBox"/><Form.Check type="checkbox" label="ML"  className="formCheckBox"/> */}
-                    <label for="qualification">Qualification:</label>
+                    <Form.Label for="qualification">Qualification :
+                    <span className="required">*</span>
+                    </Form.Label>
 
-                    <Form.Select name="qualification" aria-label="Default select example" defaultValue={inputs.qualification} value={inputs.qualification || ""} onChange={handleChange}>
+                    <Form.Select name="qualification" required aria-label="Default select example" defaultValue={inputs.qualification} value={inputs.qualification || ""} onChange={handleChange}>
                         <option value="">--choose an option--</option>
                         <option value="Web Dev">BTech</option>
                         <option value="ML">B.Sc</option>
@@ -101,14 +111,17 @@ function CourseEnquiryForm(props) {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <label for="interest">Technology Preference:</label>
-                    <Form.Select name="interest" aria-label="Default select example" defaultValue={inputs.interest} value={inputs.interest || ""} onChange={handleChange}>
+                    <Form.Label for="interest">Technology Preference :
+                    <span className="required">*</span>
+                    </Form.Label>
+                    <Form.Select name="interest" required aria-label="Default select example" defaultValue={inputs.interest} value={inputs.interest || ""} onChange={handleChange}>
                         <option value="">--choose an option--</option>
                         <option value="Web Dev">Web Dev</option>
                         <option value="ML">ML</option>
                         <option value="IOT">AI</option>
                     </Form.Select>
                 </Form.Group>
+
                 <Button variant="success" type="submit">
                     Enquire
                 </Button>&nbsp;&nbsp;&nbsp;
