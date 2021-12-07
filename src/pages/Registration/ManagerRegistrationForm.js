@@ -147,6 +147,7 @@ function ManagerRegistrationForm() {
                         })
                         localStorage.setItem('mytoken', response.data.accessToken);
                         localStorage.setItem('role', response.data.user.role);
+                        navigate('/admin/')
                         if (response.data.user.role === 'User') {
                             console.log(response);
                         }

@@ -1,12 +1,18 @@
 import ManagerDashboard from "../../Components/ManagerDashboard/ManagerDashboard";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Table } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { Table, Button } from "react-bootstrap";
 
 function ViewCourseEnquiry() {
   const [courseEnquiries, setcourseEnquiries] = useState([]);
   const mytoken = localStorage.getItem('mytoken');
+
+  const navigate = useNavigate();
+  const goBack = () => {
+      navigate('/manager')
+  }
+
 
   useEffect(() => {
     console.log("The use effect hook has been executed");
@@ -51,6 +57,9 @@ function ViewCourseEnquiry() {
             </tr>
           ))}
         </Table>
+                <Button className="right" variant="primary" type="reset" onClick={() => goBack()}>
+                    Go Back
+                </Button>
       </div>
     </>
   );

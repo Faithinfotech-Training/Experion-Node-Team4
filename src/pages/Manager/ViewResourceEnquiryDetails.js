@@ -3,14 +3,20 @@ import ManagerDashboard from "../../Components/ManagerDashboard/ManagerDashboard
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import { Table } from "react-bootstrap";
+import { useParams, useNavigate } from "react-router";
+import { Table, Button } from "react-bootstrap";
 import './Manager.css'
 function ManagerViewResourceEnquiryDetails() {
 
     const [inputs, setInputs] = useState({});
     const { id } = useParams();
     const mytoken = localStorage.getItem('mytoken');
+
+    const navigate = useNavigate();
+  const goBack = () => {
+      navigate('/manager/view-resourse-enquiry')
+  }
+
     useEffect(() => {
         var config = {
             method: 'get',
@@ -55,6 +61,9 @@ function ManagerViewResourceEnquiryDetails() {
                     </tbody>
 
                 </Table>
+                <Button className="right" variant="primary" type="reset" onClick={() => goBack()}>
+                    Go Back
+                </Button>
             </div>
         </>
     )

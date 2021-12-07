@@ -3,13 +3,19 @@ import ManagerDashboard from "../../Components/ManagerDashboard/ManagerDashboard
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import { Table } from "react-bootstrap";
+import { useParams, useNavigate } from "react-router";
+import { Table, Button } from "react-bootstrap";
 
 function ManagerViewCourseEnquiryDetails() {
   const [inputs, setInputs] = useState({});
   const { id } = useParams();
   const mytoken = localStorage.getItem('mytoken');
+
+  const navigate = useNavigate();
+  const goBack = () => {
+      navigate('/manager/view-course-enquiry')
+  }
+
   useEffect(() => {
     var config = {
       method: 'get',
@@ -52,6 +58,9 @@ function ManagerViewCourseEnquiryDetails() {
     </tbody>
 
     </Table>
+    <Button className="right" variant="primary" type="reset" onClick={() => goBack()}>
+                    Go Back
+                </Button>
     </div>
 
     </>

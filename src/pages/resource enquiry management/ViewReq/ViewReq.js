@@ -1,10 +1,10 @@
 import Dashboard from "../../../Components/Dashboard/Dashboard";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 
 // import './ViewCourse.css';
 import axios from 'axios';
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import './ViewReq.css'
 function ViewReq() {
 
@@ -12,6 +12,12 @@ function ViewReq() {
     const mytoken = localStorage.getItem('mytoken');
 
     const [reqsearch, setReqSearch] = useState("");
+
+    const navigate = useNavigate();
+    const goBack = () => {
+        navigate('/admin')
+    }
+
 
     useEffect(() => {
         console.log('The use effect hook has been executed');
@@ -84,6 +90,10 @@ function ViewReq() {
                                 })}
                         </tbody>
                     </Table>
+                    <Button className="right" variant="primary" type="reset" onClick={() => goBack()}>
+                    Go Back
+                </Button>
+
                 </div>
             </div>
 

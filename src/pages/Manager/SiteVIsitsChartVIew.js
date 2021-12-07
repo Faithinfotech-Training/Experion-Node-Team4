@@ -1,6 +1,8 @@
 import ManagerDashboard from "../../Components/ManagerDashboard/ManagerDashboard";
 import Chart from "./Chart/DonoughtChart";
 import PieChart from "./Chart/PieChart";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 // import BarChart from "./Chart/BarChart";
 // import BarChartScreen from "./Chart/Temporary/BarChartApi";
 // import LineChartScreen from "./Chart/Temporary/LineChartApi";
@@ -10,6 +12,11 @@ import PieChart from "./Chart/PieChart";
 // import Dankmemes from "./Chart/Temporary/CourseChartAPi";
 
 function SitesVisitsChartView() {
+
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate('/manager/')
+  }
   return (
     <div>
       <div>
@@ -56,6 +63,10 @@ function SitesVisitsChartView() {
             </div>
           </div>
         </div>
+        <center>
+        <Button className="right" variant="primary" type="reset" onClick={() => goBack()}>
+          Go Back
+        </Button></center>
       </div>
     </div>
   );
