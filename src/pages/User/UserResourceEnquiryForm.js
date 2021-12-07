@@ -8,19 +8,10 @@ import "react-toastify/dist/ReactToastify.css";
 import '../ResourceEnquiryForm/ResourceEnquiryForm.css';
 
 function UserResourceEnquiryForm(props) {
-    let [user, setUser] = useState(false);
+    let [user, setUser] = useState({});
 
  
 
-  const Users = () => {
-    if (localStorage.getItem("role") === "User") {
-      setUser(true);
-    }
-  };
-  useEffect(() => {
- 
-    Users();
-  });
 
   const User = () => {
     let role = localStorage.getItem("role");
@@ -33,16 +24,6 @@ function UserResourceEnquiryForm(props) {
     
   };
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3009/users/${User()}`)
-      .then((response) => {
-        setUser(response.data);
-        console.log(response.data);
-        
-      })
-
-  }, []);
 
     const [inputs, setInputs] = useState({});
     const navigate = useNavigate();
@@ -52,6 +33,13 @@ function UserResourceEnquiryForm(props) {
 
     useEffect(() => {
         console.log('The use effect hook has been executed');
+        axios
+      .get(`http://localhost:3009/users/${User()}`)
+      .then((response) => {
+        setUser(response.data);
+        console.log(response.data);
+        
+      })
 
         axios
             .get('http://localhost:3009/resources')
@@ -75,9 +63,18 @@ function UserResourceEnquiryForm(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(inputs);
+        console.log(inputs, user.name, user.email);
+        const reqData = {
+            name: user.name,
+            email: user.email,
+            age: inputs.age,
+            resourceName: inputs.resourceName,
+            reqDate: inputs.reqDate,
+            duration: inputs.duration
+        };
+        console.log(reqData);
         axios
-            .post('http://localhost:3009/resource-enquiries/', inputs)
+            .post('http://localhost:3009/resource-enquiries/', reqData)
             .then(response => {
                 console.log('promise fulfilled')
                 console.log(response)
@@ -109,14 +106,14 @@ function UserResourceEnquiryForm(props) {
                     <Form.Label>Name :
                         <span className="required">*</span>
                     </Form.Label>
-                    <Form.Control type="text" required placeholder="Enter your name" name="name" value={inputs.name || user.name} onChange={handleChange} pattern="[A-Za-z]+\s{1}[A-Za-z]+" onInvalid={(e) => { e.target.setCustomValidity('Enter your name') }} onInput={(e) => { e.target.setCustomValidity('') }} />
+                    <Form.Control type="text" required placeholder="Enter your name" name="name" value={user.name}  />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                     <Form.Label>Email :
                         <span className="required">*</span>
                     </Form.Label>
-                    <Form.Control type="email" required placeholder="Enter your email id" name="email" value={inputs.email || user.email} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('Enter a valid email-id') }} onInput={(e) => { e.target.setCustomValidity('') }} />
+                    <Form.Control type="email" required placeholder="Enter your email id" name="email" value={user.email}  />
                 </Form.Group>
 
                 <Form.Group className="mb-3" >

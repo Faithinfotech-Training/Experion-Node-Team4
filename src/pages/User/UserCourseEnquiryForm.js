@@ -11,54 +11,50 @@ import '../CourseEnquiryForm/CourseEnquiryForm.css'
 
 function UserCourseEnquiryForm() {
 
- 
-  let [user, setUser] = useState(false);
 
- 
+    let [user, setUser] = useState({});
 
-  const Users = () => {
-    if (localStorage.getItem("role") === "User") {
-      setUser(true);
-    }
-  };
-  useEffect(() => {
- 
-    Users();
-  });
-
-  const User = () => {
-    let role = localStorage.getItem("role");
-    // let username = localStorage.getItem("username");
-    let id = localStorage.getItem("id");
-
-    if (localStorage.getItem("mytoken") && role === "User") {
-      return id;
-    }
-    
-  };
-  let username;
-  let useremail;
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3009/users/${User()}`)
-      .then((response) => {
-        setUser(response.data);
-        console.log(response.data);
-        
-      })
-
-  }, []);
-
-    // const {id} = useParams();
     const [inputs, setInputs] = useState({});
     const navigate = useNavigate();
 
     const [courses, setCourses] = useState([]);
 
-  
+    const Users = () => {
+        if (localStorage.getItem("role") === "User") {
+            setUser(true);
+        }
+    };
+
+
+
+
+
+    const User = () => {
+        let role = localStorage.getItem("role");
+        // let username = localStorage.getItem("username");
+        let id = localStorage.getItem("id");
+
+        if (localStorage.getItem("mytoken") && role === "User") {
+            return id;
+        }
+
+    };
+   
+
+
+   
+
+
 
     useEffect(() => {
+        // Users();
+        axios
+            .get(`http://localhost:3009/users/${User()}`)
+            .then((response) => {
+                setUser(response.data);
+                console.log(response.data);
+
+            })
         console.log('The use effect hook has been executed');
 
         axios
@@ -78,9 +74,9 @@ function UserCourseEnquiryForm() {
     //                 email: user.email                
     // }
 
-   
+
     function handleChange(event) {
-       
+
         const name = event.target.name;
         const value = event.target.value;
 
@@ -89,10 +85,17 @@ function UserCourseEnquiryForm() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        
-        console.log(inputs);
+
+        console.log(inputs, user.name, user.email);
         axios
-            .post('http://localhost:3009/course-enquiries/', inputs)
+            .post('http://localhost:3009/course-enquiries/', {
+                "name": user.name,
+                "email": user.email,
+                "age": inputs.age,
+                "courseName": inputs.courseName,
+                "qualification": inputs.qualification,
+                "interest": inputs.interest
+            })
             .then(response => {
                 console.log('promise fulfilled')
                 console.log(response)
@@ -117,7 +120,7 @@ function UserCourseEnquiryForm() {
                     <Form.Label>Name :
                         <span className="required">*</span>
                     </Form.Label>
-                    <Form.Control type="text" required placeholder="Enter your name" name="name" value={user.name}  />
+                    <Form.Control type="text" required placeholder="Enter your name" name="name" value={user.name} />
                 </Form.Group>
 
                 <Form.Group className="mb-3">

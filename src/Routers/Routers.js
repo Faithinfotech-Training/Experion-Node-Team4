@@ -74,7 +74,7 @@ const Routers = (props) => {
 
       <Routes>
         {/* Route for home page */}
-        <Route path="/home/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
 
         {/* Routes for viewing courses and resources offeredd in Home Page */}
         <Route path="/home/offered-courses" element={<OfferedCourses />} />
