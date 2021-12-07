@@ -66,6 +66,7 @@ function ViewReq() {
                                 </th>
                                 <th>Enquiree Name</th>
                                 <th>Email</th>
+                                <th>Status</th>
                                 <th>Details</th>
 
                             </tr>
@@ -84,6 +85,7 @@ function ViewReq() {
                                             <td>{resourceEnquirie.resourceName}</td>
                                             <td>{resourceEnquirie.name}</td>
                                             <td>{resourceEnquirie.email}</td>
+                                            <td>{resourceEnquirie.userstatus}</td>
                                             <td><Link to={`${resourceEnquirie.id}`}>View Enquiree Details</Link></td>
                                         </tr>
                                     )

@@ -42,13 +42,14 @@ function ViewCourseEnquiry() {
           <tr>
             {/* <th>id</th> */}
             <th>Course Name</th>
+            <th>Email</th>
             <th>Details</th>
 
           </tr>
           {courseEnquiries.map((courseEnquirie) => (
 
             <tr>
-              <td> {courseEnquirie.name}</td>
+              <td> {courseEnquirie.courseName}</td>
               <td>   {courseEnquirie.email}</td>
 
 

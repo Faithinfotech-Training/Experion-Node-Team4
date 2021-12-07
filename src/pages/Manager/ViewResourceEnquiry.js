@@ -45,6 +45,7 @@ useEffect(() => {
             <tr>
                             {/* <th>id</th> */}
                             <th>Resource Name</th>
+                            <th>Email</th>
                             <th>Details</th>
                             
                         </tr>
@@ -54,7 +55,7 @@ useEffect(() => {
                     //     {/* <Staff details = {staff} /> */}
                     // </div>
                    <tr>
-                        <td>{resourceEnquirie.name} </td>
+                        <td>{resourceEnquirie.resourceName} </td>
                         <td>{resourceEnquirie.email}</td>
                         <td><Link to={`${resourceEnquirie.id}`} >View Enquiree Details</Link></td>
                     </tr>

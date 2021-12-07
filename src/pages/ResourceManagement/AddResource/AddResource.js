@@ -102,7 +102,7 @@ function AddResource() {
           <Form.Label>Resource Fee in INR :
             <span className="required">*</span>
           </Form.Label>
-          <Form.Control type="number" min='1000' required placeholder="Enter the Fee" name="resourcefee" value={resources.resourcefee || ""} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('Enter fee for the resource') }} onInput={(e) => { e.target.setCustomValidity('') }} />
+          <Form.Control type="number" min='1000' max="100000" required placeholder="Enter the Fee" name="resourcefee" value={resources.resourcefee || ""} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('Enter fee for the resource, must be between 1000 and 100000') }} onInput={(e) => { e.target.setCustomValidity('') }} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">

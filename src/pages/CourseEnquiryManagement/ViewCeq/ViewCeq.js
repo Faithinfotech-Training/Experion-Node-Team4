@@ -69,6 +69,7 @@ function ViewCeq() {
                                 </th>
                                 <th>Enquiree Name</th>
                                 <th>Email</th>
+                                <th>Status</th>
                                 <th>Details</th>
 
                             </tr>
@@ -87,6 +88,7 @@ function ViewCeq() {
                                             <td>{courseEnquirie.courseName}</td>
                                             <td>{courseEnquirie.name}</td>
                                             <td>{courseEnquirie.email}</td>
+                                            <td>{courseEnquirie.userstatus}</td>
                                             <td><Link to={`${courseEnquirie.id}`}>View Enquiree Details</Link></td>
                                         </tr>
 

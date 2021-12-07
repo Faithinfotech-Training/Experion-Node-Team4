@@ -90,7 +90,7 @@ function EditCourse() {
           <Form.Label>Course Fee in INR :
             <span className="required">*</span>
           </Form.Label>
-          <Form.Control type="number" min='1000' required placeholder="Enter course fee" name="coursefee" value={courses.coursefee || ""} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('Enter fee for the course') }} onInput={(e) => { e.target.setCustomValidity('') }} />
+          <Form.Control type="number" min='1000' max="1000000" required placeholder="Enter course fee" name="coursefee" value={courses.coursefee || ""} onChange={handleChange} onInvalid={(e) => { e.target.setCustomValidity('Enter fee for the course, must be between 1000 and 100000') }} onInput={(e) => { e.target.setCustomValidity('') }} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
