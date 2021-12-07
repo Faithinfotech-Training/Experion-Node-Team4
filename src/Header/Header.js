@@ -87,7 +87,7 @@ function Header() {
               )}
 
               {admin && (
-                <Link className="navItem"   to="/admin/register-manager">
+                <Link className="navItem" to="/admin/register-manager">
                   Add Manager
                 </Link>
               )}
@@ -105,12 +105,22 @@ function Header() {
 
               {!admin && !manager && (
                 <NavDropdown title="Enquiry" id="basic-nav-dropdown">
-                  <NavDropdown.Item>
+
+                  {localStorage.getItem('mytoken') && <NavDropdown.Item>
                     <Link to="/user/course-enquiry">Course Enquiry</Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item>
+                  </NavDropdown.Item>}
+
+                  {!localStorage.getItem('mytoken') && <NavDropdown.Item>
+                    <Link to="/home/course-enquiry">Course Enquiry</Link>
+                  </NavDropdown.Item>}
+
+                 {!localStorage.getItem('mytoken') && <NavDropdown.Item>
+                    <Link to="/home/resource-enquiry">Resource Enquiry</Link>
+                  </NavDropdown.Item>}
+
+                  {localStorage.getItem('mytoken') && <NavDropdown.Item>
                     <Link to="/user/resource-enquiry">Resource Enquiry</Link>
-                  </NavDropdown.Item>
+                  </NavDropdown.Item>}
                 </NavDropdown>
               )}
             </Nav>
